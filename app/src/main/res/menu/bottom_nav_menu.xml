@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/navigation_farmers"
+            android:icon="@drawable/ic_people_black_24dp"
+            android:title="@string/title_farmers"/>
+
+    <item
+            android:id="@+id/navigation_advances"
+            android:icon="@drawable/ic_receipt_black_24dp"
+            android:title="@string/title_advances"/>
+
+    <item
+            android:id="@+id/navigation_procurements"
+            android:icon="@drawable/ic_monetization_on_black_24dp"
+            android:title="@string/title_procurements"/>
+
+
+    <item
+            android:id="@+id/navigation_sales"
+            android:icon="@drawable/ic_add_shopping_cart_black_24dp"
+            android:title="@string/title_sales"/>
+
+</menu>

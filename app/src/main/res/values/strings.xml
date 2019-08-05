@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Village Farms</string>
+    <string name="title_farmers">Farmers</string>
+    <string name="title_advances">Advances</string>
+    <string name="title_procurements">Procurements</string>
+    <string name="title_sales">Sales</string>
+</resources>
