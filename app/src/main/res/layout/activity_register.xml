@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              >
+
+
+    <TextView
+            android:id="@+id/textView"
+            android:padding="10sp"
+            android:text="Autobiography"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
+
+    <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputFirstname"
+
+            android:layout_margin="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Firstname"/>
+
+
+    <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputSurname"
+            android:layout_margin="14dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lastname"/>
+
+    <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputTitle"
+            android:layout_margin="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Title"/>
+
+    <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputGender"
+            android:layout_margin="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Gender"/>
+
+    <TextView
+            android:id="@+id/textViewFarmDetails"
+            android:padding="10sp"
+            android:text="Farm History and Status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
+
+
+    <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputYearOpened"
+            android:layout_margin="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:hint="Year Farm Opened"/>
+
+    <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputMatureTreeCount"
+            android:layout_margin="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Mature Tree count"/>
+
+
+    <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputImmatureTreeCount"
+            android:layout_margin="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Immature Tree count"/>
+
+
+    <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputHectarage"
+            android:layout_margin="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Hectarage under cultivation"/>
+    <Button
+            android:layout_margin="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSaveFarmer"
+            android:text="Save Farmer"
+            android:background="#FFC107" android:textColor="#000000"/>
+</LinearLayout>
+
+
+</ScrollView>
