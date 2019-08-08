@@ -4,4 +4,6 @@
     <string name="title_advances">Advances</string>
     <string name="title_procurements">Procurements</string>
     <string name="title_sales">Sales</string>
+
+    <string name="title_activity_register">Register Farmer</string>
 </resources>
