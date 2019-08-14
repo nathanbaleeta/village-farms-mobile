@@ -6,4 +6,7 @@
     <string name="title_sales">Sales</string>
 
     <string name="title_activity_register">Register Farmer</string>
+
+    <string name="mmRegistered">Mobile Money Registered</string>
+    <string name="mmPayments">Receive payments on MM</string>
 </resources>

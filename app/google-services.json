@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "489974596621",
+    "firebase_url": "https://village-farms.firebaseio.com",
+    "project_id": "village-farms",
+    "storage_bucket": "village-farms.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489974596621:android:32608469cf2b7964",
+        "android_client_info": {
+          "package_name": "com.codepoint.villagefarms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "489974596621-fabttkipuibigmfdafev8if5qkt59vtj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codepoint.villagefarms",
+            "certificate_hash": "4db62c68a8dd4f0c79c192f88d47fb734de2edca"
+          }
+        },
+        {
+          "client_id": "489974596621-0t1ck1giujcbfuqdk82dib9hal7nmgvm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD24wqF0eunfYlEG_w1jIgo4HyaZd0EGIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "489974596621-0t1ck1giujcbfuqdk82dib9hal7nmgvm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
