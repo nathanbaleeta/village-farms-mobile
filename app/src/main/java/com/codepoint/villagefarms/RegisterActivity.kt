@@ -1,5 +1,6 @@
 package com.codepoint.villagefarms
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -8,6 +9,8 @@ import android.widget.EditText
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_register.*
 import java.lang.Integer.parseInt
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -16,6 +19,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var txtFirstname: EditText
     lateinit var txtLastname: EditText
     lateinit var txtPhone: EditText
+    lateinit var txtYearOpened: EditText
     lateinit var txtMatureTrees: EditText
     lateinit var txtImmatureTrees: EditText
     lateinit var txtHectarage: EditText
@@ -36,9 +40,39 @@ class RegisterActivity : AppCompatActivity() {
         txtFirstname = findViewById(R.id.txtFirstname)
         txtLastname = findViewById(R.id.txtLastname)
         txtPhone = findViewById(R.id.txtPhone)
+        txtYearOpened = findViewById(R.id.txtYearOpened)
         txtMatureTrees = findViewById(R.id.txtMatureTrees)
         txtImmatureTrees = findViewById(R.id.txtImmatureTrees)
         txtHectarage = findViewById(R.id.txtHectarage)
+
+
+        /***************** Year established Date picker ****************/
+        var cal = Calendar.getInstance()
+
+        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            cal.set(Calendar.YEAR, year)
+            cal.set(Calendar.MONTH, monthOfYear)
+            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+            val myFormat = "dd MMM, yyyy" // mention the format you need
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            val date = sdf.format(cal.time)
+
+            // Display Selected date in textbox
+            txtYearOpened.setText(date)
+
+        }
+
+        txtYearOpened.setOnClickListener {
+            DatePickerDialog(this, dateSetListener,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)).show()
+        }
+
+
+        /***************** Year established Date picker ****************/
+
         buttonSave = findViewById(R.id.btnSaveFarmer)
 
         // Attach a click listener to save button
@@ -52,8 +86,10 @@ class RegisterActivity : AppCompatActivity() {
         val firstname = txtFirstname.text.toString().trim()
         val lastname = txtLastname.text.toString().trim()
         val phone = txtPhone.text.toString().trim()
+        val opened = txtYearOpened.text.toString().trim()
 
-        // Implement Number format exception in try catch blocks
+
+        // Implement Number format exception in try catch blocks to avoid app crashing
         val matureTrees: Int? = try {
             parseInt(txtMatureTrees.text.toString())
         } catch (e: NumberFormatException) {
@@ -71,9 +107,6 @@ class RegisterActivity : AppCompatActivity() {
         } catch (e: NumberFormatException) {
             null
         }
-        //val matureTrees = txtMatureTrees.text.toString().toInt()
-        //val immatureTrees = txtImmatureTrees.text.toString().toInt()
-        //val hectarage = txtHectarage.text.toString().toInt()
 
 
         // Validate registration form before saving to Firebase database
@@ -98,7 +131,7 @@ class RegisterActivity : AppCompatActivity() {
         }
         else {
             // Instantiate new farmer using Farmer data class model
-            val farmer = Farmer(firstname, lastname, phone, matureTrees, immatureTrees, hectarage)
+            val farmer = Farmer(firstname, lastname, phone, opened, matureTrees, immatureTrees, hectarage)
 
             // Support offline data entry by enabling disk persistence
             FirebaseDatabase.getInstance().setPersistenceEnabled(true)
@@ -111,6 +144,7 @@ class RegisterActivity : AppCompatActivity() {
             txtFirstname.setText("")
             txtLastname.setText("")
             txtPhone.setText("")
+            txtYearOpened.setText("")
             txtMatureTrees.setText("")
             txtImmatureTrees.setText("")
             txtHectarage.setText("")
