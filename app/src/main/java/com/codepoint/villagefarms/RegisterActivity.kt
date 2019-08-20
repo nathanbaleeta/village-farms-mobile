@@ -4,8 +4,8 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.widget.Button
-import android.widget.EditText
+import android.view.View
+import android.widget.*
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_register.*
 import java.lang.Integer.parseInt
@@ -23,6 +23,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var txtMatureTrees: EditText
     lateinit var txtImmatureTrees: EditText
     lateinit var txtHectarage: EditText
+    lateinit var spTitle: Spinner
     lateinit var buttonSave: Button
 
 
@@ -44,6 +45,29 @@ class RegisterActivity : AppCompatActivity() {
         txtMatureTrees = findViewById(R.id.txtMatureTrees)
         txtImmatureTrees = findViewById(R.id.txtImmatureTrees)
         txtHectarage = findViewById(R.id.txtHectarage)
+        spTitle = findViewById(R.id.spTitle)
+
+        /***************** Title options Spinner ****************/
+        // Initializing a String Array
+        val myStrings = arrayOf("Select Title","Prof", "Dr" , "Mr", "Miss", "Mrs", "Col","Capt")
+
+        // Initializing an ArrayAdapter
+        var adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, myStrings)
+
+        // Finally, data bind the spinner object with adapter
+        spTitle.adapter = adapter
+        spTitle.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                spTitle.setSelection(position)
+
+
+            }
+        }
+
+        /***************** Title options Spinner ****************/
 
 
         /***************** Year established Date picker ****************/
@@ -86,7 +110,8 @@ class RegisterActivity : AppCompatActivity() {
         val firstname = txtFirstname.text.toString().trim()
         val lastname = txtLastname.text.toString().trim()
         val phone = txtPhone.text.toString().trim()
-        val opened = txtYearOpened.text.toString().trim()
+        val yearOpened = txtYearOpened.text.toString().trim()
+        val title = spTitle.selectedItem.toString().trim()
 
 
         // Implement Number format exception in try catch blocks to avoid app crashing
@@ -119,7 +144,10 @@ class RegisterActivity : AppCompatActivity() {
         } else if (phone.isEmpty()) {
             txtPhone.error = "Please enter a phone number"
             return
-        } else if (matureTrees == null) {
+        } else if (yearOpened.isEmpty()) {
+            txtYearOpened.error = "Please enter a date"
+            return
+        }  else if (matureTrees == null) {
             txtMatureTrees.error = "Please enter a digit"
             return
         } else if (immatureTrees == null) {
@@ -131,7 +159,7 @@ class RegisterActivity : AppCompatActivity() {
         }
         else {
             // Instantiate new farmer using Farmer data class model
-            val farmer = Farmer(firstname, lastname, phone, opened, matureTrees, immatureTrees, hectarage)
+            val farmer = Farmer(firstname, lastname, phone, yearOpened, matureTrees, immatureTrees, hectarage, title)
 
             // Support offline data entry by enabling disk persistence
             FirebaseDatabase.getInstance().setPersistenceEnabled(true)

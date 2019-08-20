@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scroll_layout"
@@ -8,9 +7,8 @@
         android:layout_height="wrap_content">
 <LinearLayout
         android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
     <TextView
@@ -23,7 +21,6 @@
 
     <android.support.design.widget.TextInputEditText
             android:id="@+id/txtFirstname"
-
             android:layout_margin="14dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,19 +82,13 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_margin="14dp"
-
-              android:text="@string/mmRegistered"
-
-    />
+              android:text="@string/mmRegistered"/>
 
     <CheckBox android:id="@+id/checkboxMMPayments"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_margin="14dp"
-              android:text="@string/mmPayments"
-    />
-
-
+              android:text="@string/mmPayments"/>
 
     <TextView
             android:id="@+id/textViewFarmDetails"
@@ -126,7 +117,6 @@
             android:inputType="number"
             android:hint="Mature Tree count"/>
 
-
     <android.support.design.widget.TextInputEditText
             android:id="@+id/txtImmatureTrees"
             android:layout_margin="14dp"
@@ -134,7 +124,6 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:hint="Immature Tree count"/>
-
 
     <android.support.design.widget.TextInputEditText
             android:id="@+id/txtHectarage"
@@ -144,6 +133,14 @@
             android:inputType="numberDecimal"
             android:hint="Hectarage under cultivation"/>
 
+    <Spinner
+            android:id="@+id/spTitle"
+            style="@style/Widget.AppCompat.DropDownItem.Spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp">
+
+    </Spinner>
 
     <Button
             android:id="@+id/btnSaveFarmer"
