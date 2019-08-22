@@ -21,11 +21,6 @@
         <item>Capt</item>
     </string-array>
 
-    <string-array name="genderList">
-        <item>Select Gender</item>
-        <item>Male</item>
-        <item>Female</item>
-    </string-array>
 
     <string-array name="maritalStatusList">
         <item>Select Marital Status</item>

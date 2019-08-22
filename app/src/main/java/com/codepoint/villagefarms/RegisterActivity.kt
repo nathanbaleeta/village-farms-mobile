@@ -13,14 +13,17 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-
 class RegisterActivity : AppCompatActivity() {
 
     // Declare Views
     lateinit var txtFirstname: EditText
     lateinit var txtLastname: EditText
     lateinit var spTitle: Spinner
-    lateinit var spGender: Spinner
+
+    lateinit var rgSex: RadioGroup
+    lateinit var rbMale: RadioButton
+    lateinit var rbFemale: RadioButton
+
     lateinit var spMaritalStatus: Spinner
     lateinit var spDistrict: Spinner
     lateinit var txtPhone: EditText
@@ -28,6 +31,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var txtMatureTrees: EditText
     lateinit var txtImmatureTrees: EditText
     lateinit var txtHectarage: EditText
+
     lateinit var buttonSave: Button
 
 
@@ -45,7 +49,11 @@ class RegisterActivity : AppCompatActivity() {
         txtFirstname = findViewById(R.id.txtFirstname)
         txtLastname = findViewById(R.id.txtLastname)
         spTitle = findViewById(R.id.spTitle)
-        spGender = findViewById(R.id.spGender)
+
+        rgSex = findViewById(R.id.rg_sex)
+        rbMale = findViewById(R.id.rb_male)
+        rbFemale = findViewById(R.id.rb_female)
+
         spMaritalStatus = findViewById(R.id.spMaritalStatus)
         spDistrict = findViewById(R.id.spDistrict)
         txtPhone = findViewById(R.id.txtPhone)
@@ -53,7 +61,6 @@ class RegisterActivity : AppCompatActivity() {
         txtMatureTrees = findViewById(R.id.txtMatureTrees)
         txtImmatureTrees = findViewById(R.id.txtImmatureTrees)
         txtHectarage = findViewById(R.id.txtHectarage)
-
 
         /***************** Title options Spinner ****************/
 
@@ -76,26 +83,6 @@ class RegisterActivity : AppCompatActivity() {
 
         /***************** Title options Spinner ****************/
 
-        /***************** Gender options Spinner ****************/
-
-        // Initializing a String Array
-        val genderList = resources.getStringArray(R.array.genderList)
-
-        // Initializing an ArrayAdapter
-        var genderAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, genderList)
-
-        // Finally, data bind the spinner object with adapter
-        spGender.adapter = genderAdapter
-        spGender.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                spGender.setSelection(position)
-            }
-        }
-
-        /***************** Gender options Spinner ****************/
 
         /***************** Marital Status options Spinner ****************/
 
@@ -170,15 +157,22 @@ class RegisterActivity : AppCompatActivity() {
 
         // Attach a click listener to save button
         buttonSave.setOnClickListener {
-            saveFarmer()
+            var sex = ""
+            if (rgSex.checkedRadioButtonId != -1){
+                if (rbMale.isChecked){
+                    sex += "Male"
+                } else if (rbFemale.isChecked){
+                    sex += "Female"
+                }
+            }
+            saveFarmer(sex)
         }
     }
 
-    private fun saveFarmer() {
+    private fun saveFarmer(sex:String) {
         val firstname = txtFirstname.text.toString().capitalize().trim()
         val lastname = txtLastname.text.toString().capitalize().trim()
         val title = spTitle.selectedItem.toString().capitalize().trim()
-        val sex = spGender.selectedItem.toString().capitalize().trim()
         val maritalStatus = spMaritalStatus.selectedItem.toString().capitalize().trim()
         val district = spDistrict.selectedItem.toString().capitalize().trim()
         val phone = txtPhone.text.toString().trim()
@@ -187,8 +181,6 @@ class RegisterActivity : AppCompatActivity() {
         // Capture datetime when expense was created and store in created
         val sdf = SimpleDateFormat("dd/M/yyyy, hh:mm:ss")
         val created = sdf.format(Date())
-
-
 
         // Implement Number format exception in try catch blocks to avoid app crashing
         val matureTrees: Int? = try {
