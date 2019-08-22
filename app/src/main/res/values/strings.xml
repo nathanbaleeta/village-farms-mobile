@@ -10,28 +10,8 @@
     <string name="mmRegistered">Mobile Money Registered</string>
     <string name="mmPayments">Receive payments on MM</string>
 
-    <string-array name="titleList">
-        <item>Select Title</item>
-        <item>Prof</item>
-        <item>Dr</item>
-        <item>Mr</item>
-        <item>Miss</item>
-        <item>Mrs</item>
-        <item>Col</item>
-        <item>Capt</item>
-    </string-array>
-
-
-    <string-array name="maritalStatusList">
-        <item>Select Marital Status</item>
-        <item>Married</item>
-        <item>Single</item>
-        <item>Widowed</item>
-        <item>Separated</item>
-    </string-array>
-
     <string-array name="districtList">
-        <item>Select District</item>
+        <item></item>
         <item>Chitipa</item>
         <item>Rumphi</item>
         <item>Nkhatabay</item>

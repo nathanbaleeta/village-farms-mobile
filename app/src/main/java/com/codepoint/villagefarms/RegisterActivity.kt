@@ -18,14 +18,28 @@ class RegisterActivity : AppCompatActivity() {
     // Declare Views
     lateinit var txtFirstname: EditText
     lateinit var txtLastname: EditText
-    lateinit var spTitle: Spinner
+
+    lateinit var rgTitle: RadioGroup
+    lateinit var rbProf: RadioButton
+    lateinit var rbDr: RadioButton
+    lateinit var rbMr: RadioButton
+    lateinit var rbMs: RadioButton
+    lateinit var rbMrs: RadioButton
+    lateinit var rbCol: RadioButton
+    lateinit var rbCapt: RadioButton
+
+    lateinit var rgMaritalStatus: RadioGroup
+    lateinit var rbMarried: RadioButton
+    lateinit var rbSingle: RadioButton
+    lateinit var rbWidowed: RadioButton
+    lateinit var rbSeparated: RadioButton
 
     lateinit var rgSex: RadioGroup
     lateinit var rbMale: RadioButton
     lateinit var rbFemale: RadioButton
 
-    lateinit var spMaritalStatus: Spinner
     lateinit var spDistrict: Spinner
+
     lateinit var txtPhone: EditText
     lateinit var txtYearOpened: EditText
     lateinit var txtMatureTrees: EditText
@@ -48,62 +62,37 @@ class RegisterActivity : AppCompatActivity() {
         // Initialize Views
         txtFirstname = findViewById(R.id.txtFirstname)
         txtLastname = findViewById(R.id.txtLastname)
-        spTitle = findViewById(R.id.spTitle)
+
+        rgTitle = findViewById(R.id.rg_title)
+        rbProf = findViewById(R.id.rb_prof)
+        rbDr = findViewById(R.id.rb_dr)
+        rbMr = findViewById(R.id.rb_mr)
+        rbMs = findViewById(R.id.rb_miss)
+        rbMrs = findViewById(R.id.rb_mrs)
+        rbCol = findViewById(R.id.rb_col)
+        rbCapt = findViewById(R.id.rb_capt)
+
+        rgMaritalStatus = findViewById(R.id.rg_maritalStatus)
+        rbMarried = findViewById(R.id.rb_married)
+        rbSingle = findViewById(R.id.rb_single)
+        rbWidowed = findViewById(R.id.rb_widowed)
+        rbSeparated = findViewById(R.id.rb_separated)
 
         rgSex = findViewById(R.id.rg_sex)
         rbMale = findViewById(R.id.rb_male)
         rbFemale = findViewById(R.id.rb_female)
 
-        spMaritalStatus = findViewById(R.id.spMaritalStatus)
         spDistrict = findViewById(R.id.spDistrict)
+
         txtPhone = findViewById(R.id.txtPhone)
         txtYearOpened = findViewById(R.id.txtYearOpened)
         txtMatureTrees = findViewById(R.id.txtMatureTrees)
         txtImmatureTrees = findViewById(R.id.txtImmatureTrees)
         txtHectarage = findViewById(R.id.txtHectarage)
 
-        /***************** Title options Spinner ****************/
-
-        // Initializing a String Array
-        val titleList = resources.getStringArray(R.array.titleList)
-
-        // Initializing an ArrayAdapter
-        var adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, titleList)
-
-        // Finally, data bind the spinner object with adapter
-        spTitle.adapter = adapter
-        spTitle.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                spTitle.setSelection(position)
-            }
-        }
-
-        /***************** Title options Spinner ****************/
 
 
-        /***************** Marital Status options Spinner ****************/
 
-        // Initializing a String Array
-        val maritalStatusList = resources.getStringArray(R.array.maritalStatusList)
-
-        // Initializing an ArrayAdapter
-        var maritalStatusAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, maritalStatusList)
-
-        // Finally, data bind the spinner object with adapter
-        spMaritalStatus.adapter = maritalStatusAdapter
-        spMaritalStatus.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                spMaritalStatus.setSelection(position)
-            }
-        }
-
-        /***************** Marital Status options Spinner ****************/
 
         /***************** District options Spinner ****************/
 
@@ -157,6 +146,29 @@ class RegisterActivity : AppCompatActivity() {
 
         // Attach a click listener to save button
         buttonSave.setOnClickListener {
+
+            /***************** Title radio group ****************/
+            var title = ""
+            if (rgTitle.checkedRadioButtonId != -1){
+                if (rbProf.isChecked){
+                    title += "Prof"
+                } else if (rbDr.isChecked){
+                    title += "Dr"
+                } else if (rbMr.isChecked){
+                    title += "Mr"
+                } else if (rbMs.isChecked){
+                    title += "Ms"
+                } else if (rbMrs.isChecked){
+                    title += "Mrs"
+                } else if (rbCol.isChecked){
+                    title += "Col"
+                } else if (rbCapt.isChecked){
+                    title += "Capt"
+                }
+            }
+            /***************** Title radio group ****************/
+
+            /***************** Sex radio group ****************/
             var sex = ""
             if (rgSex.checkedRadioButtonId != -1){
                 if (rbMale.isChecked){
@@ -165,15 +177,30 @@ class RegisterActivity : AppCompatActivity() {
                     sex += "Female"
                 }
             }
-            saveFarmer(sex)
+            /***************** Sex radio group ****************/
+
+            /***************** Marital status radio group ****************/
+            var maritalStatus = ""
+            if (rgMaritalStatus.checkedRadioButtonId != -1){
+                if (rbMarried.isChecked){
+                    maritalStatus += "Married"
+                } else if (rbSingle.isChecked){
+                    maritalStatus += "Single"
+                }  else if (rbWidowed.isChecked){
+                    maritalStatus += "Widowed"
+                }  else if (rbSeparated.isChecked){
+                    maritalStatus += "Separated"
+                }
+            }
+            /***************** Marital status radio group ****************/
+            saveFarmer(title, sex, maritalStatus)
         }
     }
 
-    private fun saveFarmer(sex:String) {
+    private fun saveFarmer(title:String, sex:String, maritalStatus: String) {
         val firstname = txtFirstname.text.toString().capitalize().trim()
         val lastname = txtLastname.text.toString().capitalize().trim()
-        val title = spTitle.selectedItem.toString().capitalize().trim()
-        val maritalStatus = spMaritalStatus.selectedItem.toString().capitalize().trim()
+
         val district = spDistrict.selectedItem.toString().capitalize().trim()
         val phone = txtPhone.text.toString().trim()
         val yearOpened = txtYearOpened.text.toString().trim()
@@ -212,7 +239,7 @@ class RegisterActivity : AppCompatActivity() {
         }  else if (phone.isEmpty()) {
             txtPhone.error = "Please enter a phone number"
             return
-        } else if (yearOpened.isEmpty()) {
+        }  else if (yearOpened.isEmpty()) {
             txtYearOpened.error = "Please enter a date"
             return
         }  else if (matureTrees == null) {

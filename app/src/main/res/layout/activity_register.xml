@@ -10,7 +10,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
     <TextView
             android:id="@+id/textViewAutobiography"
             android:padding="10sp"
@@ -19,35 +18,138 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
 
-    <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtFirstname"
+    <LinearLayout
+            android:id="@+id/LinearLayoutFname"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
             android:layout_margin="14dp"
-            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true">
+
+        <TextView
+                android:id="@+id/tvFname"
+                android:text="Firstname:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+               />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtFirstname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Firstname"
+                android:layout_weight="1" />
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:id="@+id/LinearLayoutSurname"
             android:layout_height="wrap_content"
-            android:hint="Firstname"/>
-
-
-    <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtLastname"
+            android:layout_width="match_parent"
             android:layout_margin="14dp"
+            android:layout_alignParentBottom="true">
 
+        <TextView
+                android:id="@+id/tvlname"
+                android:text="Lastname:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtLastname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Lastname"
+                android:layout_weight="1" />
+
+
+    </LinearLayout>
+
+
+
+    <TextView
+            android:id="@+id/tvTitle"
+            android:paddingLeft="14sp"
+            android:text="Title"
+            android:textColor="#000000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Lastname"/>
-
-    <Spinner
-            android:id="@+id/spTitle"
-            style="@style/Widget.AppCompat.DropDownItem.Spinner"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            />
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp">
+            android:orientation="horizontal"
+            >
 
-    </Spinner>
+        <RadioGroup
+                android:id="@+id/rg_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="14dp"
+                >
+
+            <RadioButton android:id="@+id/rb_prof"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prof"
+                    android:padding="10dp"
+                    />
+            <RadioButton android:id="@+id/rb_dr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dr"
+                    android:padding="10dp"
+                    />
+            <RadioButton android:id="@+id/rb_mr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mr"
+                    android:padding="10dp"
+                    />
+            <RadioButton android:id="@+id/rb_mrs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mrs"
+                    android:padding="10dp"
+                    />
+
+            <RadioButton android:id="@+id/rb_miss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Miss"
+                    android:padding="10dp"
+                    />
+            <RadioButton android:id="@+id/rb_col"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Col"
+                    android:padding="10dp"
+                    />
+            <RadioButton android:id="@+id/rb_capt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Capt"
+                    android:padding="10dp"
+                    />
+        </RadioGroup>
+
+
+    </LinearLayout>
+
 
     <TextView
             android:id="@+id/tvSex"
-            android:paddingLeft="14sp"
+            android:padding="14dp"
             android:text="Sex"
+            android:textColor="#000000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -57,7 +159,7 @@
             android:id="@+id/rg_sex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:paddingLeft="14dp"
             >
         <RadioButton android:id="@+id/rb_male"
@@ -74,38 +176,155 @@
                 />
     </RadioGroup>
 
-    <Spinner
-            android:id="@+id/spMaritalStatus"
-            style="@style/Widget.AppCompat.DropDownItem.Spinner"
+    <TextView
+            android:id="@+id/tvMaritalStatus"
+            android:padding="14dp"
+            android:text="Marital Status"
+            android:textColor="#000000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp">
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            />
 
-    </Spinner>
-
-    <Spinner
-            android:id="@+id/spDistrict"
-            style="@style/Widget.AppCompat.DropDownItem.Spinner"
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp">
+            android:orientation="vertical"
+            >
+        <RadioGroup
+                android:id="@+id/rg_maritalStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="14dp"
+                >
+            <RadioButton android:id="@+id/rb_married"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Married"
+                    android:padding="10dp"
+                    />
+            <RadioButton android:id="@+id/rb_single"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Single"
+                    android:padding="10dp"
+                    />
+            <RadioButton android:id="@+id/rb_widowed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Widowed"
+                    android:padding="10dp"
+                    />
+            <RadioButton android:id="@+id/rb_separated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Separated"
+                    android:padding="10dp"
+                    />
+        </RadioGroup>
+    </LinearLayout>
 
-    </Spinner>
+    <TextView
+            android:id="@+id/tvLocation"
+            android:padding="10sp"
+            android:text="Location Details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
 
-    <android.support.design.widget.TextInputEditText
-            android:id="@+id/textInputTraditionalAuthority"
+    <LinearLayout
+            android:id="@+id/LinearLayoutDistrict"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
             android:layout_margin="14dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Traditional Authority"/>
+            android:layout_alignParentBottom="true">
 
-    <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtPhone"
+        <TextView
+                android:id="@+id/tvDistrict"
+                android:text="District:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+
+        <Spinner
+                android:id="@+id/spDistrict"
+                style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+        </Spinner>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/LinearLayoutTA"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
             android:layout_margin="14dp"
-            android:inputType="number"
+            android:layout_alignParentBottom="true">
+
+        <TextView
+                android:id="@+id/tvTA"
+                android:text="Traditional Authority:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputTraditionalAuthority"
+                android:layout_margin="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Traditional Authority"
+                android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+    <TextView
+            android:id="@+id/tvContacts"
+            android:padding="10sp"
+            android:text="Contact &amp; Mobile Money Details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
+
+    <LinearLayout
+            android:id="@+id/LinearLayoutPhone"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_margin="14dp"
+            android:layout_alignParentBottom="true">
+
+        <TextView
+                android:id="@+id/tvPhone"
+                android:text="Phone:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtPhone"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone"
+                android:layout_weight="1"/>
+
+    </LinearLayout>
 
     <CheckBox android:id="@+id/checkboxMMRegistered"
               android:layout_width="wrap_content"
@@ -127,42 +346,121 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
 
-
-    <EditText
-            android:id="@+id/txtYearOpened"
-            android:layout_width="match_parent"
+    <LinearLayout
+            android:id="@+id/LinearLayoutYearOpened"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_margin="14dp"
-            android:hint="Year Established"
-            android:focusable="false"
-    />
-
-    <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtMatureTrees"
-            android:layout_margin="14dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="Mature Tree count"/>
-
-    <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtImmatureTrees"
             android:layout_margin="14dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="Immature Tree count"/>
+            android:layout_alignParentBottom="true">
 
-    <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtHectarage"
+        <TextView
+                android:id="@+id/tvYearOpened"
+                android:text="Year Opened:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <EditText
+                android:id="@+id/txtYearOpened"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Year Established"
+                android:focusable="false"
+                android:gravity="right"
+                android:layout_weight="1"
+                />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/LinearLayoutMatureTrees"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
             android:layout_margin="14dp"
-            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true">
+
+        <TextView
+                android:id="@+id/tvMatureTrees"
+                android:text="Mature Trees:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtMatureTrees"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:gravity="right"
+                android:hint="Mature Tree count"
+                android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/LinearLayoutImmatureTrees"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:hint="Hectarage under cultivation"/>
+            android:layout_width="match_parent"
+            android:layout_margin="14dp"
+            android:layout_alignParentBottom="true">
+
+        <TextView
+                android:id="@+id/tvImmatureTrees"
+                android:text="Mature Trees:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtImmatureTrees"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:gravity="right"
+                android:hint="Immature Tree count"
+                android:layout_weight="1"/>
+    </LinearLayout>
 
 
+
+
+    <LinearLayout
+            android:id="@+id/LinearLayoutHectarage"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_margin="14dp"
+            android:layout_alignParentBottom="true">
+
+        <TextView
+                android:id="@+id/tvHectarage"
+                android:text="Hectarage:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtHectarage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:gravity="right"
+                android:layout_weight="1"
+                android:hint="Hectarage cultivated"/>
+    </LinearLayout>
 
 
 
