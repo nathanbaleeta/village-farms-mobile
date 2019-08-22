@@ -35,33 +35,41 @@
             android:layout_height="wrap_content"
             android:hint="Lastname"/>
 
-    <android.support.design.widget.TextInputEditText
-            android:id="@+id/textInputTitle"
-            android:layout_margin="14dp"
+    <Spinner
+            android:id="@+id/spTitle"
+            style="@style/Widget.AppCompat.DropDownItem.Spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Title"/>
+            android:layout_margin="4dp">
 
-    <android.support.design.widget.TextInputEditText
-            android:id="@+id/textInputGender"
-            android:layout_margin="14dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Gender"/>
+    </Spinner>
 
-    <android.support.design.widget.TextInputEditText
-            android:id="@+id/textInputMaritalStatus"
-            android:layout_margin="14dp"
+    <Spinner
+            android:id="@+id/spGender"
+            style="@style/Widget.AppCompat.DropDownItem.Spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Marital Status"/>
+            android:layout_margin="4dp">
 
-    <android.support.design.widget.TextInputEditText
-            android:id="@+id/textInputDistrict"
-            android:layout_margin="14dp"
+    </Spinner>
+
+    <Spinner
+            android:id="@+id/spMaritalStatus"
+            style="@style/Widget.AppCompat.DropDownItem.Spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="District"/>
+            android:layout_margin="4dp">
+
+    </Spinner>
+
+    <Spinner
+            android:id="@+id/spDistrict"
+            style="@style/Widget.AppCompat.DropDownItem.Spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp">
+
+    </Spinner>
 
     <android.support.design.widget.TextInputEditText
             android:id="@+id/textInputTraditionalAuthority"
@@ -133,14 +141,7 @@
             android:inputType="numberDecimal"
             android:hint="Hectarage under cultivation"/>
 
-    <Spinner
-            android:id="@+id/spTitle"
-            style="@style/Widget.AppCompat.DropDownItem.Spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="14dp">
 
-    </Spinner>
 
     <Button
             android:id="@+id/btnSaveFarmer"

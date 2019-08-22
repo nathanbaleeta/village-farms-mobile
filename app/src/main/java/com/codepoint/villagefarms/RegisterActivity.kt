@@ -13,17 +13,21 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
+
 class RegisterActivity : AppCompatActivity() {
 
     // Declare Views
     lateinit var txtFirstname: EditText
     lateinit var txtLastname: EditText
+    lateinit var spTitle: Spinner
+    lateinit var spGender: Spinner
+    lateinit var spMaritalStatus: Spinner
+    lateinit var spDistrict: Spinner
     lateinit var txtPhone: EditText
     lateinit var txtYearOpened: EditText
     lateinit var txtMatureTrees: EditText
     lateinit var txtImmatureTrees: EditText
     lateinit var txtHectarage: EditText
-    lateinit var spTitle: Spinner
     lateinit var buttonSave: Button
 
 
@@ -40,19 +44,24 @@ class RegisterActivity : AppCompatActivity() {
         // Initialize Views
         txtFirstname = findViewById(R.id.txtFirstname)
         txtLastname = findViewById(R.id.txtLastname)
+        spTitle = findViewById(R.id.spTitle)
+        spGender = findViewById(R.id.spGender)
+        spMaritalStatus = findViewById(R.id.spMaritalStatus)
+        spDistrict = findViewById(R.id.spDistrict)
         txtPhone = findViewById(R.id.txtPhone)
         txtYearOpened = findViewById(R.id.txtYearOpened)
         txtMatureTrees = findViewById(R.id.txtMatureTrees)
         txtImmatureTrees = findViewById(R.id.txtImmatureTrees)
         txtHectarage = findViewById(R.id.txtHectarage)
-        spTitle = findViewById(R.id.spTitle)
+
 
         /***************** Title options Spinner ****************/
+
         // Initializing a String Array
-        val myStrings = arrayOf("Select Title","Prof", "Dr" , "Mr", "Miss", "Mrs", "Col","Capt")
+        val titleList = resources.getStringArray(R.array.titleList)
 
         // Initializing an ArrayAdapter
-        var adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, myStrings)
+        var adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, titleList)
 
         // Finally, data bind the spinner object with adapter
         spTitle.adapter = adapter
@@ -62,12 +71,73 @@ class RegisterActivity : AppCompatActivity() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 spTitle.setSelection(position)
-
-
             }
         }
 
         /***************** Title options Spinner ****************/
+
+        /***************** Gender options Spinner ****************/
+
+        // Initializing a String Array
+        val genderList = resources.getStringArray(R.array.genderList)
+
+        // Initializing an ArrayAdapter
+        var genderAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, genderList)
+
+        // Finally, data bind the spinner object with adapter
+        spGender.adapter = genderAdapter
+        spGender.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                spGender.setSelection(position)
+            }
+        }
+
+        /***************** Gender options Spinner ****************/
+
+        /***************** Marital Status options Spinner ****************/
+
+        // Initializing a String Array
+        val maritalStatusList = resources.getStringArray(R.array.maritalStatusList)
+
+        // Initializing an ArrayAdapter
+        var maritalStatusAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, maritalStatusList)
+
+        // Finally, data bind the spinner object with adapter
+        spMaritalStatus.adapter = maritalStatusAdapter
+        spMaritalStatus.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                spMaritalStatus.setSelection(position)
+            }
+        }
+
+        /***************** Marital Status options Spinner ****************/
+
+        /***************** District options Spinner ****************/
+
+        // Initializing a String Array
+        val districtList = resources.getStringArray(R.array.districtList)
+
+        // Initializing an ArrayAdapter
+        var districtAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, districtList)
+
+        // Finally, data bind the spinner object with adapter
+        spDistrict.adapter = districtAdapter
+        spDistrict.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                spDistrict.setSelection(position)
+            }
+        }
+
+        /***************** District Status options Spinner ****************/
 
 
         /***************** Year established Date picker ****************/
@@ -78,7 +148,7 @@ class RegisterActivity : AppCompatActivity() {
             cal.set(Calendar.MONTH, monthOfYear)
             cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
-            val myFormat = "dd MMM, yyyy" // mention the format you need
+            val myFormat = "yyyy-MM-dd" // mention the format you need
             val sdf = SimpleDateFormat(myFormat, Locale.US)
             val date = sdf.format(cal.time)
 
@@ -94,7 +164,6 @@ class RegisterActivity : AppCompatActivity() {
                 cal.get(Calendar.DAY_OF_MONTH)).show()
         }
 
-
         /***************** Year established Date picker ****************/
 
         buttonSave = findViewById(R.id.btnSaveFarmer)
@@ -103,15 +172,22 @@ class RegisterActivity : AppCompatActivity() {
         buttonSave.setOnClickListener {
             saveFarmer()
         }
-
     }
 
     private fun saveFarmer() {
-        val firstname = txtFirstname.text.toString().trim()
-        val lastname = txtLastname.text.toString().trim()
+        val firstname = txtFirstname.text.toString().capitalize().trim()
+        val lastname = txtLastname.text.toString().capitalize().trim()
+        val title = spTitle.selectedItem.toString().capitalize().trim()
+        val sex = spGender.selectedItem.toString().capitalize().trim()
+        val maritalStatus = spMaritalStatus.selectedItem.toString().capitalize().trim()
+        val district = spDistrict.selectedItem.toString().capitalize().trim()
         val phone = txtPhone.text.toString().trim()
         val yearOpened = txtYearOpened.text.toString().trim()
-        val title = spTitle.selectedItem.toString().trim()
+
+        // Capture datetime when expense was created and store in created
+        val sdf = SimpleDateFormat("dd/M/yyyy, hh:mm:ss")
+        val created = sdf.format(Date())
+
 
 
         // Implement Number format exception in try catch blocks to avoid app crashing
@@ -141,7 +217,7 @@ class RegisterActivity : AppCompatActivity() {
         } else if (lastname.isEmpty()) {
             txtLastname.error = "Please enter a Last name"
             return
-        } else if (phone.isEmpty()) {
+        }  else if (phone.isEmpty()) {
             txtPhone.error = "Please enter a phone number"
             return
         } else if (yearOpened.isEmpty()) {
@@ -159,7 +235,20 @@ class RegisterActivity : AppCompatActivity() {
         }
         else {
             // Instantiate new farmer using Farmer data class model
-            val farmer = Farmer(firstname, lastname, phone, yearOpened, matureTrees, immatureTrees, hectarage, title)
+            val farmer = Farmer(
+                firstname,
+                lastname,
+                title,
+                sex,
+                maritalStatus,
+                district,
+                phone,
+                yearOpened,
+                matureTrees,
+                immatureTrees,
+                hectarage,
+                created
+            )
 
             // Support offline data entry by enabling disk persistence
             FirebaseDatabase.getInstance().setPersistenceEnabled(true)
