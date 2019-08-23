@@ -8,11 +8,12 @@ data class Farmer(
     val maritalStatus: String,
     val district: String,
     val phone: String,
+    val mmRegistered: String,
+    val mmPayment: String,
     val yearOpened: String,
     val matureTrees: Int?,
     val immatureTrees: Int?,
     val hectarage: Int,
     val created: String
-
 
 )

@@ -38,6 +38,14 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var rbMale: RadioButton
     lateinit var rbFemale: RadioButton
 
+    lateinit var rgMMRegistered: RadioGroup
+    lateinit var rbRegisteredYes: RadioButton
+    lateinit var rbRegisteredNo: RadioButton
+
+    lateinit var rgMMPayment: RadioGroup
+    lateinit var rbPaymentYes: RadioButton
+    lateinit var rbPaymentNo: RadioButton
+
     lateinit var spDistrict: Spinner
 
     lateinit var txtPhone: EditText
@@ -82,6 +90,14 @@ class RegisterActivity : AppCompatActivity() {
         rbMale = findViewById(R.id.rb_male)
         rbFemale = findViewById(R.id.rb_female)
 
+        rgMMRegistered = findViewById(R.id.rg_MMRegistered)
+        rbRegisteredYes = findViewById(R.id.rb_registered_yes)
+        rbRegisteredNo = findViewById(R.id.rb_registered_no)
+
+        rgMMPayment = findViewById(R.id.rg_MMPayment)
+        rbPaymentYes = findViewById(R.id.rb_payment_yes)
+        rbPaymentNo = findViewById(R.id.rb_payment_no)
+
         spDistrict = findViewById(R.id.spDistrict)
 
         txtPhone = findViewById(R.id.txtPhone)
@@ -91,16 +107,14 @@ class RegisterActivity : AppCompatActivity() {
         txtHectarage = findViewById(R.id.txtHectarage)
 
 
-
-
-
         /***************** District options Spinner ****************/
 
         // Initializing a String Array
         val districtList = resources.getStringArray(R.array.districtList)
 
         // Initializing an ArrayAdapter
-        var districtAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, districtList)
+        var districtAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, districtList)
 
         // Finally, data bind the spinner object with adapter
         spDistrict.adapter = districtAdapter
@@ -108,7 +122,12 @@ class RegisterActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 spDistrict.setSelection(position)
             }
         }
@@ -119,25 +138,28 @@ class RegisterActivity : AppCompatActivity() {
         /***************** Year established Date picker ****************/
         var cal = Calendar.getInstance()
 
-        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            cal.set(Calendar.YEAR, year)
-            cal.set(Calendar.MONTH, monthOfYear)
-            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+        val dateSetListener =
+            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                cal.set(Calendar.YEAR, year)
+                cal.set(Calendar.MONTH, monthOfYear)
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
-            val myFormat = "yyyy-MM-dd" // mention the format you need
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
-            val date = sdf.format(cal.time)
+                val myFormat = "yyyy-MM-dd" // mention the format you need
+                val sdf = SimpleDateFormat(myFormat, Locale.US)
+                val date = sdf.format(cal.time)
 
-            // Display Selected date in textbox
-            txtYearOpened.setText(date)
+                // Display Selected date in textbox
+                txtYearOpened.setText(date)
 
-        }
+            }
 
         txtYearOpened.setOnClickListener {
-            DatePickerDialog(this, dateSetListener,
+            DatePickerDialog(
+                this, dateSetListener,
                 cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)).show()
+                cal.get(Calendar.DAY_OF_MONTH)
+            ).show()
         }
 
         /***************** Year established Date picker ****************/
@@ -149,20 +171,20 @@ class RegisterActivity : AppCompatActivity() {
 
             /***************** Title radio group ****************/
             var title = ""
-            if (rgTitle.checkedRadioButtonId != -1){
-                if (rbProf.isChecked){
+            if (rgTitle.checkedRadioButtonId != -1) {
+                if (rbProf.isChecked) {
                     title += "Prof"
-                } else if (rbDr.isChecked){
+                } else if (rbDr.isChecked) {
                     title += "Dr"
-                } else if (rbMr.isChecked){
+                } else if (rbMr.isChecked) {
                     title += "Mr"
-                } else if (rbMs.isChecked){
+                } else if (rbMs.isChecked) {
                     title += "Ms"
-                } else if (rbMrs.isChecked){
+                } else if (rbMrs.isChecked) {
                     title += "Mrs"
-                } else if (rbCol.isChecked){
+                } else if (rbCol.isChecked) {
                     title += "Col"
-                } else if (rbCapt.isChecked){
+                } else if (rbCapt.isChecked) {
                     title += "Capt"
                 }
             }
@@ -170,10 +192,10 @@ class RegisterActivity : AppCompatActivity() {
 
             /***************** Sex radio group ****************/
             var sex = ""
-            if (rgSex.checkedRadioButtonId != -1){
-                if (rbMale.isChecked){
+            if (rgSex.checkedRadioButtonId != -1) {
+                if (rbMale.isChecked) {
                     sex += "Male"
-                } else if (rbFemale.isChecked){
+                } else if (rbFemale.isChecked) {
                     sex += "Female"
                 }
             }
@@ -181,23 +203,52 @@ class RegisterActivity : AppCompatActivity() {
 
             /***************** Marital status radio group ****************/
             var maritalStatus = ""
-            if (rgMaritalStatus.checkedRadioButtonId != -1){
-                if (rbMarried.isChecked){
+            if (rgMaritalStatus.checkedRadioButtonId != -1) {
+                if (rbMarried.isChecked) {
                     maritalStatus += "Married"
-                } else if (rbSingle.isChecked){
+                } else if (rbSingle.isChecked) {
                     maritalStatus += "Single"
-                }  else if (rbWidowed.isChecked){
+                } else if (rbWidowed.isChecked) {
                     maritalStatus += "Widowed"
-                }  else if (rbSeparated.isChecked){
+                } else if (rbSeparated.isChecked) {
                     maritalStatus += "Separated"
                 }
             }
             /***************** Marital status radio group ****************/
-            saveFarmer(title, sex, maritalStatus)
+
+            /***************** MM Registered radio group ****************/
+            var mmRegistered = ""
+            if (rgMMRegistered.checkedRadioButtonId != -1) {
+                if (rbRegisteredYes.isChecked) {
+                    mmRegistered += "Yes"
+                } else if (rbRegisteredNo.isChecked) {
+                    mmRegistered += "No"
+                }
+            }
+            /***************** MM Registered radio group ****************/
+
+            /***************** MM Payment radio group ****************/
+            var mmPayment = ""
+            if (rgMMPayment.checkedRadioButtonId != -1) {
+                if (rbPaymentYes.isChecked) {
+                    mmPayment += "Yes"
+                } else if (rbPaymentNo.isChecked) {
+                    mmPayment += "No"
+                }
+            }
+            /***************** MM Payment radio group ****************/
+
+            saveFarmer(title, sex, maritalStatus, mmRegistered, mmPayment)
         }
     }
 
-    private fun saveFarmer(title:String, sex:String, maritalStatus: String) {
+    private fun saveFarmer(
+        title: String,
+        sex: String,
+        maritalStatus: String,
+        mmRegistered: String,
+        mmPayment: String
+    ) {
         val firstname = txtFirstname.text.toString().capitalize().trim()
         val lastname = txtLastname.text.toString().capitalize().trim()
 
@@ -236,13 +287,13 @@ class RegisterActivity : AppCompatActivity() {
         } else if (lastname.isEmpty()) {
             txtLastname.error = "Please enter a Last name"
             return
-        }  else if (phone.isEmpty()) {
+        } else if (phone.isEmpty()) {
             txtPhone.error = "Please enter a phone number"
             return
-        }  else if (yearOpened.isEmpty()) {
+        } else if (yearOpened.isEmpty()) {
             txtYearOpened.error = "Please enter a date"
             return
-        }  else if (matureTrees == null) {
+        } else if (matureTrees == null) {
             txtMatureTrees.error = "Please enter a digit"
             return
         } else if (immatureTrees == null) {
@@ -251,8 +302,7 @@ class RegisterActivity : AppCompatActivity() {
         } else if (hectarage == null) {
             txtHectarage.error = "Please enter a digit"
             return
-        }
-        else {
+        } else {
             // Instantiate new farmer using Farmer data class model
             val farmer = Farmer(
                 firstname,
@@ -262,6 +312,8 @@ class RegisterActivity : AppCompatActivity() {
                 maritalStatus,
                 district,
                 phone,
+                mmRegistered,
+                mmPayment,
                 yearOpened,
                 matureTrees,
                 immatureTrees,
