@@ -4,7 +4,8 @@
     <item
             android:id="@+id/navigation_farmers"
             android:icon="@drawable/ic_people_black_24dp"
-            android:title="@string/title_farmers"/>
+            android:title="@string/title_farmers"
+            android:enabled="true"/>
 
     <item
             android:id="@+id/navigation_advances"
@@ -15,7 +16,6 @@
             android:id="@+id/navigation_procurements"
             android:icon="@drawable/ic_monetization_on_black_24dp"
             android:title="@string/title_procurements"/>
-
 
     <item
             android:id="@+id/navigation_sales"

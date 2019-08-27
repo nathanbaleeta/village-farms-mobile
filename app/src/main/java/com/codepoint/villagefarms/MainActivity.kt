@@ -3,34 +3,53 @@ package com.codepoint.villagefarms
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.design.widget.Snackbar
+import android.support.v4.app.Fragment
+import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.TextView
+import com.codepoint.villagefarms.Fragments.AdvancesFragment
+import com.codepoint.villagefarms.Fragments.FarmerFragment
+import com.codepoint.villagefarms.Fragments.ProcurementFragment
+import com.codepoint.villagefarms.Fragments.SalesFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var textMessage: TextView
+    lateinit var toolbar: ActionBar
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_farmers -> {
-                textMessage.setText(R.string.title_farmers)
+
+                val farmerFragment = FarmerFragment.newInstance()
+                openFragment(farmerFragment)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_advances -> {
-                textMessage.setText(R.string.title_advances)
+
+                val advancesFragment = AdvancesFragment.newInstance()
+                openFragment(advancesFragment)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_procurements -> {
-                textMessage.setText(R.string.title_procurements)
+
+                val procurementFragment = ProcurementFragment.newInstance()
+                openFragment(procurementFragment)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_sales -> {
-                textMessage.setText(R.string.title_sales)
+
+                val salesFragment = SalesFragment.newInstance()
+                openFragment(salesFragment)
                 return@OnNavigationItemSelectedListener true
             }
         }
         false
+    }
+
+    private fun openFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,23 +58,20 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        textMessage = findViewById(R.id.message)
+        // Set default BottomNavigationView tab
+        navView.selectedItemId = R.id.navigation_farmers
+
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+
 
         // Floating Action Button for farmer activity
         val fab: View = findViewById(R.id.fabFarmer)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Farmer was successfully registered", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .show()
 
             // Open register farmer activity from farmer list activity
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
 
         }
-
-
-
     }
 }

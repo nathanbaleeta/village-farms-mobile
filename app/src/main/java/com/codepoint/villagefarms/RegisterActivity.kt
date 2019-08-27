@@ -119,6 +119,16 @@ class RegisterActivity : AppCompatActivity() {
         // Initializing a String Array for Ntchisi district
         val ntchisiTAList = resources.getStringArray(R.array.district_ntchisi)
 
+        // Initializing a String Array for Nkhatabay district
+        val nkhatabayTAList = resources.getStringArray(R.array.district_nkhatabay)
+
+        // Initializing a String Array for Rumphi district
+        val rumphiTAList = resources.getStringArray(R.array.district_rumphi)
+
+
+        // Initializing a String Array for Rumphi district
+        val mzimbaTAList = resources.getStringArray(R.array.district_mzimba)
+
         // Initializing an ArrayAdapter for district
         var districtAdapter =
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, districtList)
@@ -130,6 +140,18 @@ class RegisterActivity : AppCompatActivity() {
         // Initializing an ArrayAdapter For Ntchisi TA list
         var ntchisiAdapter =
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, ntchisiTAList)
+
+        // Initializing an ArrayAdapter For Nkhatabay TA list
+        var nkhatabayAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, nkhatabayTAList)
+
+        // Initializing an ArrayAdapter For Rumphi TA list
+        var rumphiAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, rumphiTAList)
+
+        // Initializing an ArrayAdapter For Mzimba TA list
+        var mzimbaAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, mzimbaTAList)
 
         // Finally, data bind the spinner object with adapter
         //spDistrict.adapter = districtAdapter
@@ -156,12 +178,20 @@ class RegisterActivity : AppCompatActivity() {
                 } else if (spinnerValue == "Ntchisi") {
                     spTraditionalAuthority.setAdapter(ntchisiAdapter)
                     spTradtionalAuthority.setSelection(position)
+                } else if (spinnerValue == "Nkhatabay") {
+                    spTraditionalAuthority.setAdapter(nkhatabayAdapter)
+                    spTradtionalAuthority.setSelection(position)
+                } else if (spinnerValue == "Rumphi") {
+                    spTraditionalAuthority.setAdapter(rumphiAdapter)
+                    spTradtionalAuthority.setSelection(position)
+                }  else if (spinnerValue == "Mzimba") {
+                    spTraditionalAuthority.setAdapter(mzimbaAdapter)
+                    spTradtionalAuthority.setSelection(position)
                 }
             }
         }
 
         /***************** District Status options Spinner ****************/
-
 
         /***************** Year established Date picker ****************/
         var cal = Calendar.getInstance()
@@ -371,9 +401,7 @@ class RegisterActivity : AppCompatActivity() {
             Snackbar.make(scroll_layout, "Farmer was successfully registered", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
                 .show()
-
         }
-
     }
 
     // Back arrow click event to go back to the parent Activity

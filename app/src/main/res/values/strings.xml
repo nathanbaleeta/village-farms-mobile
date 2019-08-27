@@ -38,4 +38,75 @@
         <item>Nthondo</item>
     </string-array>
 
+    <string-array name="district_nkhatabay">
+        <item>Boghoyo</item>
+        <item>Fukamalaza</item>
+        <item>Fukamapiri</item>
+        <item>Kabuduli</item>
+        <item>Malanda</item>
+        <item>Malenga Mzoma</item>
+        <item>Mankhambira</item>
+        <item>Mkondowe</item>
+        <item>Mkumbira</item>
+        <item>Musisya</item>
+        <item>Nkhatabay Boma</item>
+        <item>Nyaluwanga</item>
+        <item>Timbiri</item>
+        <item>Zilakoma</item>
+    </string-array>
+
+    <string-array name="district_rumphi">
+        <item>Chikulamayembe</item>
+        <item>Chipinduka</item>
+        <item>Kachulu</item>
+        <item>Mwahenga</item>
+        <item>Mwalweni</item>
+        <item>Mwamlowe</item>
+        <item>Mwankhunikira</item>
+        <item>Nyika National Park</item>
+        <item>Rumphi Boma</item>
+        <item>Vwaza Game Reserve</item>
+        <item>Zolokere</item>
+    </string-array>
+
+    <string-array name="district_mzimba">
+        <item>Chasefu</item>
+        <item>Chibanja</item>
+        <item>Chindi</item>
+        <item>Chiputula</item>
+        <item>Jaravikuba Munthali</item>
+        <item>Jombo</item>
+        <item>Kampingo Sibande</item>
+        <item>Kaning\'ina</item>
+        <item>Katawa</item>
+        <item>Katoto</item>
+        <item>Khosolo Gwaza Jere</item>
+        <item>Lupaso</item>
+        <item>M\'Mbelwa</item>
+        <item>Mabulabo</item>
+        <item>Masasa</item>
+        <item>Mchengautuwa</item>
+        <item>Msongwe</item>
+        <item>Mtwalo</item>
+        <item>Mzilawaingwe</item>
+        <item>Mzukuzuku</item>
+        <item>Mzuzu City</item>
+        <item>New Aiport Site</item>
+        <item>Viphya</item>
+        <item>Vwaza Marsh</item>
+        <item>Zolozolo</item>
+
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
+
+
+
+
+
+
+
+
