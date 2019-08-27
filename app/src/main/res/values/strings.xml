@@ -19,4 +19,23 @@
         <item>Ntchisi</item>
     </string-array>
 
+    <string-array name="district_chitipa">
+        <item></item>
+        <item>Kameme</item>
+        <item>Mwabulambya</item>
+        <item>Mwenemisuku</item>
+        <item>Mwenewenya</item>
+        <item>Nthalire</item>
+    </string-array>
+
+    <string-array name="district_ntchisi">
+        <item></item>
+        <item>Chikho</item>
+        <item>Chilooko</item>
+        <item>Kalumo</item>
+        <item>Kasakula</item>
+        <item>Ntchisi Boma</item>
+        <item>Nthondo</item>
+    </string-array>
+
 </resources>

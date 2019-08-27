@@ -7,6 +7,7 @@ data class Farmer(
     val sex: String,
     val maritalStatus: String,
     val district: String,
+    val traditionalAuthority: String,
     val phone: String,
     val mmRegistered: String,
     val mmPayment: String,

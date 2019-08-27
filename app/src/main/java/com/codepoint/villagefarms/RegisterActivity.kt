@@ -47,6 +47,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var rbPaymentNo: RadioButton
 
     lateinit var spDistrict: Spinner
+    lateinit var spTradtionalAuthority: Spinner
 
     lateinit var txtPhone: EditText
     lateinit var txtYearOpened: EditText
@@ -99,6 +100,7 @@ class RegisterActivity : AppCompatActivity() {
         rbPaymentNo = findViewById(R.id.rb_payment_no)
 
         spDistrict = findViewById(R.id.spDistrict)
+        spTradtionalAuthority = findViewById(R.id.spTraditionalAuthority)
 
         txtPhone = findViewById(R.id.txtPhone)
         txtYearOpened = findViewById(R.id.txtYearOpened)
@@ -106,18 +108,33 @@ class RegisterActivity : AppCompatActivity() {
         txtImmatureTrees = findViewById(R.id.txtImmatureTrees)
         txtHectarage = findViewById(R.id.txtHectarage)
 
-
         /***************** District options Spinner ****************/
 
         // Initializing a String Array
         val districtList = resources.getStringArray(R.array.districtList)
 
-        // Initializing an ArrayAdapter
+        // Initializing a String Array for Chitipa district
+        val chitipaTAList = resources.getStringArray(R.array.district_chitipa)
+
+        // Initializing a String Array for Ntchisi district
+        val ntchisiTAList = resources.getStringArray(R.array.district_ntchisi)
+
+        // Initializing an ArrayAdapter for district
         var districtAdapter =
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, districtList)
 
+        // Initializing an ArrayAdapter For Chitipa TA list
+        var chitipaAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, chitipaTAList)
+
+        // Initializing an ArrayAdapter For Ntchisi TA list
+        var ntchisiAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, ntchisiTAList)
+
         // Finally, data bind the spinner object with adapter
-        spDistrict.adapter = districtAdapter
+        //spDistrict.adapter = districtAdapter
+        spDistrict.setAdapter(districtAdapter)
+
         spDistrict.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
@@ -128,7 +145,18 @@ class RegisterActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
+                // Set value for district
                 spDistrict.setSelection(position)
+
+                // Set value for Traditional authority based on district selected
+                val spinnerValue = spDistrict.selectedItem.toString()
+                if (spinnerValue == "Chitipa") {
+                    spTraditionalAuthority.setAdapter(chitipaAdapter)
+                    spTradtionalAuthority.setSelection(position)
+                } else if (spinnerValue == "Ntchisi") {
+                    spTraditionalAuthority.setAdapter(ntchisiAdapter)
+                    spTradtionalAuthority.setSelection(position)
+                }
             }
         }
 
@@ -253,6 +281,7 @@ class RegisterActivity : AppCompatActivity() {
         val lastname = txtLastname.text.toString().capitalize().trim()
 
         val district = spDistrict.selectedItem.toString().capitalize().trim()
+        val tradionalAuthority = spTradtionalAuthority.selectedItem.toString().capitalize().trim()
         val phone = txtPhone.text.toString().trim()
         val yearOpened = txtYearOpened.text.toString().trim()
 
@@ -311,6 +340,7 @@ class RegisterActivity : AppCompatActivity() {
                 sex,
                 maritalStatus,
                 district,
+                tradionalAuthority,
                 phone,
                 mmRegistered,
                 mmPayment,
@@ -323,7 +353,7 @@ class RegisterActivity : AppCompatActivity() {
 
             // Support offline data entry by enabling disk persistence
             FirebaseDatabase.getInstance().setPersistenceEnabled(true)
-            val ref = FirebaseDatabase.getInstance().getReference("farmer")
+            val ref = FirebaseDatabase.getInstance().getReference("farmers")
 
             // Push the data to Fire base cloud data store
             ref.push().setValue(farmer)
