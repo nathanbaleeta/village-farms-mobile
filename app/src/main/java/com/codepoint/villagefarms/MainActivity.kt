@@ -65,13 +65,13 @@ class MainActivity : AppCompatActivity() {
 
 
         // Floating Action Button for farmer activity
-        val fab: View = findViewById(R.id.fabFarmer)
-        fab.setOnClickListener { view ->
+        //val fab: View = findViewById(R.id.fabFarmer)
+        //fab.setOnClickListener { view ->
 
             // Open register farmer activity from farmer list activity
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+         //   val intent = Intent(this, RegisterActivity::class.java)
+           // startActivity(intent)
 
-        }
+        //}
     }
 }
