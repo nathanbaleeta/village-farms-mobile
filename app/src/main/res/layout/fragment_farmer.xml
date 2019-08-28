@@ -23,7 +23,7 @@
 
 
     <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_add_topic"
+            android:id="@+id/fabRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_person_add_black_24dp"
