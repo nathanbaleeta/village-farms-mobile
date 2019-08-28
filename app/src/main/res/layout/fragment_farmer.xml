@@ -15,10 +15,7 @@
                 android:layout_height="match_parent"
                 android:text="Farmers"
                 android:gravity="center_vertical|center_horizontal"/>
-
-
-
-
+        
     </LinearLayout>
 
 

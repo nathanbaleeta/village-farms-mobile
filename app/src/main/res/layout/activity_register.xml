@@ -18,17 +18,13 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
 
-    <LinearLayout
-            android:id="@+id/LinearLayoutFname"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_margin="14dp"
-            android:layout_alignParentBottom="true">
-
         <TextView
                 android:id="@+id/tvFname"
                 android:text="Firstname:"
                 android:textColor="#000000"
+                android:paddingTop="10dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -40,21 +36,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Firstname"
+                android:layout_margin="18dp"
                 android:layout_weight="1" />
-    </LinearLayout>
-
-
-    <LinearLayout
-            android:id="@+id/LinearLayoutSurname"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_margin="14dp"
-            android:layout_alignParentBottom="true">
 
         <TextView
                 android:id="@+id/tvlname"
                 android:text="Lastname:"
                 android:textColor="#000000"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -65,11 +55,11 @@
                 android:id="@+id/txtLastname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="18dp"
                 android:hint="Lastname"
                 android:layout_weight="1" />
 
 
-    </LinearLayout>
 
 
 
@@ -93,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingLeft="14dp"
+                android:paddingLeft="18dp"
                 >
 
             <RadioButton android:id="@+id/rb_prof"
@@ -147,7 +137,7 @@
 
     <TextView
             android:id="@+id/tvSex"
-            android:padding="14dp"
+            android:padding="18dp"
             android:text="Sex"
             android:textColor="#000000"
             android:layout_width="match_parent"
@@ -160,7 +150,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingLeft="14dp"
+            android:paddingLeft="18dp"
             >
         <RadioButton android:id="@+id/rb_male"
                 android:layout_width="wrap_content"
@@ -233,17 +223,15 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
 
-    <LinearLayout
-            android:id="@+id/LinearLayoutDistrict"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_margin="14dp"
-            android:layout_alignParentBottom="true">
+
 
         <TextView
                 android:id="@+id/tvDistrict"
                 android:text="District:"
                 android:textColor="#000000"
+                android:paddingTop="10dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -256,24 +244,21 @@
                 style="@style/Base.Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="18dp"
                 android:layout_weight="1">
 
         </Spinner>
 
 
-    </LinearLayout>
 
-    <LinearLayout
-            android:id="@+id/LinearLayoutTA"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_margin="14dp"
-            android:layout_alignParentBottom="true">
+
 
         <TextView
                 android:id="@+id/tvTA"
                 android:text="Traditional Authority:"
                 android:textColor="#000000"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -285,11 +270,12 @@
                 style="@style/Base.Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="18dp"
                 android:layout_weight="1">
 
         </Spinner>
 
-    </LinearLayout>
+
 
 
     <TextView
@@ -300,17 +286,15 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
 
-    <LinearLayout
-            android:id="@+id/LinearLayoutPhone"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_margin="14dp"
-            android:layout_alignParentBottom="true">
+
 
         <TextView
                 android:id="@+id/tvPhone"
                 android:text="Phone:"
                 android:textColor="#000000"
+                android:paddingTop="10dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -322,10 +306,10 @@
                 android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="18dp"
                 android:hint="Phone"
                 android:layout_weight="1"/>
 
-    </LinearLayout>
 
     <TextView
             android:id="@+id/tvMMRegistered"
@@ -342,7 +326,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingLeft="14dp"
+            android:paddingLeft="18dp"
             >
         <RadioButton android:id="@+id/rb_registered_yes"
                 android:layout_width="wrap_content"
@@ -360,7 +344,7 @@
 
     <TextView
             android:id="@+id/tvMMPayment"
-            android:padding="14dp"
+            android:padding="18dp"
             android:text="@string/mmPayments"
             android:textColor="#000000"
             android:layout_width="match_parent"
@@ -373,7 +357,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingLeft="14dp"
+            android:paddingLeft="18dp"
             >
         <RadioButton android:id="@+id/rb_payment_yes"
                 android:layout_width="wrap_content"
@@ -397,17 +381,15 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
 
-    <LinearLayout
-            android:id="@+id/LinearLayoutYearOpened"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_margin="14dp"
-            android:layout_alignParentBottom="true">
+
 
         <TextView
                 android:id="@+id/tvYearOpened"
                 android:text="Year Opened:"
                 android:textColor="#000000"
+                android:paddingTop="10dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -419,24 +401,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:layout_margin="18dp"
                 android:hint="Year Established"
                 android:focusable="false"
-                android:gravity="right"
+                android:gravity="left"
                 android:layout_weight="1"
                 />
 
-    </LinearLayout>
-
-    <LinearLayout
-            android:id="@+id/LinearLayoutMatureTrees"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_margin="14dp"
-            android:layout_alignParentBottom="true">
 
         <TextView
                 android:id="@+id/tvMatureTrees"
                 android:text="Mature Trees:"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
                 android:textColor="#000000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -450,22 +427,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:gravity="right"
+                android:gravity="left"
+                android:layout_margin="18dp"
                 android:hint="Mature Tree count"
                 android:layout_weight="1"/>
 
-    </LinearLayout>
 
-    <LinearLayout
-            android:id="@+id/LinearLayoutImmatureTrees"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_margin="14dp"
-            android:layout_alignParentBottom="true">
 
         <TextView
                 android:id="@+id/tvImmatureTrees"
                 android:text="Immature Trees:"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
                 android:textColor="#000000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -478,23 +451,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:gravity="right"
+                android:gravity="left"
+                android:layout_margin="18dp"
                 android:hint="Immature Tree count"
                 android:layout_weight="1"/>
-    </LinearLayout>
 
 
-
-
-    <LinearLayout
-            android:id="@+id/LinearLayoutHectarage"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_margin="14dp"
-            android:layout_alignParentBottom="true">
 
         <TextView
                 android:id="@+id/tvHectarage"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
                 android:text="Hectarage:"
                 android:textColor="#000000"
                 android:layout_width="match_parent"
@@ -507,17 +474,18 @@
                 android:id="@+id/txtHectarage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="18dp"
                 android:inputType="numberDecimal"
-                android:gravity="right"
+                android:gravity="left"
                 android:layout_weight="1"
                 android:hint="Hectarage cultivated"/>
-    </LinearLayout>
+
 
 
 
     <Button
             android:id="@+id/btnSaveFarmer"
-            android:layout_margin="14dp"
+            android:layout_margin="18dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save Farmer"

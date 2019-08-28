@@ -6,6 +6,7 @@
     <string name="title_sales">Sales</string>
 
     <string name="title_activity_register">Register Farmer</string>
+    <string name="title_activity_sales">Add Sale</string>
 
     <string name="mmRegistered">Mobile Money Registered</string>
     <string name="mmPayments">Receive payments on MM</string>
@@ -20,7 +21,6 @@
     </string-array>
 
     <string-array name="district_chitipa">
-        <item></item>
         <item>Kameme</item>
         <item>Mwabulambya</item>
         <item>Mwenemisuku</item>
@@ -29,7 +29,6 @@
     </string-array>
 
     <string-array name="district_ntchisi">
-        <item></item>
         <item>Chikho</item>
         <item>Chilooko</item>
         <item>Kalumo</item>

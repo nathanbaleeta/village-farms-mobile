@@ -3,7 +3,6 @@ package com.codepoint.villagefarms
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
-import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 
 import com.codepoint.villagefarms.Fragments.AdvancesFragment
@@ -13,7 +12,6 @@ import com.codepoint.villagefarms.Fragments.SalesFragment
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var toolbar: ActionBar
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_farmers -> {
@@ -63,15 +61,5 @@ class MainActivity : AppCompatActivity() {
 
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
-
-        // Floating Action Button for farmer activity
-        //val fab: View = findViewById(R.id.fabFarmer)
-        //fab.setOnClickListener { view ->
-
-            // Open register farmer activity from farmer list activity
-         //   val intent = Intent(this, RegisterActivity::class.java)
-           // startActivity(intent)
-
-        //}
     }
 }
