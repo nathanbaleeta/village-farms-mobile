@@ -1,12 +1,11 @@
 package com.codepoint.villagefarms
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
-import android.view.View
+
 import com.codepoint.villagefarms.Fragments.AdvancesFragment
 import com.codepoint.villagefarms.Fragments.FarmerFragment
 import com.codepoint.villagefarms.Fragments.ProcurementFragment
@@ -59,7 +58,8 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         // Set default BottomNavigationView tab
-        navView.selectedItemId = R.id.navigation_farmers
+        val farmerFragment = FarmerFragment.newInstance()
+        openFragment(farmerFragment)
 
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
