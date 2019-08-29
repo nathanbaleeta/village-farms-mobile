@@ -125,7 +125,6 @@ class RegisterActivity : AppCompatActivity() {
         // Initializing a String Array for Rumphi district
         val rumphiTAList = resources.getStringArray(R.array.district_rumphi)
 
-
         // Initializing a String Array for Rumphi district
         val mzimbaTAList = resources.getStringArray(R.array.district_mzimba)
 

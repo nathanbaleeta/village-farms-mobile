@@ -94,7 +94,15 @@
         <item>Viphya</item>
         <item>Vwaza Marsh</item>
         <item>Zolozolo</item>
+    </string-array>
 
+    <string-array name="goodsPurchasedList">
+        <item></item>
+        <item>Bananas</item>
+        <item>Chickens</item>
+        <item>Coffee</item>
+        <item>Pigs</item>
+        <item>Vegetables</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
