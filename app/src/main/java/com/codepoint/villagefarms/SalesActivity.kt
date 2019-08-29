@@ -3,6 +3,8 @@ package com.codepoint.villagefarms
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.*
 import com.codepoint.villagefarms.models.Sale
@@ -81,6 +83,81 @@ class SalesActivity : AppCompatActivity() {
 
         /***************** Goods purchased options Spinner ****************/
 
+
+        /***************** Dynamically setting total price ****************/
+
+        txtSaleUnitPrice.addTextChangedListener(object :
+            TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                var num1 = 0
+                var num2 = 0
+
+                try {
+                    num1 = Integer.parseInt(txtSaleUnitPrice.text.toString())
+                } catch (e: NumberFormatException) {
+                    null
+                }
+
+
+                try {
+                    num2 = Integer.parseInt(txtSaleQty.text.toString())
+                } catch (e: NumberFormatException) {
+                    null
+                }
+
+                val result = num1 * num2
+
+                txtSaleTotalPrice.setText(java.lang.String.format("%d", result))
+
+            }
+
+        })
+
+        txtSaleQty.addTextChangedListener(object :
+            TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                var num3 = 0
+                var num4 = 0
+
+                try {
+                    num3 = Integer.parseInt(txtSaleUnitPrice.text.toString())
+                } catch (e: NumberFormatException) {
+                    null
+                }
+
+
+                try {
+                    num4 = Integer.parseInt(txtSaleQty.text.toString())
+                } catch (e: NumberFormatException) {
+                   null
+                }
+
+                val result = num3 * num4
+
+                txtSaleTotalPrice.setText(java.lang.String.format("%d", result))
+
+            }
+
+        })
+
+        /***************** Dynamically setting total price ****************/
+
         btnSaveSale = findViewById(R.id.btnSaveSale)
 
         btnSaveSale.setOnClickListener {
@@ -144,7 +221,7 @@ class SalesActivity : AppCompatActivity() {
         } else if (quantity == null) {
             txtSaleQty.error = "Please enter a digit"
             return
-        }  else if (totalPrice == null) {
+        } else if (totalPrice == null) {
             txtSaleTotalPrice.error = "Please enter a digit"
             return
         } else {

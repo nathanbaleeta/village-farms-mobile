@@ -217,8 +217,9 @@
                 android:gravity="left"
                 android:layout_margin="18dp"
                 android:hint="TotalPrice"
+                android:focusable="false"
+                android:clickable="false"
                 android:layout_weight="1"/>
-
 
         <Button
                 android:id="@+id/btnSaveSale"
@@ -226,8 +227,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Save Sale"
-                android:background="#FFC107" android:textColor="#000000"/>
-
+                android:background="#FFC107"
+                android:textColor="#000000"/>
 
 
     </LinearLayout>
