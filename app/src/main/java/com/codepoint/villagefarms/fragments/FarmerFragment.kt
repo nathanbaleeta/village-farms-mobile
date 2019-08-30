@@ -1,4 +1,4 @@
-package com.codepoint.villagefarms.Fragments
+package com.codepoint.villagefarms.fragments
 
 import android.content.Intent
 import android.os.Bundle

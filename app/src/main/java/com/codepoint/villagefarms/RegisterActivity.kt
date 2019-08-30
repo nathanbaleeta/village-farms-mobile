@@ -380,8 +380,6 @@ class RegisterActivity : AppCompatActivity() {
                 created
             )
 
-            // Support offline data entry by enabling disk persistence
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true)
             val ref = FirebaseDatabase.getInstance().getReference("farmers")
 
             // Push the data to Fire base cloud data store
