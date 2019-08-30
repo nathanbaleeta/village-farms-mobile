@@ -1,5 +1,7 @@
 package com.codepoint.villagefarms
 
+import android.content.Intent
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -145,7 +147,7 @@ class SalesActivity : AppCompatActivity() {
                 try {
                     num4 = Integer.parseInt(txtSaleQty.text.toString())
                 } catch (e: NumberFormatException) {
-                   null
+                    null
                 }
 
                 val result = num3 * num4
@@ -258,8 +260,24 @@ class SalesActivity : AppCompatActivity() {
             Snackbar.make(scroll_layout, "Sale was successfully recorded", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
                 .show()
+
+            // Send SMS using Native SMS Composer
+            sendSMS(phone, totalPrice, goodsPurchased)
         }
 
+    }
+
+    private fun sendSMS(phone: String, totalPrice: Int, goodsPurchased: String) {
+        val uri = Uri.parse("smsto:${phone}")
+        val intent = Intent(Intent.ACTION_SENDTO, uri)
+        intent.putExtra(
+            "sms_body",
+            "This is to acknowledge receipt of cash amounting to MK $totalPrice for the " +
+                    "purchase of ${goodsPurchased}. Thank you for your business. " +
+                    "If you have any complaint about this transaction, please call " +
+                    "(+265) 991 210 444 or send an email to Info@villagefarms.org."
+        )
+        startActivity(intent)
     }
 
     // Back arrow click event to go back to the parent Activity
