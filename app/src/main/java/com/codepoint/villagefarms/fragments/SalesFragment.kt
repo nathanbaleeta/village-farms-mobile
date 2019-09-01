@@ -43,7 +43,6 @@ class SalesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
         val recyclerView = sales_list_recycler_view
         recyclerView.setHasFixedSize(true)
 
