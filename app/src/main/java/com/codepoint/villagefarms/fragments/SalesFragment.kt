@@ -1,5 +1,6 @@
 package com.codepoint.villagefarms.fragments
 
+import SaleAdapter
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -20,8 +21,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.FirebaseDatabase
-import com.codepoint.villagefarms.MainActivity
-import com.google.android.gms.tasks.Task
+
 
 
 class SalesFragment : Fragment() {
@@ -79,16 +79,15 @@ class SalesFragment : Fragment() {
 
                  for (ds in dataSnapshot.children) {
                      val sale = ds.getValue(Sale::class.java)
-                    sales.add(sale!!)
+                    salesList.add(sale!!)
                      Log.d(TAG, sale.toString())
-
 
                  }
 
 
                 // specify an adapter
-                //var adapter = SalesAdapter(salesList)
-                //recyclerView.adapter = adapter
+                var adapter = SaleAdapter(salesList)
+                recyclerView.adapter = adapter
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
