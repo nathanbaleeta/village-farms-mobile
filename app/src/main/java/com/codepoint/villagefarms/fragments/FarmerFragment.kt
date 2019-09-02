@@ -76,7 +76,6 @@ class FarmerFragment : Fragment() {
 
                 }
 
-
                 // specify an adapter
                 var adapter = FarmerAdapter(farmerList)
                 recyclerView.adapter = adapter
