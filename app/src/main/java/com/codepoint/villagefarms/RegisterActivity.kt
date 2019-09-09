@@ -221,8 +221,10 @@ class RegisterActivity : AppCompatActivity() {
                 cal.get(Calendar.DAY_OF_MONTH)
             )
             // Date of farm opened cannot be in future; and can't be less than 3 months(=7776000000 ms)
-            //dialog.datePicker.maxDate = System.currentTimeMillis() -  7776000000
-            dialog.datePicker.maxDate = Date().time
+            dialog.datePicker.maxDate = System.currentTimeMillis() -  7776000000
+
+            
+            //dialog.datePicker.maxDate = Date().time
             dialog.show()
 
 
