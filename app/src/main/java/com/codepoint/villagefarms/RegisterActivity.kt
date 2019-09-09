@@ -10,8 +10,13 @@ import com.codepoint.villagefarms.models.Farmer
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_register.*
 import java.lang.Integer.parseInt
+import java.lang.Long.parseLong
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+
 import java.util.*
+
+
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -21,13 +26,10 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var txtLastname: EditText
 
     lateinit var rgTitle: RadioGroup
-    lateinit var rbProf: RadioButton
-    lateinit var rbDr: RadioButton
     lateinit var rbMr: RadioButton
     lateinit var rbMs: RadioButton
     lateinit var rbMrs: RadioButton
-    lateinit var rbCol: RadioButton
-    lateinit var rbCapt: RadioButton
+
 
     lateinit var rgMaritalStatus: RadioGroup
     lateinit var rbMarried: RadioButton
@@ -74,13 +76,9 @@ class RegisterActivity : AppCompatActivity() {
         txtLastname = findViewById(R.id.txtLastname)
 
         rgTitle = findViewById(R.id.rg_title)
-        rbProf = findViewById(R.id.rb_prof)
-        rbDr = findViewById(R.id.rb_dr)
         rbMr = findViewById(R.id.rb_mr)
         rbMs = findViewById(R.id.rb_miss)
         rbMrs = findViewById(R.id.rb_mrs)
-        rbCol = findViewById(R.id.rb_col)
-        rbCapt = findViewById(R.id.rb_capt)
 
         rgMaritalStatus = findViewById(R.id.rg_maritalStatus)
         rbMarried = findViewById(R.id.rb_married)
@@ -194,7 +192,11 @@ class RegisterActivity : AppCompatActivity() {
         /***************** District Status options Spinner ****************/
 
         /***************** Year established Date picker ****************/
+        // Calendar set to the current date
         var cal = Calendar.getInstance()
+
+        //rollback 90 days
+        cal.add(Calendar.DAY_OF_YEAR, -90)
 
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -206,19 +208,27 @@ class RegisterActivity : AppCompatActivity() {
                 val sdf = SimpleDateFormat(myFormat, Locale.US)
                 val date = sdf.format(cal.time)
 
-                // Display Selected date in textbox
+                // Display Selected date in text input
                 txtYearOpened.setText(date)
-
             }
 
+
         txtYearOpened.setOnClickListener {
-            DatePickerDialog(
+            val dialog = DatePickerDialog(
                 this, dateSetListener,
                 cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH)
-            ).show()
+            )
+            // Date of farm opened cannot be in future; and can't be less than 3 months(=7776000000 ms)
+            //dialog.datePicker.maxDate = System.currentTimeMillis() -  7776000000
+            dialog.datePicker.maxDate = Date().time
+            dialog.show()
+
+
         }
+
+
 
         /***************** Year established Date picker ****************/
 
@@ -230,20 +240,12 @@ class RegisterActivity : AppCompatActivity() {
             /***************** Title radio group ****************/
             var title = ""
             if (rgTitle.checkedRadioButtonId != -1) {
-                if (rbProf.isChecked) {
-                    title += "Prof"
-                } else if (rbDr.isChecked) {
-                    title += "Dr"
-                } else if (rbMr.isChecked) {
+                if (rbMr.isChecked) {
                     title += "Mr"
                 } else if (rbMs.isChecked) {
                     title += "Ms"
                 } else if (rbMrs.isChecked) {
                     title += "Mrs"
-                } else if (rbCol.isChecked) {
-                    title += "Col"
-                } else if (rbCapt.isChecked) {
-                    title += "Capt"
                 }
             }
             /***************** Title radio group ****************/
