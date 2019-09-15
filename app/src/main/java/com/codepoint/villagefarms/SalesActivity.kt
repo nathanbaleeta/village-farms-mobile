@@ -170,9 +170,9 @@ class SalesActivity : AppCompatActivity() {
     private fun saveSale(
 
     ) {
-        val firstname = txtSaleFname.text.toString().capitalize().trim()
-        val lastname = txtSaleLname.text.toString().capitalize().trim()
-        val address = txtSaleLAddress.text.toString().capitalize().trim()
+        val firstname = txtSaleFname.text.toString().toLowerCase().capitalize().trim()
+        val lastname = txtSaleLname.text.toString().toLowerCase().capitalize().trim()
+        val address = txtSaleLAddress.text.toString().toLowerCase().capitalize().trim()
         val phone = txtSalePhone.text.toString().trim()
         val goodsPurchased = spGoodsPurchased.selectedItem.toString().capitalize().trim()
 

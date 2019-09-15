@@ -222,12 +222,7 @@ class RegisterActivity : AppCompatActivity() {
             )
             // Date of farm opened cannot be in future; and can't be less than 3 months(=7776000000 ms)
             dialog.datePicker.maxDate = System.currentTimeMillis() -  7776000000
-
-            
-            //dialog.datePicker.maxDate = Date().time
             dialog.show()
-
-
         }
 
 
@@ -311,8 +306,8 @@ class RegisterActivity : AppCompatActivity() {
         mmRegistered: String,
         mmPayment: String
     ) {
-        val firstname = txtFirstname.text.toString().capitalize().trim()
-        val lastname = txtLastname.text.toString().capitalize().trim()
+        val firstname = txtFirstname.text.toString().toLowerCase().capitalize().trim()
+        val lastname = txtLastname.text.toString().toLowerCase().capitalize().trim()
 
         val district = spDistrict.selectedItem.toString().capitalize().trim()
         val tradionalAuthority = spTradtionalAuthority.selectedItem.toString().capitalize().trim()
