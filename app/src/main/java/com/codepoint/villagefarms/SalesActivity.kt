@@ -235,7 +235,7 @@ class SalesActivity : AppCompatActivity() {
         } else if (address.isEmpty()) {
             txtSaleLAddress.error = "Please enter an address"
             return
-        } else if (phone.isEmpty() || phone.length < 9) {
+        } else if (phone.isEmpty() || phone.length < 10) {
             txtSalePhone.error = "Please enter a valid phone number"
             return
         } else if (unitPrice == null) {

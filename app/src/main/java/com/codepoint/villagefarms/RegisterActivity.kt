@@ -10,10 +10,9 @@ import android.widget.*
 import com.codepoint.villagefarms.models.Farmer
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_register.*
+import java.lang.Double.parseDouble
 import java.lang.Integer.parseInt
-import java.lang.Long.parseLong
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 
 import java.util.*
 
@@ -58,6 +57,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var txtMatureTrees: EditText
     lateinit var txtImmatureTrees: EditText
     lateinit var txtHectarage: EditText
+    lateinit var txtAcreage: EditText
 
     lateinit var buttonSave: Button
 
@@ -107,17 +107,16 @@ class RegisterActivity : AppCompatActivity() {
         txtMatureTrees = findViewById(R.id.txtMatureTrees)
         txtImmatureTrees = findViewById(R.id.txtImmatureTrees)
         txtHectarage = findViewById(R.id.txtHectarage)
+        txtAcreage = findViewById(R.id.txtAcreage)
 
 
         /***************** Verify phone number doesn't exceed 12 digits  ****************/
-
         txtPhone.setFilters(
             arrayOf<InputFilter>(
                 InputFilter.LengthFilter(12)
 
             )
         )
-
         /***************** Verify phone number doesn't exceed 12 digits ****************/
 
         /***************** District options Spinner ****************/
@@ -350,6 +349,12 @@ class RegisterActivity : AppCompatActivity() {
             null
         }
 
+        val acreage: Double? = try {
+            parseDouble(txtAcreage.text.toString())
+        } catch (e: NumberFormatException) {
+            null
+        }
+
 
         // Validate registration form before saving to Firebase database
         if (firstname.isEmpty()) {
@@ -358,7 +363,7 @@ class RegisterActivity : AppCompatActivity() {
         } else if (lastname.isEmpty()) {
             txtLastname.error = "Please enter a Last name"
             return
-        } else if (phone.isEmpty() || phone.length < 9) {
+        } else if (phone.isEmpty() || phone.length < 10) {
             txtPhone.error = "Please enter a valid phone number"
             return
         } else if (yearOpened.isEmpty()) {
@@ -372,6 +377,9 @@ class RegisterActivity : AppCompatActivity() {
             return
         } else if (hectarage == null) {
             txtHectarage.error = "Please enter a digit"
+            return
+        } else if (acreage == null) {
+            txtAcreage.error = "Please enter a digit"
             return
         } else {
             // Instantiate new farmer using Farmer data class model
@@ -390,6 +398,7 @@ class RegisterActivity : AppCompatActivity() {
                 matureTrees,
                 immatureTrees,
                 hectarage,
+                acreage,
                 created
             )
 
@@ -406,6 +415,7 @@ class RegisterActivity : AppCompatActivity() {
             txtMatureTrees.setText("")
             txtImmatureTrees.setText("")
             txtHectarage.setText("")
+            txtAcreage.setText("")
 
             // Display response message after saving farmer
             Snackbar.make(scroll_layout, "Farmer was successfully registered", Snackbar.LENGTH_LONG)
