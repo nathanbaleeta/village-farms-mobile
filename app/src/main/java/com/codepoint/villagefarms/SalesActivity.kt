@@ -1,6 +1,7 @@
 package com.codepoint.villagefarms
 
 import android.content.Intent
+import android.content.res.Resources
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,14 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_register.*
 import java.text.SimpleDateFormat
 import java.util.*
+import android.text.InputFilter
+import android.support.v4.app.SupportActivity
+import android.support.v4.app.SupportActivity.ExtraData
+import android.support.v4.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.os.Build
+import android.telephony.PhoneNumberUtils
+
 
 class SalesActivity : AppCompatActivity() {
 
@@ -55,6 +64,18 @@ class SalesActivity : AppCompatActivity() {
         txtSaleTotalPrice = findViewById(R.id.txtSaleTotalPrice)
 
         txtSalePhone = findViewById(R.id.txtSalePhone)
+
+
+        /***************** Verify phone number doesn't exceed 12 digits  ****************/
+
+        txtSalePhone.setFilters(
+            arrayOf<InputFilter>(
+                InputFilter.LengthFilter(12)
+
+            )
+        )
+
+        /***************** Verify phone number doesn't exceed 12 digits ****************/
 
         /***************** Goods purchased options Spinner ****************/
 
@@ -214,8 +235,8 @@ class SalesActivity : AppCompatActivity() {
         } else if (address.isEmpty()) {
             txtSaleLAddress.error = "Please enter an address"
             return
-        } else if (phone.isEmpty()) {
-            txtSalePhone.error = "Please enter a phone number"
+        } else if (phone.isEmpty() || phone.length < 9) {
+            txtSalePhone.error = "Please enter a valid phone number"
             return
         } else if (unitPrice == null) {
             txtSaleUnitPrice.error = "Please enter a digit"
@@ -266,6 +287,7 @@ class SalesActivity : AppCompatActivity() {
         }
 
     }
+
 
     private fun sendSMS(phone: String, totalPrice: Int, goodsPurchased: String) {
         val uri = Uri.parse("smsto:${phone}")

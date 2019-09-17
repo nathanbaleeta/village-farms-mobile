@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.text.InputFilter
 import android.view.View
 import android.widget.*
 import com.codepoint.villagefarms.models.Farmer
@@ -106,6 +107,18 @@ class RegisterActivity : AppCompatActivity() {
         txtMatureTrees = findViewById(R.id.txtMatureTrees)
         txtImmatureTrees = findViewById(R.id.txtImmatureTrees)
         txtHectarage = findViewById(R.id.txtHectarage)
+
+
+        /***************** Verify phone number doesn't exceed 12 digits  ****************/
+
+        txtPhone.setFilters(
+            arrayOf<InputFilter>(
+                InputFilter.LengthFilter(12)
+
+            )
+        )
+
+        /***************** Verify phone number doesn't exceed 12 digits ****************/
 
         /***************** District options Spinner ****************/
 
@@ -345,8 +358,8 @@ class RegisterActivity : AppCompatActivity() {
         } else if (lastname.isEmpty()) {
             txtLastname.error = "Please enter a Last name"
             return
-        } else if (phone.isEmpty()) {
-            txtPhone.error = "Please enter a phone number"
+        } else if (phone.isEmpty() || phone.length < 9) {
+            txtPhone.error = "Please enter a valid phone number"
             return
         } else if (yearOpened.isEmpty()) {
             txtYearOpened.error = "Please enter a date"

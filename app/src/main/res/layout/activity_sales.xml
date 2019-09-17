@@ -112,7 +112,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="18dp"
                 android:hint="Phone"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                />
 
         <TextView
                 android:id="@+id/tvSaleData"
