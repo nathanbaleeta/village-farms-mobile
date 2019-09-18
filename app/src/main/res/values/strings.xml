@@ -12,7 +12,6 @@
     <string name="mmPayments">Receive payments on MM</string>
 
     <string-array name="districtList">
-        <item></item>
         <item>Chitipa</item>
         <item>Rumphi</item>
         <item>Nkhatabay</item>

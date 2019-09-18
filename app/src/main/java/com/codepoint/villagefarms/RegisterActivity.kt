@@ -322,7 +322,7 @@ class RegisterActivity : AppCompatActivity() {
         val lastname = txtLastname.text.toString().toLowerCase().capitalize().trim()
 
         val district = spDistrict.selectedItem.toString().capitalize().trim()
-        val tradionalAuthority = spTradtionalAuthority.selectedItem.toString().capitalize().trim()
+        val traditionalAuthority = spTradtionalAuthority.selectedItem.toString().capitalize().trim()
         val phone = txtPhone.text.toString().trim()
         val yearOpened = txtYearOpened.text.toString().trim()
 
@@ -390,7 +390,7 @@ class RegisterActivity : AppCompatActivity() {
                 sex,
                 maritalStatus,
                 district,
-                tradionalAuthority,
+                traditionalAuthority,
                 phone,
                 mmRegistered,
                 mmPayment,
