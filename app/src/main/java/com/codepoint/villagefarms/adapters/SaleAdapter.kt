@@ -19,14 +19,12 @@ class SaleAdapter(private val saleList:ArrayList<Sale>):RecyclerView.Adapter<Sal
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder?.txtName?.text = saleList[position].firstname + " " + saleList[position].lastname
-        holder?.txtAddress?.text = saleList[position].address
         holder?.txtPhone?.text = saleList[position].phone
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val txtName = itemView.findViewById<TextView>(R.id.list_fullname)
-        val txtAddress = itemView.findViewById<TextView>(R.id.list_address)
         val txtPhone = itemView.findViewById<TextView>(R.id.list_phone)
 
     }

@@ -32,13 +32,6 @@
                 />
 
         <TextView
-                android:id="@+id/list_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                />
-
-        <TextView
                 android:id="@+id/list_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
