@@ -8,6 +8,8 @@
     <string name="title_activity_register">Register Farmer</string>
     <string name="title_activity_sales">Add Sale</string>
 
+    <string name="title_activity_sales_detail">Sale Detail</string>
+
     <string name="mmRegistered">Mobile Money Registered</string>
     <string name="mmPayments">Receive payments on MM</string>
 
@@ -104,8 +106,7 @@
         <item>Vegetables</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>
 
