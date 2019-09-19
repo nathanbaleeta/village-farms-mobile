@@ -1,10 +1,573 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/scroll_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#C8C8C8">
+
+        <!-- A CardView that contains a TextView -->
+        <android.support.v7.widget.CardView
+                android:id="@+id/card_view_bioData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                card_view:cardCornerRadius="4dp">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:padding="4dp"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="104dp"
+                        android:layout_height="104dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="4dp"
+                        android:contentDescription="avatar image"
+                        card_view:srcCompat="@drawable/ic_account_circle_black_24dp" />
+
+                <TextView
+                        android:id="@+id/info_text_fullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nathan Baleeta"
+                        android:textColor="#3B5999"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+                <TextView
+                        android:id="@+id/info_text_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lives in Kampala, Uganda"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                <TextView
+                        android:id="@+id/info_text_yearOpened"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Farm opened on Jan 20, 2014"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+
+        <!-- A CardView that contains a TextView -->
+        <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view_bioData_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="4dp">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:padding="4dp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:id="@+id/info_text_Autobiography"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Autobiography"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_Title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Title:"
+                                android:padding="10dp"
+                                android:textColor="#000000"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_Title2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Mr"
+                                android:textColor="#3B5999"
+                                android:padding="10dp"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#d3d3d3" >
+                </View>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_Gender"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Gender:"
+                                android:padding="10dp"
+                                android:textColor="#000000"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_Gender2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Male"
+                                android:textColor="#3B5999"
+                                android:padding="10dp"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#d3d3d3" >
+                </View>
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_MaritalStatus"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Marital Status:"
+                                android:padding="10dp"
+                                android:textColor="#000000"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_MaritalStatus2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Single"
+                                android:textColor="#3B5999"
+                                android:padding="10dp"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#d3d3d3" >
+                </View>
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_Mobile"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Mobile:"
+                                android:padding="10dp"
+                                android:textColor="#000000"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_Mobile2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="0787 264734"
+                                android:textColor="#3B5999"
+                                android:padding="10dp"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#d3d3d3" >
+                </View>
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_MMRegistered"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="MM Registered:"
+                                android:padding="10dp"
+                                android:textColor="#000000"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_MMRegistered2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Yes"
+                                android:textColor="#3B5999"
+                                android:padding="10dp"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#d3d3d3" >
+                </View>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_MMPayments"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Payments via MM:"
+                                android:padding="10dp"
+                                android:textColor="#000000"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_MMPayments2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:textColor="#3B5999"
+                                android:padding="10dp"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
 
 
 
 
-</android.support.constraint.ConstraintLayout>
+
+
+
+            </LinearLayout>
+
+
+
+
+        </android.support.v7.widget.CardView>
+
+
+
+        <!-- A CardView that contains a TextView -->
+        <android.support.v7.widget.CardView
+                android:id="@+id/card_view_treeCount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                card_view:cardCornerRadius="4dp">
+
+
+
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:padding="4dp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:id="@+id/info_text_FarmStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Farm History and Status"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_Acreage"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Acreage:"
+                                android:padding="10dp"
+                                android:textColor="#000000"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_Acreage2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="0.5"
+                                android:textColor="#3B5999"
+                                android:padding="10dp"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#d3d3d3" >
+                </View>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_Y1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Year 1:"
+                                android:padding="10dp"
+                                android:textColor="#000000"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_Y1_value"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="90"
+                                android:textColor="#3B5999"
+                                android:padding="10dp"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#d3d3d3" >
+                </View>
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_Y2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Year 2:"
+                                android:padding="10dp"
+                                android:textColor="#000000"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_Y2_value"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="70"
+                                android:textColor="#3B5999"
+                                android:padding="10dp"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#d3d3d3" >
+                </View>
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_Y3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Year 3:"
+                                android:padding="10dp"
+                                android:textColor="#000000"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/info_text_Y3_value"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="7"
+                                android:textColor="#3B5999"
+                                android:padding="10dp"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+
+</ScrollView>
