@@ -252,7 +252,8 @@ class SalesActivity : AppCompatActivity() {
                 unitPrice,
                 quantity,
                 totalPrice,
-                created
+                created,
+                ""
             )
 
 

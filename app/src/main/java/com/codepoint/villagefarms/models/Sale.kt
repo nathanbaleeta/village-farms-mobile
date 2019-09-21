@@ -1,5 +1,6 @@
 package com.codepoint.villagefarms.models
 
+
 data class Sale(
     val firstname: String?,
     val lastname: String?,
@@ -9,13 +10,15 @@ data class Sale(
     val unitPrice: Int?,
     val quantity: Int?,
     val totalPrice: Int?,
-    val created: String?
+    val created: String?,
+    var objectId: String?
 
-) {
+)
 
+{
     // Non-empty constructor
     constructor() : this("", "",
         "", "", "",
-        -1, -1, -1, ""
+       -1, -1, -1, "",""
     )
 }

@@ -23,7 +23,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.FirebaseDatabase
 
 
-
 class SalesFragment : Fragment() {
 
 
@@ -65,25 +64,28 @@ class SalesFragment : Fragment() {
         // Get a reference to our posts
         val ref = FirebaseDatabase.getInstance().getReference("sales")
 
-
         // Attach a listener to read the data at our posts reference
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 val salesList = ArrayList<Sale>()
-                val sales = mutableListOf<Sale>()
+                 //val salesList = mutableListOf<Sale>()
 
                 // Eliminates duplicate list rows when child added or removed in Firebase
                 salesList.clear()
 
                  for (ds in dataSnapshot.children) {
+                     //Log.d(TAG, ds.toString())
+
                      val sale = ds.getValue(Sale::class.java)
+
+                     // Extract object ID key from Fire base and assign to arrayList
+                     sale?.objectId = ds.key
+
                     salesList.add(sale!!)
                      Log.d(TAG, sale.toString())
 
                  }
-
-
                 // specify an adapter
                 var adapter = SaleAdapter(salesList)
                 recyclerView.adapter = adapter
