@@ -64,7 +64,6 @@ class FarmerFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 val farmerList = ArrayList<Farmer>()
-                val farmers = mutableListOf<Farmer>()
 
                 // Eliminates duplicate list rows when child added or removed in Firebase
                 farmerList.clear()

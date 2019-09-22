@@ -483,8 +483,71 @@
             android:layout_weight="1"
             android:hint="Acreage cultivated"/>
 
+    <TextView
+            android:id="@+id/tvYear1"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:text="Year 1:"
+            android:textColor="#000000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            />
 
+    <android.support.design.widget.TextInputEditText
+            android:id="@+id/txtYear1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="18dp"
+            android:inputType="number"
+            android:gravity="left"
+            android:layout_weight="1"
+            android:hint="Year 1"/>
 
+    <TextView
+            android:id="@+id/tvYear2"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:text="Year 2:"
+            android:textColor="#000000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            />
+
+    <android.support.design.widget.TextInputEditText
+            android:id="@+id/txtYear2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="18dp"
+            android:inputType="number"
+            android:gravity="left"
+            android:layout_weight="1"
+            android:hint="Year 2"/>
+
+    <TextView
+            android:id="@+id/tvYear3"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:text="Year 3:"
+            android:textColor="#000000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            />
+
+    <android.support.design.widget.TextInputEditText
+            android:id="@+id/txtYear3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="18dp"
+            android:inputType="number"
+            android:gravity="left"
+            android:layout_weight="1"
+            android:hint="Year 3"/>
 
     <Button
             android:id="@+id/btnSaveFarmer"
@@ -493,6 +556,8 @@
             android:layout_height="wrap_content"
             android:text="Save Farmer"
             android:background="#FFC107" android:textColor="#000000"/>
+
+
 
 </LinearLayout>
 

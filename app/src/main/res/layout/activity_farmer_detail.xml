@@ -145,7 +145,6 @@
                             android:layout_weight="1">
 
                         <TextView
-                                android:id="@+id/info_text_Gender"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Gender:"
@@ -160,7 +159,7 @@
                             android:layout_weight="1">
 
                         <TextView
-                                android:id="@+id/info_text_Gender2"
+                                android:id="@+id/info_text_Gender"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Male"
@@ -189,7 +188,6 @@
                             android:layout_weight="1">
 
                         <TextView
-                                android:id="@+id/info_text_MaritalStatus"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Marital Status:"
@@ -204,7 +202,7 @@
                             android:layout_weight="1">
 
                         <TextView
-                                android:id="@+id/info_text_MaritalStatus2"
+                                android:id="@+id/info_text_MaritalStatus"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Single"
@@ -233,7 +231,6 @@
                             android:layout_weight="1">
 
                         <TextView
-                                android:id="@+id/info_text_Mobile"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Mobile:"
@@ -248,7 +245,7 @@
                             android:layout_weight="1">
 
                         <TextView
-                                android:id="@+id/info_text_Mobile2"
+                                android:id="@+id/info_text_Mobile"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="0787 264734"
@@ -277,7 +274,6 @@
                             android:layout_weight="1">
 
                         <TextView
-                                android:id="@+id/info_text_MMRegistered"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="MM Registered:"
@@ -292,7 +288,7 @@
                             android:layout_weight="1">
 
                         <TextView
-                                android:id="@+id/info_text_MMRegistered2"
+                                android:id="@+id/info_text_MMRegistered"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Yes"
@@ -402,7 +398,6 @@
                             android:layout_weight="1">
 
                         <TextView
-                                android:id="@+id/info_text_Acreage"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Acreage:"
@@ -417,7 +412,7 @@
                             android:layout_weight="1">
 
                         <TextView
-                                android:id="@+id/info_text_Acreage2"
+                                android:id="@+id/info_text_Acreage"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="0.5"

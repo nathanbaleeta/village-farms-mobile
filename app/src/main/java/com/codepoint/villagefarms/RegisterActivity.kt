@@ -19,6 +19,8 @@ import java.util.*
 
 
 
+
+
 class RegisterActivity : AppCompatActivity() {
 
     // Declare Views
@@ -58,6 +60,9 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var txtImmatureTrees: EditText
     lateinit var txtHectarage: EditText
     lateinit var txtAcreage: EditText
+    lateinit var txtYear1: EditText
+    lateinit var txtYear2: EditText
+    lateinit var txtYear3: EditText
 
     lateinit var buttonSave: Button
 
@@ -108,6 +113,10 @@ class RegisterActivity : AppCompatActivity() {
         txtImmatureTrees = findViewById(R.id.txtImmatureTrees)
         txtHectarage = findViewById(R.id.txtHectarage)
         txtAcreage = findViewById(R.id.txtAcreage)
+        txtYear1 = findViewById(R.id.txtYear1)
+        txtYear2 = findViewById(R.id.txtYear2)
+        txtYear3 = findViewById(R.id.txtYear3)
+
 
 
         /***************** Verify phone number doesn't exceed 12 digits  ****************/
@@ -311,6 +320,23 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    fun toTitleCase(str: String) {
+        val words = str.split(" ").toMutableList()
+        var output = ""
+
+        for(word in words){
+            output += word.capitalize() + " "
+        }
+
+        output.trim()
+
+
+
+    }
+
+    // Method to capitalize every first letter in word: extend String class
+    private fun String.toTitleCase(): String = split(" ").map { it.capitalize() }.joinToString(" ")
+
     private fun saveFarmer(
         title: String,
         sex: String,
@@ -318,8 +344,8 @@ class RegisterActivity : AppCompatActivity() {
         mmRegistered: String,
         mmPayment: String
     ) {
-        val firstname = txtFirstname.text.toString().toLowerCase().capitalize().trim()
-        val lastname = txtLastname.text.toString().toLowerCase().capitalize().trim()
+        val firstname = txtFirstname.text.toString().toTitleCase().trim()
+        val lastname = txtLastname.text.toString().toTitleCase().trim()
 
         val district = spDistrict.selectedItem.toString().capitalize().trim()
         val traditionalAuthority = spTradtionalAuthority.selectedItem.toString().capitalize().trim()
@@ -355,6 +381,24 @@ class RegisterActivity : AppCompatActivity() {
             null
         }
 
+        val y1: Int? = try {
+            parseInt(txtYear1.text.toString())
+        } catch (e: NumberFormatException) {
+            null
+        }
+
+        val y2: Int? = try {
+            parseInt(txtYear2.text.toString())
+        } catch (e: NumberFormatException) {
+            null
+        }
+
+        val y3: Int? = try {
+            parseInt(txtYear3.text.toString())
+        } catch (e: NumberFormatException) {
+            null
+        }
+
 
         // Validate registration form before saving to Firebase database
         if (firstname.isEmpty()) {
@@ -381,7 +425,16 @@ class RegisterActivity : AppCompatActivity() {
         } else if (acreage == null) {
             txtAcreage.error = "Please enter a digit"
             return
-        } else {
+        } else if (y1 == null) {
+            txtYear1.error = "Please enter a digit"
+            return
+        } else if (y2 == null) {
+            txtYear2.error = "Please enter a digit"
+            return
+        } else if (y3 == null) {
+            txtYear3.error = "Please enter a digit"
+            return
+        }  else {
             // Instantiate new farmer using Farmer data class model
             val farmer = Farmer(
                 firstname,
@@ -399,7 +452,11 @@ class RegisterActivity : AppCompatActivity() {
                 immatureTrees,
                 hectarage,
                 acreage,
-                created,""
+                y1,
+                y2,
+                y3,
+                created,
+                ""
             )
 
             val ref = FirebaseDatabase.getInstance().getReference("farmers")
@@ -416,6 +473,9 @@ class RegisterActivity : AppCompatActivity() {
             txtImmatureTrees.setText("")
             txtHectarage.setText("")
             txtAcreage.setText("")
+            txtYear1.setText("")
+            txtYear2.setText("")
+            txtYear3.setText("")
 
             // Display response message after saving farmer
             Snackbar.make(scroll_layout, "Farmer was successfully registered", Snackbar.LENGTH_LONG)

@@ -70,6 +70,8 @@ class FarmerDetailActivity : AppCompatActivity() {
 
     private fun populateUI(farmer: Farmer) {
 
+        /************************** Set full name *************************/
+
         // Text view for full name
         val fullName = findViewById<TextView>(R.id.info_text_fullName)
 
@@ -77,12 +79,79 @@ class FarmerDetailActivity : AppCompatActivity() {
         fullName.text = farmer.firstname.plus(" ").plus(farmer.lastname)
 
 
+        /************************** Set full name *************************/
+
+        /************************** Set Title *************************/
         // Text view for title
         val title = findViewById<TextView>(R.id.info_text_Title)
 
-
         //setText for title view
         title.text = farmer.title
+
+
+        /************************** Set Title *************************/
+
+        /************************** Set Gender *************************/
+
+        // Text view for title
+        val gender = findViewById<TextView>(R.id.info_text_Gender)
+
+        //setText for title view
+        gender.text = farmer.sex
+
+        /************************** Set Gender *************************/
+
+        /************************** Set Marital status ********************/
+
+        // Text view for title
+        val maritalStatus = findViewById<TextView>(R.id.info_text_MaritalStatus)
+
+        //setText for title view
+        maritalStatus.text = farmer.maritalStatus
+
+        /************************** Set Marital status *************************/
+
+        /************************** Set Mobile phone ********************/
+
+        // Text view for title
+        val mobile = findViewById<TextView>(R.id.info_text_Mobile)
+
+        //setText for title view
+        mobile.text = farmer.phone
+
+        /************************** Set Mobile phone *************************/
+
+        /************************** Set MM Registered ********************/
+
+        // Text view for title
+        val mmRegistered = findViewById<TextView>(R.id.info_text_MMRegistered)
+
+        //setText for title view
+        mmRegistered.text = farmer.mmRegistered
+
+        /************************** Set MM Registered *************************/
+
+
+        /************************** Set MM Payments ***************************/
+
+        // Text view for title
+        val mmPayments = findViewById<TextView>(R.id.info_text_MMPayments)
+
+        //setText for title view
+        mmPayments.text = farmer.mmPayment
+
+        /************************** Set MM Payments *************************/
+
+        /************************** Set Acreage ****************************/
+
+        // Text view for title
+        val acreage = findViewById<TextView>(R.id.info_text_Acreage)
+
+        //setText for title view
+        acreage.text = farmer.acreage.toString()
+
+        /************************** Set Acreage ****************************/
+
 
 
     }
