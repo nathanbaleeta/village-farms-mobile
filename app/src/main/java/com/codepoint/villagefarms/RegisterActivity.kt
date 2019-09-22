@@ -56,9 +56,7 @@ class RegisterActivity : AppCompatActivity() {
 
     lateinit var txtPhone: EditText
     lateinit var txtYearOpened: EditText
-    lateinit var txtMatureTrees: EditText
-    lateinit var txtImmatureTrees: EditText
-    lateinit var txtHectarage: EditText
+
     lateinit var txtAcreage: EditText
     lateinit var txtYear1: EditText
     lateinit var txtYear2: EditText
@@ -109,9 +107,7 @@ class RegisterActivity : AppCompatActivity() {
 
         txtPhone = findViewById(R.id.txtPhone)
         txtYearOpened = findViewById(R.id.txtYearOpened)
-        txtMatureTrees = findViewById(R.id.txtMatureTrees)
-        txtImmatureTrees = findViewById(R.id.txtImmatureTrees)
-        txtHectarage = findViewById(R.id.txtHectarage)
+
         txtAcreage = findViewById(R.id.txtAcreage)
         txtYear1 = findViewById(R.id.txtYear1)
         txtYear2 = findViewById(R.id.txtYear2)
@@ -320,20 +316,6 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    fun toTitleCase(str: String) {
-        val words = str.split(" ").toMutableList()
-        var output = ""
-
-        for(word in words){
-            output += word.capitalize() + " "
-        }
-
-        output.trim()
-
-
-
-    }
-
     // Method to capitalize every first letter in word: extend String class
     private fun String.toTitleCase(): String = split(" ").map { it.capitalize() }.joinToString(" ")
 
@@ -357,24 +339,6 @@ class RegisterActivity : AppCompatActivity() {
         val created = sdf.format(Date())
 
         // Implement Number format exception in try catch blocks to avoid app crashing
-        val matureTrees: Int? = try {
-            parseInt(txtMatureTrees.text.toString())
-        } catch (e: NumberFormatException) {
-            null
-        }
-
-        val immatureTrees: Int? = try {
-            parseInt(txtImmatureTrees.text.toString())
-        } catch (e: NumberFormatException) {
-            null
-        }
-
-        val hectarage: Int? = try {
-            parseInt(txtHectarage.text.toString())
-        } catch (e: NumberFormatException) {
-            null
-        }
-
         val acreage: Double? = try {
             parseDouble(txtAcreage.text.toString())
         } catch (e: NumberFormatException) {
@@ -413,15 +377,6 @@ class RegisterActivity : AppCompatActivity() {
         } else if (yearOpened.isEmpty()) {
             txtYearOpened.error = "Please enter a date"
             return
-        } else if (matureTrees == null) {
-            txtMatureTrees.error = "Please enter a digit"
-            return
-        } else if (immatureTrees == null) {
-            txtImmatureTrees.error = "Please enter a digit"
-            return
-        } else if (hectarage == null) {
-            txtHectarage.error = "Please enter a digit"
-            return
         } else if (acreage == null) {
             txtAcreage.error = "Please enter a digit"
             return
@@ -448,9 +403,6 @@ class RegisterActivity : AppCompatActivity() {
                 mmRegistered,
                 mmPayment,
                 yearOpened,
-                matureTrees,
-                immatureTrees,
-                hectarage,
                 acreage,
                 y1,
                 y2,
@@ -469,9 +421,6 @@ class RegisterActivity : AppCompatActivity() {
             txtLastname.setText("")
             txtPhone.setText("")
             txtYearOpened.setText("")
-            txtMatureTrees.setText("")
-            txtImmatureTrees.setText("")
-            txtHectarage.setText("")
             txtAcreage.setText("")
             txtYear1.setText("")
             txtYear2.setText("")
