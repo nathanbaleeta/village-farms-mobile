@@ -71,6 +71,10 @@ class FarmerFragment : Fragment() {
 
                 for (ds in dataSnapshot.children) {
                     val farmer = ds.getValue(Farmer::class.java)
+
+                    // Extract object ID key from Fire base and assign to arrayList
+                    farmer?.objectId = ds.key
+
                     farmerList.add(farmer!!)
                     Log.d(ContentValues.TAG, farmer.toString())
 

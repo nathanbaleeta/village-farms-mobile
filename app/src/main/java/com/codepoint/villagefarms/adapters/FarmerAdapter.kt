@@ -1,10 +1,13 @@
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.codepoint.villagefarms.FarmerDetailActivity
 
 import com.codepoint.villagefarms.R
+import com.codepoint.villagefarms.SalesDetailActivity
 import com.codepoint.villagefarms.models.Farmer
 
 
@@ -20,9 +23,24 @@ class FarmerAdapter(private val farmerList:ArrayList<Farmer>):RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder?.txtName?.text = farmerList[position].firstname + " " + farmerList[position].lastname
-        holder?.txtLocation?.text = farmerList[position].district + ", " + farmerList[position].traditionalAuthority
-        holder?.txtPhone?.text = farmerList[position].phone
+        holder.txtName?.text = farmerList[position].firstname + " " + farmerList[position].lastname
+        holder.txtLocation?.text = farmerList[position].district + ", " + farmerList[position].traditionalAuthority
+        holder.txtPhone?.text = farmerList[position].phone
+
+        // retrieve position of list item
+        val items = farmerList[position]
+
+        // Event listener used to pass data for specific item to Farmer Detail intent
+        holder.itemView.setOnClickListener(View.OnClickListener { v ->
+
+
+            val intent = Intent(v.context, FarmerDetailActivity::class.java)
+            intent.putExtra("objectId", items.objectId)
+            intent.putExtra("firstName",items.firstname)
+            intent.putExtra("lastName",items.lastname)
+            v.context.startActivity(intent)
+
+        })
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

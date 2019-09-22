@@ -40,7 +40,7 @@ class SaleAdapter(private val saleList:ArrayList<Sale>):RecyclerView.Adapter<Sal
 
 
             val intent = Intent(v.context, SalesDetailActivity::class.java)
-            intent.putExtra("objectId", 1)
+            intent.putExtra("objectId", items.objectId)
             intent.putExtra("firstName",items.firstname)
             intent.putExtra("lastName",items.lastname)
             v.context.startActivity(intent)

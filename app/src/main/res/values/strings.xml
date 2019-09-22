@@ -10,6 +10,8 @@
 
     <string name="title_activity_sales_detail">Sale Detail</string>
 
+    <string name="title_activity_farmer_detail">Farmer Detail</string>
+
     <string name="mmRegistered">Mobile Money Registered</string>
     <string name="mmPayments">Receive payments on MM</string>
 

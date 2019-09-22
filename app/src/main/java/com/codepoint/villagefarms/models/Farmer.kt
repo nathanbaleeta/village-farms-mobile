@@ -16,7 +16,8 @@ data class Farmer(
     val immatureTrees: Int?,
     val hectarage: Int?,
     var acreage: Double?,
-    val created: String?
+    val created: String?,
+    var objectId: String?
 
 ) {
 
@@ -24,7 +25,7 @@ data class Farmer(
     constructor() : this("", "", "", "",
         "", "", "", "",
         "", "","", -1,
-        -1,-1, 0.0, "")
+        -1,-1, 0.0, "","")
 }
 
 
