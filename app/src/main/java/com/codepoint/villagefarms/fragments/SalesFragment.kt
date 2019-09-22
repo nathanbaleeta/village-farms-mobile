@@ -83,7 +83,8 @@ class SalesFragment : Fragment() {
                      sale?.objectId = ds.key
 
                     salesList.add(sale!!)
-                     Log.d(TAG, sale.toString())
+
+                     //Log.d(TAG, sale.toString())
 
                  }
                 // specify an adapter
