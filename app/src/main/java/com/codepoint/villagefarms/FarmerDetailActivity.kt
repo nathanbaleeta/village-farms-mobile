@@ -147,11 +147,43 @@ class FarmerDetailActivity : AppCompatActivity() {
         // Text view for title
         val acreage = findViewById<TextView>(R.id.info_text_Acreage)
 
-        //setText for title view
+        //setText for title view: do nullability checking as well
         acreage.text = farmer.acreage.toString()
+
+        // setText for year 2 view: do nullability checking also
+        if (farmer.acreage == 0.0) acreage.text = "" else acreage.text = farmer.acreage.toString()
 
         /************************** Set Acreage ****************************/
 
+        /************************** Set Year 1 ****************************/
+
+        // Text view for title
+        val Y1 = findViewById<TextView>(R.id.info_text_Y1_value)
+
+        //setText for year 1 view: do nullability checking also
+        if (farmer.year1 == -1) Y1.text = "" else Y1.text = farmer.year1.toString()
+
+        /************************** Set Year 1 ****************************/
+
+        /************************** Set Year 2 ****************************/
+
+        // Text view for title
+        val Y2 = findViewById<TextView>(R.id.info_text_Y2_value)
+
+        // setText for year 2 view: do nullability checking also
+        if (farmer.year2 == -1) Y2.text = "" else Y2.text = farmer.year2.toString()
+
+        /************************** Set Year 2 ****************************/
+
+        /************************** Set Year 3 ****************************/
+
+        // Text view for title
+        val Y3 = findViewById<TextView>(R.id.info_text_Y3_value)
+
+        // setText for year 2 view: do nullability checking also
+        if (farmer.year3 == -1) Y3.text = "" else Y3.text = farmer.year3.toString()
+
+        /************************** Set Year 3 ****************************/
 
 
     }
