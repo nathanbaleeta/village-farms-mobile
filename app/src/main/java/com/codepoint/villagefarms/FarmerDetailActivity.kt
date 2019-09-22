@@ -9,6 +9,13 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.time.format.DateTimeFormatter
+import android.support.v4.app.SupportActivity
+import android.support.v4.app.SupportActivity.ExtraData
+import android.support.v4.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class FarmerDetailActivity : AppCompatActivity() {
@@ -80,6 +87,28 @@ class FarmerDetailActivity : AppCompatActivity() {
 
 
         /************************** Set full name *************************/
+
+        /************************** Set Location: TA & District *************************/
+
+        // Text view for full name
+        val location = findViewById<TextView>(R.id.info_text_location)
+
+        //setText by concatenating TA and district
+        location.text = farmer.traditionalAuthority.plus(", ").plus(farmer.district)
+
+
+        /************************** Set TA & District *************************/
+
+        /************************** Set date of farm opened *************************/
+
+        // Text view for full name
+        val opened = findViewById<TextView>(R.id.info_text_yearOpened)
+
+        //setText by concatenating string variable and yearOpened
+        opened.text = ("Year opened: ").plus(farmer.yearOpened)
+
+
+        /************************** Set date of farm opened *************************/
 
         /************************** Set Title *************************/
         // Text view for title
