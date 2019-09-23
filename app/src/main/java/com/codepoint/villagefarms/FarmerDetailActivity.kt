@@ -1,21 +1,16 @@
 package com.codepoint.villagefarms
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
 import com.codepoint.villagefarms.models.Farmer
-import com.codepoint.villagefarms.models.Sale
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import java.time.format.DateTimeFormatter
-import android.support.v4.app.SupportActivity
-import android.support.v4.app.SupportActivity.ExtraData
-import android.support.v4.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import java.text.SimpleDateFormat
-import java.util.*
+import kotlinx.android.synthetic.main.activity_farmer_detail.*
+
 
 
 class FarmerDetailActivity : AppCompatActivity() {
@@ -100,6 +95,9 @@ class FarmerDetailActivity : AppCompatActivity() {
         /************************** Set TA & District *************************/
 
         /************************** Set date of farm opened *************************/
+
+
+
 
         // Text view for full name
         val opened = findViewById<TextView>(R.id.info_text_yearOpened)
@@ -214,6 +212,12 @@ class FarmerDetailActivity : AppCompatActivity() {
 
         /************************** Set Year 3 ****************************/
 
+
+        // Start Farmer Edit Activity from Farmer Detail Activity
+        fabEdit.setOnClickListener {
+            val intent = Intent(this, FarmerEditActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
