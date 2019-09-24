@@ -216,6 +216,9 @@ class FarmerDetailActivity : AppCompatActivity() {
         // Start Farmer Edit Activity from Farmer Detail Activity
         fabEdit.setOnClickListener {
             val intent = Intent(this, FarmerEditActivity::class.java)
+            intent.putExtra("objectId", farmer.objectId)
+            intent.putExtra("firstName", farmer.firstname)
+            intent.putExtra("lastName", farmer.lastname)
             startActivity(intent)
         }
 

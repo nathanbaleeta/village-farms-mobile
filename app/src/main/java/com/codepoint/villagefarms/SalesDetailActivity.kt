@@ -79,8 +79,7 @@ class SalesDetailActivity : AppCompatActivity() {
         val title = findViewById<TextView>(R.id.info_text_Title)
 
 
-        //setText by concatenating firstName and lastName
-        //title.text = sale.title
+
 
 
     }

@@ -262,6 +262,8 @@ class RegisterActivity : AppCompatActivity() {
                     title += "Mrs"
                 }
             }
+
+
             /***************** Title radio group ****************/
 
             /***************** Sex radio group ****************/

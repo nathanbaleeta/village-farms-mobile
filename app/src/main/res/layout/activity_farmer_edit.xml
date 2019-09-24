@@ -1,9 +1,491 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".FarmerEditActivity">
 
-</android.support.constraint.ConstraintLayout>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scroll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/textViewAutobiography"
+                android:padding="10sp"
+                android:text="Autobiography"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
+
+        <TextView
+                android:id="@+id/tvFname"
+                android:text="Firstname:"
+                android:textColor="#000000"
+                android:paddingTop="10dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtFirstname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Firstname"
+                android:layout_margin="18dp"
+                android:layout_weight="1" />
+
+        <TextView
+                android:id="@+id/tvlname"
+                android:text="Lastname:"
+                android:textColor="#000000"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtLastname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:hint="Lastname"
+                android:layout_weight="1" />
+
+
+
+
+
+        <TextView
+                android:id="@+id/tvTitle"
+                android:paddingLeft="14sp"
+                android:text="Title"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+            <RadioGroup
+                    android:id="@+id/rg_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="18dp"
+                    >
+
+
+                <RadioButton android:id="@+id/rb_mr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mr"
+                        android:padding="10dp"
+                        />
+                <RadioButton android:id="@+id/rb_mrs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mrs"
+                        android:padding="10dp"
+                        />
+
+                <RadioButton android:id="@+id/rb_miss"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ms"
+                        android:padding="10dp"
+                        />
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+
+        <TextView
+                android:id="@+id/tvSex"
+                android:padding="18dp"
+                android:text="Sex"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <RadioGroup
+                android:id="@+id/rg_sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="18dp"
+                >
+            <RadioButton android:id="@+id/rb_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:padding="10dp"
+                    />
+            <RadioButton android:id="@+id/rb_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:padding="10dp"
+                    />
+        </RadioGroup>
+
+        <TextView
+                android:id="@+id/tvMaritalStatus"
+                android:padding="14dp"
+                android:text="Marital Status"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+            <RadioGroup
+                    android:id="@+id/rg_maritalStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="14dp"
+                    >
+                <RadioButton android:id="@+id/rb_married"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Married"
+                        android:padding="10dp"
+                        />
+                <RadioButton android:id="@+id/rb_single"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Single"
+                        android:padding="10dp"
+                        />
+                <RadioButton android:id="@+id/rb_widowed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Widowed"
+                        android:padding="10dp"
+                        />
+                <RadioButton android:id="@+id/rb_separated"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Separated"
+                        android:padding="10dp"
+                        />
+            </RadioGroup>
+        </LinearLayout>
+
+        <TextView
+                android:id="@+id/tvLocation"
+                android:padding="10sp"
+                android:text="Location Details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
+
+
+
+        <TextView
+                android:id="@+id/tvDistrict"
+                android:text="District:"
+                android:textColor="#000000"
+                android:paddingTop="10dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+
+        <Spinner
+                android:id="@+id/spDistrict"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:layout_weight="1">
+
+        </Spinner>
+
+
+
+
+
+        <TextView
+                android:id="@+id/tvTA"
+                android:text="Traditional Authority:"
+                android:textColor="#000000"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <Spinner
+                android:id="@+id/spTraditionalAuthority"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:layout_weight="1">
+
+        </Spinner>
+
+
+
+
+        <TextView
+                android:id="@+id/tvContacts"
+                android:padding="10sp"
+                android:text="Contact &amp; Mobile Money Details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
+
+
+
+        <TextView
+                android:id="@+id/tvPhone"
+                android:text="Phone:"
+                android:textColor="#000000"
+                android:paddingTop="10dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtPhone"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:hint="Phone"
+                android:layout_weight="1"/>
+
+
+        <TextView
+                android:id="@+id/tvMMRegistered"
+                android:padding="14dp"
+                android:text="@string/mmRegistered"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <RadioGroup
+                android:id="@+id/rg_MMRegistered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="18dp"
+                >
+            <RadioButton android:id="@+id/rb_registered_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:padding="10dp"
+                    />
+            <RadioButton android:id="@+id/rb_registered_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                    android:padding="10dp"
+                    />
+        </RadioGroup>
+
+        <TextView
+                android:id="@+id/tvMMPayment"
+                android:padding="18dp"
+                android:text="@string/mmPayments"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <RadioGroup
+                android:id="@+id/rg_MMPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="18dp"
+                >
+            <RadioButton android:id="@+id/rb_payment_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:padding="10dp"
+                    />
+            <RadioButton android:id="@+id/rb_payment_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                    android:padding="10dp"
+                    />
+        </RadioGroup>
+
+        <TextView
+                android:id="@+id/textViewFarmDetails"
+                android:padding="10sp"
+                android:text="Farm History and Status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
+
+
+
+        <TextView
+                android:id="@+id/tvYearOpened"
+                android:text="Year Opened:"
+                android:textColor="#000000"
+                android:paddingTop="10dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <EditText
+                android:id="@+id/txtYearOpened"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_margin="18dp"
+                android:hint="Year Established"
+                android:focusable="false"
+                android:gravity="left"
+                android:layout_weight="1"
+
+                />
+
+        <TextView
+                android:id="@+id/tvAcreage"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:text="Acreage:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtAcreage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:inputType="numberDecimal"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:hint="Acreage cultivated"/>
+
+        <TextView
+                android:id="@+id/tvYear1"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:text="Year 1:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtYear1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:inputType="number"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:hint="Year 1"/>
+
+        <TextView
+                android:id="@+id/tvYear2"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:text="Year 2:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtYear2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:inputType="number"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:hint="Year 2"/>
+
+        <TextView
+                android:id="@+id/tvYear3"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:text="Year 3:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtYear3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:inputType="number"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:hint="Year 3"/>
+
+        <Button
+                android:id="@+id/btnSaveFarmer"
+                android:layout_margin="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update Farmer"
+                android:background="#FFC107" android:textColor="#000000"/>
+
+
+
+    </LinearLayout>
+
+
+</ScrollView>
