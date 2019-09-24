@@ -30,7 +30,7 @@ class FarmerEditActivity : AppCompatActivity() {
         val objectId = intent.getStringExtra("objectId")
         val firstName = intent.getStringExtra("firstName")
         val lastName = intent.getStringExtra("lastName")
-        println(objectId)
+
 
         //actionbar
         val actionbar = supportActionBar
@@ -211,6 +211,9 @@ class FarmerEditActivity : AppCompatActivity() {
 
         /* ------------------Initializing an ArrayAdapters for TA--------------- */
 
+        /***************** TA options Spinner **************************************/
+
+
 
         /***************** District options Spinner *********************************/
         // Initializing a String Array
@@ -223,8 +226,7 @@ class FarmerEditActivity : AppCompatActivity() {
         // Finally, data bind the spinner object with adapter
         spDistrict.adapter = districtAdapter
 
-        //spTA.adapter = chitipaAdapter
-
+        /* ------------------Finally, data bind the spinner TA spinner object with adapter --------------- */
 
 
         // Set spinner to value retrieved from Fire base: set selected item of spinner by value, not by position
@@ -233,38 +235,55 @@ class FarmerEditActivity : AppCompatActivity() {
             spDistrict.setSelection(spinnerPosition)
 
             when (farmer.district) {
-                // activate TA list based on input
-                "Chitipa" -> spTA.adapter = chitipaAdapter
-                "Ntchisi" -> spTA.adapter = ntchisiAdapter
-                "Nkhatabay" -> spTA.adapter = nkhatabayAdapter
-                "Rumphi" -> spTA.adapter = rumphiAdapter
-                "Mzimba" -> spTA.adapter = mzimbaAdapter
+                // Data bind TA list based on district retrieved from firebase
+                "Chitipa" ->
+                    spTA.adapter = chitipaAdapter
+
+                "Ntchisi" ->
+                    spTA.adapter = ntchisiAdapter
+                "Nkhatabay" ->
+                    spTA.adapter = nkhatabayAdapter
+                "Rumphi" ->
+                    spTA.adapter = rumphiAdapter
+                "Mzimba" ->
+                    spTA.adapter = mzimbaAdapter
 
                 else -> { // Note the block
                     // do nothing
                 }
             }
 
+        }
+
+
+        /* ------------------Finally, data bind the spinner TA spinner object  with adapter --------------- */
+
+        if (farmer.district != null) {
+            val spinnerPosition = districtAdapter.getPosition(farmer.district)
+            spDistrict.setSelection(spinnerPosition)
+
+            when (farmer.district) {
+                // activate TA list based on input
+                "Chitipa" ->
+                    spTA.setSelection(chitipaAdapter.getPosition(farmer.traditionalAuthority))
+                "Ntchisi" ->
+                    spTA.setSelection(ntchisiAdapter.getPosition(farmer.traditionalAuthority))
+                "Nkhatabay" ->
+                    spTA.setSelection(nkhatabayAdapter.getPosition(farmer.traditionalAuthority))
+                "Rumphi" ->
+                    spTA.setSelection(rumphiAdapter.getPosition(farmer.traditionalAuthority))
+                "Mzimba" ->
+                    spTA.setSelection(mzimbaAdapter.getPosition(farmer.traditionalAuthority))
+
+                else -> { // Note the block
+                    // do nothing
+                }
+            }
 
         }
 
 
         /***************** District options Spinner *********************************/
-
-
-        /* ------------------Finally, data bind the spinner TA object with adapter --------------- */
-
-        // Finally, data bind the spinner object with adapter
-
-
-        //val spinnerPosition = districtAdapter.getPosition(farmer.district)
-        //spDistrict.setSelection(spinnerPosition)
-
-
-        /* ------------------Finally, data bind the spinner TA object with adapter --------------- */
-
-
-        /***************** TA options Spinner **************************************/
 
         /************************** Set phone **************************************/
 
