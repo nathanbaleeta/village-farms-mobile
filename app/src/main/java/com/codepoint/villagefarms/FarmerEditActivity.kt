@@ -2,17 +2,25 @@ package com.codepoint.villagefarms
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.TextView
+import android.text.InputFilter
+import android.widget.*
 import com.codepoint.villagefarms.models.Farmer
-import com.codepoint.villagefarms.models.Sale
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+
+
+
 class FarmerEditActivity : AppCompatActivity() {
+
+    // Declare Views
+    lateinit var spDistrict: Spinner
+
+    lateinit var txtPhone: EditText
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +43,22 @@ class FarmerEditActivity : AppCompatActivity() {
 
         //set back button
         actionbar!!.setDisplayHomeAsUpEnabled(true)
+
+        // Initialize Views
+        spDistrict = findViewById(R.id.spDistrict)
+
+        txtPhone = findViewById(R.id.txtPhone)
+
+
+
+        /***************** Verify phone number doesn't exceed 12 digits  ****************/
+        txtPhone.setFilters(
+            arrayOf<InputFilter>(
+                InputFilter.LengthFilter(12)
+
+            )
+        )
+        /***************** Verify phone number doesn't exceed 12 digits ****************/
 
         /************************** Add Event Listener object *************************/
 
@@ -146,6 +170,27 @@ class FarmerEditActivity : AppCompatActivity() {
         }
 
         /************************** Set Marital status *************************/
+
+        /***************** District options Spinner *********************************/
+        // Initializing a String Array
+        val districtList = resources.getStringArray(R.array.districtList)
+
+        // Initializing an ArrayAdapter for district
+        var districtAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, districtList)
+
+        // Finally, data bind the spinner object with adapter
+        spDistrict.adapter = districtAdapter
+
+        // Set district to value retrieved from Fire base
+        // Set selected item of spinner by value, not by position
+        if (farmer.district != null) {
+            val spinnerPosition = districtAdapter.getPosition(farmer.district)
+            spDistrict.setSelection(spinnerPosition)
+        }
+
+
+        /***************** District options Spinner *********************************/
 
         /************************** Set phone *****************************/
 

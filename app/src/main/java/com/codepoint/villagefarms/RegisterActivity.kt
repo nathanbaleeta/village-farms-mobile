@@ -124,7 +124,7 @@ class RegisterActivity : AppCompatActivity() {
         )
         /***************** Verify phone number doesn't exceed 12 digits ****************/
 
-        /***************** District options Spinner ****************/
+        /***************** District options Spinner *********************************/
 
         // Initializing a String Array
         val districtList = resources.getStringArray(R.array.districtList)
@@ -169,8 +169,7 @@ class RegisterActivity : AppCompatActivity() {
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, mzimbaTAList)
 
         // Finally, data bind the spinner object with adapter
-        //spDistrict.adapter = districtAdapter
-        spDistrict.setAdapter(districtAdapter)
+        spDistrict.adapter = districtAdapter
 
         spDistrict.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -188,19 +187,19 @@ class RegisterActivity : AppCompatActivity() {
                 // Set value for Traditional authority based on district selected
                 val spinnerValue = spDistrict.selectedItem.toString()
                 if (spinnerValue == "Chitipa") {
-                    spTraditionalAuthority.setAdapter(chitipaAdapter)
+                    spTraditionalAuthority.adapter = chitipaAdapter
                     spTradtionalAuthority.setSelection(position)
                 } else if (spinnerValue == "Ntchisi") {
-                    spTraditionalAuthority.setAdapter(ntchisiAdapter)
+                    spTraditionalAuthority.adapter = ntchisiAdapter
                     spTradtionalAuthority.setSelection(position)
                 } else if (spinnerValue == "Nkhatabay") {
-                    spTraditionalAuthority.setAdapter(nkhatabayAdapter)
+                    spTraditionalAuthority.adapter = nkhatabayAdapter
                     spTradtionalAuthority.setSelection(position)
                 } else if (spinnerValue == "Rumphi") {
-                    spTraditionalAuthority.setAdapter(rumphiAdapter)
+                    spTraditionalAuthority.adapter = rumphiAdapter
                     spTradtionalAuthority.setSelection(position)
                 }  else if (spinnerValue == "Mzimba") {
-                    spTraditionalAuthority.setAdapter(mzimbaAdapter)
+                    spTraditionalAuthority.adapter = mzimbaAdapter
                     spTradtionalAuthority.setSelection(position)
                 }
             }
@@ -243,7 +242,6 @@ class RegisterActivity : AppCompatActivity() {
         }
 
 
-
         /***************** Year established Date picker ****************/
 
         buttonSave = findViewById(R.id.btnSaveFarmer)
@@ -262,7 +260,6 @@ class RegisterActivity : AppCompatActivity() {
                     title += "Mrs"
                 }
             }
-
 
             /***************** Title radio group ****************/
 
