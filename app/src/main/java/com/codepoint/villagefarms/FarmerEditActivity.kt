@@ -128,6 +128,25 @@ class FarmerEditActivity : AppCompatActivity() {
 
         /************************** Set Gender *************************/
 
+        /************************** Set Marital status *************************/
+
+        // Text view for Marital status group
+        val rgMaritalStatus = findViewById<RadioGroup>(R.id.rg_maritalStatus)
+
+        // when replaces the switch operator of C-like languages: supports multiple cases
+        when (farmer.maritalStatus) {
+            // switch on/ off correct button based on input
+            "Married" -> rgMaritalStatus.check(R.id.rb_married)
+            "Single" -> rgMaritalStatus.check(R.id.rb_single)
+            "Widowed" -> rgMaritalStatus.check(R.id.rb_widowed)
+            "Separated" -> rgMaritalStatus.check(R.id.rb_separated)
+            else -> { // Note the block
+                // do nothing
+            }
+        }
+
+        /************************** Set Marital status *************************/
+
         /************************** Set phone *****************************/
 
         // Text view for pone
@@ -137,6 +156,42 @@ class FarmerEditActivity : AppCompatActivity() {
         phone.text = farmer.phone
 
         /************************** Set phone ***********************************/
+
+        /************************** Set MM Registered *************************/
+
+        // Text view for Marital status group
+        val rgMMRegistered = findViewById<RadioGroup>(R.id.rg_MMRegistered)
+
+        // when replaces the switch operator of C-like languages: supports multiple cases
+        when (farmer.mmRegistered) {
+            // switch on/ off correct button based on input
+            "Yes" -> rgMMRegistered.check(R.id.rb_registered_yes)
+            "No" -> rgMMRegistered.check(R.id.rb_registered_yes)
+
+            else -> { // Note the block
+                // do nothing
+            }
+        }
+
+        /************************** Set MM Registered *************************/
+
+        /************************** Set MM Payments ***************************/
+
+        // Text view for Marital status group
+        val rgMMPayments = findViewById<RadioGroup>(R.id.rg_MMPayment)
+
+        // when replaces the switch operator of C-like languages: supports multiple cases
+        when (farmer.mmPayment) {
+            // switch on/ off correct button based on input
+            "Yes" -> rgMMPayments.check(R.id.rb_payment_yes)
+            "No" -> rgMMPayments.check(R.id.rb_payment_no)
+
+            else -> { // Note the block
+                // do nothing
+            }
+        }
+
+        /************************** Set MM Payments ****************************/
 
         /************************** Set Year Opened *****************************/
 
