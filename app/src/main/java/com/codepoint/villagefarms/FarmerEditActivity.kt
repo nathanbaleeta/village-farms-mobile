@@ -11,15 +11,13 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 
-
-
 class FarmerEditActivity : AppCompatActivity() {
 
     // Declare Views
     lateinit var spDistrict: Spinner
+    lateinit var spTA: Spinner
 
     lateinit var txtPhone: EditText
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,9 +44,10 @@ class FarmerEditActivity : AppCompatActivity() {
 
         // Initialize Views
         spDistrict = findViewById(R.id.spDistrict)
+        spTA = findViewById(R.id.spTraditionalAuthority)
+
 
         txtPhone = findViewById(R.id.txtPhone)
-
 
 
         /***************** Verify phone number doesn't exceed 12 digits  ****************/
@@ -171,6 +170,48 @@ class FarmerEditActivity : AppCompatActivity() {
 
         /************************** Set Marital status *************************/
 
+        /***************** TA options Spinner **************************************/
+        // Initializing a String Array for Chitipa district
+        val chitipaTAList = resources.getStringArray(R.array.district_chitipa)
+
+        // Initializing a String Array for Ntchisi district
+        val ntchisiTAList = resources.getStringArray(R.array.district_ntchisi)
+
+        // Initializing a String Array for Nkhatabay district
+        val nkhatabayTAList = resources.getStringArray(R.array.district_nkhatabay)
+
+        // Initializing a String Array for Rumphi district
+        val rumphiTAList = resources.getStringArray(R.array.district_rumphi)
+
+        // Initializing a String Array for Rumphi district
+        val mzimbaTAList = resources.getStringArray(R.array.district_mzimba)
+
+
+        /* ------------------Initializing an ArrayAdapters for TA--------------- */
+
+        // Initializing an ArrayAdapter For Chitipa TA list
+        var chitipaAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, chitipaTAList)
+
+        // Initializing an ArrayAdapter For Ntchisi TA list
+        var ntchisiAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, ntchisiTAList)
+
+        // Initializing an ArrayAdapter For Nkhatabay TA list
+        var nkhatabayAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, nkhatabayTAList)
+
+        // Initializing an ArrayAdapter For Rumphi TA list
+        var rumphiAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, rumphiTAList)
+
+        // Initializing an ArrayAdapter For Mzimba TA list
+        var mzimbaAdapter =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, mzimbaTAList)
+
+        /* ------------------Initializing an ArrayAdapters for TA--------------- */
+
+
         /***************** District options Spinner *********************************/
         // Initializing a String Array
         val districtList = resources.getStringArray(R.array.districtList)
@@ -182,17 +223,50 @@ class FarmerEditActivity : AppCompatActivity() {
         // Finally, data bind the spinner object with adapter
         spDistrict.adapter = districtAdapter
 
-        // Set district to value retrieved from Fire base
-        // Set selected item of spinner by value, not by position
+        //spTA.adapter = chitipaAdapter
+
+
+
+        // Set spinner to value retrieved from Fire base: set selected item of spinner by value, not by position
         if (farmer.district != null) {
             val spinnerPosition = districtAdapter.getPosition(farmer.district)
             spDistrict.setSelection(spinnerPosition)
+
+            when (farmer.district) {
+                // activate TA list based on input
+                "Chitipa" -> spTA.adapter = chitipaAdapter
+                "Ntchisi" -> spTA.adapter = ntchisiAdapter
+                "Nkhatabay" -> spTA.adapter = nkhatabayAdapter
+                "Rumphi" -> spTA.adapter = rumphiAdapter
+                "Mzimba" -> spTA.adapter = mzimbaAdapter
+
+                else -> { // Note the block
+                    // do nothing
+                }
+            }
+
+
         }
 
 
         /***************** District options Spinner *********************************/
 
-        /************************** Set phone *****************************/
+
+        /* ------------------Finally, data bind the spinner TA object with adapter --------------- */
+
+        // Finally, data bind the spinner object with adapter
+
+
+        //val spinnerPosition = districtAdapter.getPosition(farmer.district)
+        //spDistrict.setSelection(spinnerPosition)
+
+
+        /* ------------------Finally, data bind the spinner TA object with adapter --------------- */
+
+
+        /***************** TA options Spinner **************************************/
+
+        /************************** Set phone **************************************/
 
         // Text view for pone
         val phone = findViewById<TextView>(R.id.txtPhone)
@@ -291,6 +365,7 @@ class FarmerEditActivity : AppCompatActivity() {
 
 
     }
+
 
     // Back arrow click event to go back to the parent Activity
     override fun onSupportNavigateUp(): Boolean {
