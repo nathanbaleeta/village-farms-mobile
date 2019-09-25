@@ -24,7 +24,7 @@ class FarmerAdapter(private val farmerList:ArrayList<Farmer>):RecyclerView.Adapt
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.txtName?.text = farmerList[position].firstname + " " + farmerList[position].lastname
-        holder.txtLocation?.text = farmerList[position].district + ", " + farmerList[position].traditionalAuthority
+        holder.txtLocation?.text = farmerList[position].traditionalAuthority + ", " + farmerList[position].district
         holder.txtPhone?.text = farmerList[position].phone
 
         // retrieve position of list item

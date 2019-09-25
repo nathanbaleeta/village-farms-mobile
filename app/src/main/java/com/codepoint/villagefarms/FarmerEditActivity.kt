@@ -3,12 +3,26 @@ package com.codepoint.villagefarms
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputFilter
+import android.view.View
 import android.widget.*
 import com.codepoint.villagefarms.models.Farmer
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_register.*
+import android.widget.Toast
+import android.view.MotionEvent
+import android.view.View.OnTouchListener
+import android.R.string.no
+import android.R.attr.name
+import android.app.DatePickerDialog
+import android.support.v4.app.SupportActivity
+import android.support.v4.app.SupportActivity.ExtraData
+import android.support.v4.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class FarmerEditActivity : AppCompatActivity() {
@@ -59,6 +73,7 @@ class FarmerEditActivity : AppCompatActivity() {
         )
         /***************** Verify phone number doesn't exceed 12 digits ****************/
 
+
         /************************** Add Event Listener object *************************/
 
         // Get a reference to given sales object
@@ -73,8 +88,6 @@ class FarmerEditActivity : AppCompatActivity() {
 
                 // Extract object ID key from Fire base and update object
                 farmer?.objectId = ds.key
-
-
 
                 return populateUI(farmer!!)
 
@@ -214,7 +227,6 @@ class FarmerEditActivity : AppCompatActivity() {
         /***************** TA options Spinner **************************************/
 
 
-
         /***************** District options Spinner *********************************/
         // Initializing a String Array
         val districtList = resources.getStringArray(R.array.districtList)
@@ -227,7 +239,6 @@ class FarmerEditActivity : AppCompatActivity() {
         spDistrict.adapter = districtAdapter
 
         /* ------------------Finally, data bind the spinner TA spinner object with adapter --------------- */
-
 
         // Set spinner to value retrieved from Fire base: set selected item of spinner by value, not by position
         if (farmer.district != null) {
@@ -283,6 +294,175 @@ class FarmerEditActivity : AppCompatActivity() {
         }
 
 
+        /* ------------------ Event listener for district spinner --------------- */
+
+
+        // District spinner avoids onItemSelectedListener since it listens to
+        // activity initialization events and affects data quality. So instead,
+        // uses onTouchListener and embeds onItemSelectedListener
+        spDistrict.setOnTouchListener(object : View.OnTouchListener {
+            override fun onTouch(v: View, event: MotionEvent): Boolean {
+                if (event.action == MotionEvent.ACTION_UP) {
+
+                    /* District Spinner event listener uses onTouchListener and embeds onItemSelectedListener  */
+
+                    spDistrict.onItemSelectedListener =
+                        object : AdapterView.OnItemSelectedListener {
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+
+                            override fun onItemSelected(
+                                parent: AdapterView<*>?,
+                                view: View?,
+                                position: Int,
+                                id: Long
+                            ) {
+                                // Set value for district
+                                spDistrict.setSelection(position)
+
+
+
+                                // Set value for Traditional authority based on district selected
+                                val spinnerValue = spDistrict.selectedItem.toString()
+                                if (spinnerValue == "Chitipa") {
+                                    spTA.adapter = chitipaAdapter
+
+                                    /* Use event listener to listen and set TA position to any from Chitipa */
+                                    spTA.onItemSelectedListener =
+                                        object : AdapterView.OnItemSelectedListener {
+                                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                                            }
+
+                                            override fun onItemSelected(
+                                                parent: AdapterView<*>?,
+                                                view: View?,
+                                                position: Int,
+                                                id: Long
+                                            ) {
+                                                // Set value for district
+                                                spTA.setSelection(position)
+
+
+
+                                            }
+                                        }
+                                    /* Use event listener to listen and set TA position to any from Chitipa */
+
+                                } else if (spinnerValue == "Ntchisi") {
+                                    spTA.adapter = ntchisiAdapter
+
+                                    /* Use event listener to listen and set TA position to any from Ntchisi */
+                                    spTA.onItemSelectedListener =
+                                        object : AdapterView.OnItemSelectedListener {
+                                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                                            }
+
+                                            override fun onItemSelected(
+                                                parent: AdapterView<*>?,
+                                                view: View?,
+                                                position: Int,
+                                                id: Long
+                                            ) {
+                                                // Set value for district
+                                                spTA.setSelection(position)
+
+
+
+                                            }
+                                        }
+                                    /* Use event listener to listen and set TA position to any from Ntchisi */
+
+                                } else if (spinnerValue == "Nkhatabay") {
+                                    spTA.adapter = nkhatabayAdapter
+
+                                    /* Use event listener to listen and set TA position to any from Nkhatabay */
+                                    spTA.onItemSelectedListener =
+                                        object : AdapterView.OnItemSelectedListener {
+                                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                                            }
+
+                                            override fun onItemSelected(
+                                                parent: AdapterView<*>?,
+                                                view: View?,
+                                                position: Int,
+                                                id: Long
+                                            ) {
+                                                // Set value for district
+                                                spTA.setSelection(position)
+
+
+
+                                            }
+                                        }
+                                    /* Use event listener to listen and set TA position to any from Nkhatabay */
+
+                                } else if (spinnerValue == "Rumphi") {
+                                    spTA.adapter = rumphiAdapter
+
+                                    /* Use event listener to listen and set TA position to any from Rumphi */
+                                    spTA.onItemSelectedListener =
+                                        object : AdapterView.OnItemSelectedListener {
+                                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                                            }
+
+                                            override fun onItemSelected(
+                                                parent: AdapterView<*>?,
+                                                view: View?,
+                                                position: Int,
+                                                id: Long
+                                            ) {
+                                                // Set value for district
+                                                spTA.setSelection(position)
+
+
+
+                                            }
+                                        }
+                                    /* Use event listener to listen and set TA position to any from Rumphi */
+
+                                } else if (spinnerValue == "Mzimba") {
+                                    spTA.adapter = mzimbaAdapter
+
+                                    /* Use event listener to listen and set TA position to any from Mzimba */
+                                    spTA.onItemSelectedListener =
+                                        object : AdapterView.OnItemSelectedListener {
+                                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                                            }
+
+                                            override fun onItemSelected(
+                                                parent: AdapterView<*>?,
+                                                view: View?,
+                                                position: Int,
+                                                id: Long
+                                            ) {
+                                                // Set value for district
+                                                spTA.setSelection(position)
+
+
+
+                                            }
+                                        }
+                                    /* Use event listener to listen and set TA position to any from Mzimba */
+
+                                }
+
+
+                            }
+                        }
+
+
+                    /* District Spinner event listener uses onTouchListener and embeds onItemSelectedListener  */
+
+
+                }
+                return false
+            }
+        })
+
+
+        /* ------------------ Event listener for district spinner --------------- */
+
+
         /***************** District options Spinner *********************************/
 
         /************************** Set phone **************************************/
@@ -332,6 +512,7 @@ class FarmerEditActivity : AppCompatActivity() {
         /************************** Set MM Payments ****************************/
 
         /************************** Set Year Opened *****************************/
+        /************************************************************************/
 
         // Text view for Year opened
         val opened = findViewById<TextView>(R.id.txtYearOpened)
@@ -339,7 +520,50 @@ class FarmerEditActivity : AppCompatActivity() {
         //setText for year opened
         opened.text = farmer.yearOpened
 
+
+        /***************** Year established Date picker ****************/
+        // Calendar set to the current date
+        var cal = Calendar.getInstance()
+        
+
+        //rollback 90 days
+        //cal.add(Calendar.DAY_OF_YEAR, -90)
+
+        val dateSetListener =
+            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                cal.set(Calendar.YEAR, year)
+                cal.set(Calendar.MONTH, monthOfYear)
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+                val myFormat = "yyyy-MM-dd" // mention the format you need
+                val sdf = SimpleDateFormat(myFormat, Locale.US)
+                //val date = sdf.format
+                val date = sdf.format(farmer.yearOpened)
+
+
+                // Display Selected date in text input
+                txtYearOpened.setText(date)
+            }
+
+
+        txtYearOpened.setOnClickListener {
+            val dialog = DatePickerDialog(
+                this, dateSetListener,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)
+            )
+            // Date of farm opened cannot be in future; and can't be less than 3 months(=7776000000 ms)
+            //dialog.datePicker.maxDate = System.currentTimeMillis() -  7776000000
+            dialog.show()
+        }
+
+
+        /***************** Year established Date picker *************************/
+
+
         /************************** Set Year Opened *****************************/
+        /************************************************************************/
 
         /************************** Set Acreage *********************************/
 
