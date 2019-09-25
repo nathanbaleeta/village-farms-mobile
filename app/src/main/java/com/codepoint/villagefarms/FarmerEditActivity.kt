@@ -11,18 +11,18 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_register.*
-import android.widget.Toast
 import android.view.MotionEvent
-import android.view.View.OnTouchListener
-import android.R.string.no
-import android.R.attr.name
 import android.app.DatePickerDialog
+import java.text.SimpleDateFormat
+import java.util.*
 import android.support.v4.app.SupportActivity
 import android.support.v4.app.SupportActivity.ExtraData
 import android.support.v4.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import java.text.SimpleDateFormat
-import java.util.*
+
+
+
+
 
 
 class FarmerEditActivity : AppCompatActivity() {
@@ -522,12 +522,17 @@ class FarmerEditActivity : AppCompatActivity() {
 
 
         /***************** Year established Date picker ****************/
+
+        val myFormat = "dd-MM-yyyy" // mention the format you need
+        val sdf = SimpleDateFormat(myFormat)
+
         // Calendar set to the current date
         var cal = Calendar.getInstance()
-        
 
-        //rollback 90 days
-        //cal.add(Calendar.DAY_OF_YEAR, -90)
+        //val newDate = sdf.parse("10-02-2011")
+
+        // Create a date from string; and set to calendar milliseconds
+        cal.time = sdf.parse(farmer.yearOpened)
 
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -535,11 +540,8 @@ class FarmerEditActivity : AppCompatActivity() {
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
-                val myFormat = "yyyy-MM-dd" // mention the format you need
-                val sdf = SimpleDateFormat(myFormat, Locale.US)
-                //val date = sdf.format
-                val date = sdf.format(farmer.yearOpened)
-
+                // Display farmer.yearOpened date in calendar dialog; from date to string object
+                val date = sdf.format(cal.time)
 
                 // Display Selected date in text input
                 txtYearOpened.setText(date)
@@ -549,12 +551,13 @@ class FarmerEditActivity : AppCompatActivity() {
         txtYearOpened.setOnClickListener {
             val dialog = DatePickerDialog(
                 this, dateSetListener,
+
                 cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH)
             )
             // Date of farm opened cannot be in future; and can't be less than 3 months(=7776000000 ms)
-            //dialog.datePicker.maxDate = System.currentTimeMillis() -  7776000000
+            dialog.datePicker.maxDate = System.currentTimeMillis() - 7776000000
             dialog.show()
         }
 

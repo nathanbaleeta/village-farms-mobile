@@ -208,11 +208,17 @@ class RegisterActivity : AppCompatActivity() {
         /***************** District Status options Spinner ****************/
 
         /***************** Year established Date picker ****************/
+
+        val myFormat = "dd-MM-yyyy" // mention the format you need
+        //val sdf = SimpleDateFormat(myFormat, Locale.US)
+        val sdf = SimpleDateFormat(myFormat)
+
         // Calendar set to the current date
         var cal = Calendar.getInstance()
 
         //rollback 90 days
         cal.add(Calendar.DAY_OF_YEAR, -90)
+
 
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -220,8 +226,6 @@ class RegisterActivity : AppCompatActivity() {
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
-                val myFormat = "yyyy-MM-dd" // mention the format you need
-                val sdf = SimpleDateFormat(myFormat, Locale.US)
                 val date = sdf.format(cal.time)
 
                 // Display Selected date in text input
@@ -237,7 +241,7 @@ class RegisterActivity : AppCompatActivity() {
                 cal.get(Calendar.DAY_OF_MONTH)
             )
             // Date of farm opened cannot be in future; and can't be less than 3 months(=7776000000 ms)
-            dialog.datePicker.maxDate = System.currentTimeMillis() -  7776000000
+            dialog.datePicker.maxDate = System.currentTimeMillis() - 7776000000
             dialog.show()
         }
 
