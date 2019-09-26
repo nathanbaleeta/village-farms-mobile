@@ -727,8 +727,8 @@ class FarmerEditActivity : AppCompatActivity() {
         mmPayment: String,
         farmer: Farmer
     ) {
-        val firstname = txtFirstname.text.toString().toTitleCase().trim()
-        val lastname = txtLastname.text.toString().toTitleCase().trim()
+        val firstname = txtFirstname.text.toString().toLowerCase().toTitleCase().trim()
+        val lastname = txtLastname.text.toString().toLowerCase().toTitleCase().trim()
 
         val district = spDistrict.selectedItem.toString().capitalize().trim()
         val traditionalAuthority = spTA.selectedItem.toString().capitalize().trim()
@@ -818,7 +818,6 @@ class FarmerEditActivity : AppCompatActivity() {
 
             // Update farmer record in Fire base
             ref.child(farmerId).setValue(farmer)
-            //ref.child("farmers").child(farmerId).updateChildren
 
             // Clear registration form after saving farmer
             txtFirstname.setText("")

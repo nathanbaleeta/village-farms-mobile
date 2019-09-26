@@ -308,7 +308,6 @@
                                     android:id="@+id/info_text_MMRegistered"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Yes"
                                     android:textColor="#3B5999"
                                     android:padding="10dp"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
@@ -333,7 +332,6 @@
                                 android:layout_weight="1">
 
                             <TextView
-                                    android:id="@+id/info_text_MMPayments"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Payments via MM:"
@@ -348,16 +346,16 @@
                                 android:layout_weight="1">
 
                             <TextView
-                                    android:id="@+id/info_text_MMPayments2"
+                                    android:id="@+id/info_text_MMPayments"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="No"
                                     android:textColor="#3B5999"
                                     android:padding="10dp"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
                         </RelativeLayout>
                     </LinearLayout>
+
 
 
 
@@ -382,9 +380,6 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     card_view:cardCornerRadius="4dp">
-
-
-
 
 
                 <LinearLayout
