@@ -17,10 +17,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-
-
-
-
 class RegisterActivity : AppCompatActivity() {
 
     // Declare Views
@@ -209,7 +205,7 @@ class RegisterActivity : AppCompatActivity() {
 
         /***************** Year established Date picker ****************/
 
-        val myFormat = "dd-MM-yyyy" // mention the format you need
+        val myFormat = "yyyy-MM-dd" // mention the format you need
         //val sdf = SimpleDateFormat(myFormat, Locale.US)
         val sdf = SimpleDateFormat(myFormat)
 
@@ -217,7 +213,7 @@ class RegisterActivity : AppCompatActivity() {
         var cal = Calendar.getInstance()
 
         //rollback 90 days
-        cal.add(Calendar.DAY_OF_YEAR, -90)
+        //cal.add(Calendar.DAY_OF_YEAR, -90)
 
 
         val dateSetListener =
@@ -338,7 +334,7 @@ class RegisterActivity : AppCompatActivity() {
         val yearOpened = txtYearOpened.text.toString().trim()
 
         // Capture datetime when expense was created and store in created
-        val sdf = SimpleDateFormat("dd/M/yyyy, hh:mm:ss")
+        val sdf = SimpleDateFormat("yyyy-MM-dd, hh:mm:ss")
         val created = sdf.format(Date())
 
         // Implement Number format exception in try catch blocks to avoid app crashing

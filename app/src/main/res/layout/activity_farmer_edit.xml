@@ -476,7 +476,7 @@
                 android:hint="Year 3"/>
 
         <Button
-                android:id="@+id/btnSaveFarmer"
+                android:id="@+id/btnUpdateFarmer"
                 android:layout_margin="18dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

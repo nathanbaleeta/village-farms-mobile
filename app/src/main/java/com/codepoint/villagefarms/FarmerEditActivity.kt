@@ -13,31 +13,48 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_register.*
 import android.view.MotionEvent
 import android.app.DatePickerDialog
+import android.support.design.widget.Snackbar
 import java.text.SimpleDateFormat
 import java.util.*
-import android.support.v4.app.SupportActivity
-import android.support.v4.app.SupportActivity.ExtraData
-import android.support.v4.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
-
-
-
 
 
 class FarmerEditActivity : AppCompatActivity() {
 
     // Declare Views
-    lateinit var spDistrict: Spinner
-    lateinit var spTA: Spinner
+    private lateinit var rgTitle: RadioGroup
+    private lateinit var rbMr: RadioButton
+    private lateinit var rbMs: RadioButton
+    private lateinit var rbMrs: RadioButton
 
-    lateinit var txtPhone: EditText
+    private lateinit var rgMaritalStatus: RadioGroup
+    private lateinit var rbMarried: RadioButton
+    private lateinit var rbSingle: RadioButton
+    private lateinit var rbWidowed: RadioButton
+    private lateinit var rbSeparated: RadioButton
+
+    private lateinit var rgSex: RadioGroup
+    private lateinit var rbMale: RadioButton
+    private lateinit var rbFemale: RadioButton
+
+    private lateinit var rgMMRegistered: RadioGroup
+    private lateinit var rbRegisteredYes: RadioButton
+    private lateinit var rbRegisteredNo: RadioButton
+
+    private lateinit var rgMMPayment: RadioGroup
+    private lateinit var rbPaymentYes: RadioButton
+    private lateinit var rbPaymentNo: RadioButton
+
+    private lateinit var spDistrict: Spinner
+    private lateinit var spTA: Spinner
+
+    private lateinit var txtPhone: EditText
+
+    private lateinit var buttonUpdate: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_farmer_edit)
-
 
         // Get data from intent
         val intent = intent
@@ -45,10 +62,8 @@ class FarmerEditActivity : AppCompatActivity() {
         val firstName = intent.getStringExtra("firstName")
         val lastName = intent.getStringExtra("lastName")
 
-
         //actionbar
         val actionbar = supportActionBar
-
 
         //to change title of activity programmatically to full name
         this.title = firstName.plus(" ").plus(lastName)
@@ -60,7 +75,6 @@ class FarmerEditActivity : AppCompatActivity() {
         spDistrict = findViewById(R.id.spDistrict)
         spTA = findViewById(R.id.spTraditionalAuthority)
 
-
         txtPhone = findViewById(R.id.txtPhone)
 
 
@@ -71,6 +85,7 @@ class FarmerEditActivity : AppCompatActivity() {
 
             )
         )
+
         /***************** Verify phone number doesn't exceed 12 digits ****************/
 
 
@@ -128,7 +143,6 @@ class FarmerEditActivity : AppCompatActivity() {
 
         /************************** Set last name *************************/
 
-
         /************************** Set Title *************************/
 
         // Text view for title
@@ -167,15 +181,15 @@ class FarmerEditActivity : AppCompatActivity() {
         /************************** Set Marital status *************************/
 
         // Text view for Marital status group
-        val rgMaritalStatus = findViewById<RadioGroup>(R.id.rg_maritalStatus)
+        val maritalStatus = findViewById<RadioGroup>(R.id.rg_maritalStatus)
 
         // when replaces the switch operator of C-like languages: supports multiple cases
         when (farmer.maritalStatus) {
             // switch on/ off correct button based on input
-            "Married" -> rgMaritalStatus.check(R.id.rb_married)
-            "Single" -> rgMaritalStatus.check(R.id.rb_single)
-            "Widowed" -> rgMaritalStatus.check(R.id.rb_widowed)
-            "Separated" -> rgMaritalStatus.check(R.id.rb_separated)
+            "Married" -> maritalStatus.check(R.id.rb_married)
+            "Single" -> maritalStatus.check(R.id.rb_single)
+            "Widowed" -> maritalStatus.check(R.id.rb_widowed)
+            "Separated" -> maritalStatus.check(R.id.rb_separated)
             else -> { // Note the block
                 // do nothing
             }
@@ -295,8 +309,6 @@ class FarmerEditActivity : AppCompatActivity() {
 
 
         /* ------------------ Event listener for district spinner --------------- */
-
-
         // District spinner avoids onItemSelectedListener since it listens to
         // activity initialization events and affects data quality. So instead,
         // uses onTouchListener and embeds onItemSelectedListener
@@ -321,7 +333,6 @@ class FarmerEditActivity : AppCompatActivity() {
                                 spDistrict.setSelection(position)
 
 
-
                                 // Set value for Traditional authority based on district selected
                                 val spinnerValue = spDistrict.selectedItem.toString()
                                 if (spinnerValue == "Chitipa") {
@@ -341,7 +352,6 @@ class FarmerEditActivity : AppCompatActivity() {
                                             ) {
                                                 // Set value for district
                                                 spTA.setSelection(position)
-
 
 
                                             }
@@ -367,7 +377,6 @@ class FarmerEditActivity : AppCompatActivity() {
                                                 spTA.setSelection(position)
 
 
-
                                             }
                                         }
                                     /* Use event listener to listen and set TA position to any from Ntchisi */
@@ -389,7 +398,6 @@ class FarmerEditActivity : AppCompatActivity() {
                                             ) {
                                                 // Set value for district
                                                 spTA.setSelection(position)
-
 
 
                                             }
@@ -415,7 +423,6 @@ class FarmerEditActivity : AppCompatActivity() {
                                                 spTA.setSelection(position)
 
 
-
                                             }
                                         }
                                     /* Use event listener to listen and set TA position to any from Rumphi */
@@ -437,7 +444,6 @@ class FarmerEditActivity : AppCompatActivity() {
                                             ) {
                                                 // Set value for district
                                                 spTA.setSelection(position)
-
 
 
                                             }
@@ -478,13 +484,13 @@ class FarmerEditActivity : AppCompatActivity() {
         /************************** Set MM Registered *************************/
 
         // Text view for Marital status group
-        val rgMMRegistered = findViewById<RadioGroup>(R.id.rg_MMRegistered)
+        val mMRegistered = findViewById<RadioGroup>(R.id.rg_MMRegistered)
 
         // when replaces the switch operator of C-like languages: supports multiple cases
         when (farmer.mmRegistered) {
             // switch on/ off correct button based on input
-            "Yes" -> rgMMRegistered.check(R.id.rb_registered_yes)
-            "No" -> rgMMRegistered.check(R.id.rb_registered_yes)
+            "Yes" -> mMRegistered.check(R.id.rb_registered_yes)
+            "No" -> mMRegistered.check(R.id.rb_registered_yes)
 
             else -> { // Note the block
                 // do nothing
@@ -496,13 +502,13 @@ class FarmerEditActivity : AppCompatActivity() {
         /************************** Set MM Payments ***************************/
 
         // Text view for Marital status group
-        val rgMMPayments = findViewById<RadioGroup>(R.id.rg_MMPayment)
+        val mMPayments = findViewById<RadioGroup>(R.id.rg_MMPayment)
 
         // when replaces the switch operator of C-like languages: supports multiple cases
         when (farmer.mmPayment) {
             // switch on/ off correct button based on input
-            "Yes" -> rgMMPayments.check(R.id.rb_payment_yes)
-            "No" -> rgMMPayments.check(R.id.rb_payment_no)
+            "Yes" -> mMPayments.check(R.id.rb_payment_yes)
+            "No" -> mMPayments.check(R.id.rb_payment_no)
 
             else -> { // Note the block
                 // do nothing
@@ -523,13 +529,11 @@ class FarmerEditActivity : AppCompatActivity() {
 
         /***************** Year established Date picker ****************/
 
-        val myFormat = "dd-MM-yyyy" // mention the format you need
+        val myFormat = "yyyy-MM-dd" // mention the format you need
         val sdf = SimpleDateFormat(myFormat)
 
         // Calendar set to the current date
         var cal = Calendar.getInstance()
-
-        //val newDate = sdf.parse("10-02-2011")
 
         // Create a date from string; and set to calendar milliseconds
         cal.time = sdf.parse(farmer.yearOpened)
@@ -609,7 +613,228 @@ class FarmerEditActivity : AppCompatActivity() {
 
         /************************** Set Year 3 ********************************/
 
+        buttonUpdate = findViewById(R.id.btnUpdateFarmer)
 
+        // Attach a click listener to save button
+        buttonUpdate.setOnClickListener {
+
+            /***************** Title radio group ****************/
+            var title = ""
+
+            rgTitle = findViewById(R.id.rg_title)
+            rbMr = findViewById(R.id.rb_mr)
+            rbMs = findViewById(R.id.rb_miss)
+            rbMrs = findViewById(R.id.rb_mrs)
+
+
+            if (rgTitle.checkedRadioButtonId != -1) {
+                if (rbMr.isChecked) {
+                    title += "Mr"
+                } else if (rbMs.isChecked) {
+                    title += "Ms"
+                } else if (rbMrs.isChecked) {
+                    title += "Mrs"
+                }
+            }
+
+
+            /***************** Title radio group ****************/
+
+            /***************** Sex radio group ****************/
+            var sex = ""
+
+            rgSex = findViewById(R.id.rg_sex)
+            rbMale = findViewById(R.id.rb_male)
+            rbFemale = findViewById(R.id.rb_female)
+
+            if (rgSex.checkedRadioButtonId != -1) {
+                if (rbMale.isChecked) {
+                    sex += "Male"
+                } else if (rbFemale.isChecked) {
+                    sex += "Female"
+                }
+            }
+            /***************** Sex radio group ****************/
+
+            /***************** Marital status radio group ****************/
+            var maritalStatus = ""
+
+            rgMaritalStatus = findViewById(R.id.rg_maritalStatus)
+            rbMarried = findViewById(R.id.rb_married)
+            rbSingle = findViewById(R.id.rb_single)
+            rbWidowed = findViewById(R.id.rb_widowed)
+            rbSeparated = findViewById(R.id.rb_separated)
+
+            if (rgMaritalStatus.checkedRadioButtonId != -1) {
+                if (rbMarried.isChecked) {
+                    maritalStatus += "Married"
+                } else if (rbSingle.isChecked) {
+                    maritalStatus += "Single"
+                } else if (rbWidowed.isChecked) {
+                    maritalStatus += "Widowed"
+                } else if (rbSeparated.isChecked) {
+                    maritalStatus += "Separated"
+                }
+            }
+            /***************** Marital status radio group ****************/
+
+            /***************** MM Registered radio group ****************/
+            var mmRegistered = ""
+
+            rgMMRegistered = findViewById(R.id.rg_MMRegistered)
+            rbRegisteredYes = findViewById(R.id.rb_registered_yes)
+            rbRegisteredNo = findViewById(R.id.rb_registered_no)
+
+
+
+            if (rgMMRegistered.checkedRadioButtonId != -1) {
+                if (rbRegisteredYes.isChecked) {
+                    mmRegistered += "Yes"
+                } else if (rbRegisteredNo.isChecked) {
+                    mmRegistered += "No"
+                }
+            }
+            /***************** MM Registered radio group ****************/
+
+            /***************** MM Payment radio group ****************/
+            var mmPayment = ""
+
+            rgMMPayment = findViewById(R.id.rg_MMPayment)
+            rbPaymentYes = findViewById(R.id.rb_payment_yes)
+            rbPaymentNo = findViewById(R.id.rb_payment_no)
+
+            if (rgMMPayment.checkedRadioButtonId != -1) {
+                if (rbPaymentYes.isChecked) {
+                    mmPayment += "Yes"
+                } else if (rbPaymentNo.isChecked) {
+                    mmPayment += "No"
+                }
+            }
+            /***************** MM Payment radio group ****************/
+
+            updateFarmer(title, sex, maritalStatus, mmRegistered, mmPayment, farmer)
+        }
+    }
+
+    // Method to capitalize every first letter in word: extend String class
+    private fun String.toTitleCase(): String = split(" ").map { it.capitalize() }.joinToString(" ")
+
+    private fun updateFarmer(
+        title: String,
+        sex: String,
+        maritalStatus: String,
+        mmRegistered: String,
+        mmPayment: String,
+        farmer: Farmer
+    ) {
+        val firstname = txtFirstname.text.toString().toTitleCase().trim()
+        val lastname = txtLastname.text.toString().toTitleCase().trim()
+
+        val district = spDistrict.selectedItem.toString().capitalize().trim()
+        val traditionalAuthority = spTA.selectedItem.toString().capitalize().trim()
+        val phone = txtPhone.text.toString().trim()
+        val yearOpened = txtYearOpened.text.toString().trim()
+
+        // Capture datetime when expense was created and store in created
+        val sdf = SimpleDateFormat("yyyy-MM-dd, hh:mm:ss")
+        val created = sdf.format(Date())
+
+        // Implement Number format exception in try catch blocks to avoid app crashing
+        val acreage: Double? = try {
+            java.lang.Double.parseDouble(txtAcreage.text.toString())
+        } catch (e: NumberFormatException) {
+            null
+        }
+
+        val y1: Int? = try {
+            Integer.parseInt(txtYear1.text.toString())
+        } catch (e: NumberFormatException) {
+            null
+        }
+
+        val y2: Int? = try {
+            Integer.parseInt(txtYear2.text.toString())
+        } catch (e: NumberFormatException) {
+            null
+        }
+
+        val y3: Int? = try {
+            Integer.parseInt(txtYear3.text.toString())
+        } catch (e: NumberFormatException) {
+            null
+        }
+
+
+        // Validate registration form before saving to Firebase database
+        if (firstname.isEmpty()) {
+            txtFirstname.error = "Please enter a first name"
+            return
+        } else if (lastname.isEmpty()) {
+            txtLastname.error = "Please enter a Last name"
+            return
+        } else if (phone.isEmpty() || phone.length < 10) {
+            txtPhone.error = "Please enter a valid phone number"
+            return
+        } else if (yearOpened.isEmpty()) {
+            txtYearOpened.error = "Please enter a date"
+            return
+        } else if (acreage == null) {
+            txtAcreage.error = "Please enter a digit"
+            return
+        } else if (y1 == null) {
+            txtYear1.error = "Please enter a digit"
+            return
+        } else if (y2 == null) {
+            txtYear2.error = "Please enter a digit"
+            return
+        } else if (y3 == null) {
+            txtYear3.error = "Please enter a digit"
+            return
+        } else {
+            // Instantiate new farmer using Farmer data class model
+            val farmer = Farmer(
+                firstname,
+                lastname,
+                title,
+                sex,
+                maritalStatus,
+                district,
+                traditionalAuthority,
+                phone,
+                mmRegistered,
+                mmPayment,
+                yearOpened,
+                acreage,
+                y1,
+                y2,
+                y3,
+                created,
+                farmer.objectId!!
+            )
+
+            val ref = FirebaseDatabase.getInstance().getReference("farmers")
+
+            val farmerId = farmer.objectId.toString()
+
+            // Update farmer record in Fire base
+            ref.child(farmerId).setValue(farmer)
+            //ref.child("farmers").child(farmerId).updateChildren
+
+            // Clear registration form after saving farmer
+            txtFirstname.setText("")
+            txtLastname.setText("")
+            txtPhone.setText("")
+            txtYearOpened.setText("")
+            txtAcreage.setText("")
+            txtYear1.setText("")
+            txtYear2.setText("")
+            txtYear3.setText("")
+
+            // Display response message after saving farmer
+            Snackbar.make(scroll_layout, "Farmer was successfully updated", Snackbar.LENGTH_LONG)
+                .setAction("Action", null)
+                .show()
+        }
     }
 
 
