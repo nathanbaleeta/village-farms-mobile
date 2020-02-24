@@ -14,6 +14,13 @@ class AdvancesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_advances, container, false)
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+    }
+
+
+
 
     companion object {
         fun newInstance(): AdvancesFragment = AdvancesFragment()

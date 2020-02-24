@@ -5,9 +5,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 
-import com.codepoint.villagefarms.fragments.AdvancesFragment
 import com.codepoint.villagefarms.fragments.FarmerFragment
-import com.codepoint.villagefarms.fragments.ProcurementFragment
 import com.codepoint.villagefarms.fragments.SalesFragment
 import com.google.firebase.database.FirebaseDatabase
 
@@ -53,6 +51,9 @@ class MainActivity : AppCompatActivity() {
         openFragment(farmerFragment)
 
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+
+
+
 
     }
 }

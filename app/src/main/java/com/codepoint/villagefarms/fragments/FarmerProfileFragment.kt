@@ -7,25 +7,29 @@ import android.view.View
 import android.view.ViewGroup
 import com.codepoint.villagefarms.R
 
-class ProcurementFragment : Fragment() {
+
+
+class FarmerProfileFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        return inflater.inflate(R.layout.fragment_procurement, container, false)
+        return inflater.inflate(R.layout.fragment_farmer_profile, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        //requireActivity().getOnBackPressedDispatcher().addCallback(this)
+
+
+
+
+
     }
 
 
-
-
-        companion object {
-        fun newInstance(): ProcurementFragment = ProcurementFragment()
+    companion object {
+        fun newInstance(): FarmerProfileFragment = FarmerProfileFragment()
     }
-
-
 }
