@@ -55,11 +55,11 @@ class FarmerFragment : Fragment() {
         /************************** RecyclerView Adapter *************************/
 
 
-        // Get a reference to our posts
+        // Get a reference to our farmers
         val ref = FirebaseDatabase.getInstance().getReference("farmers")
 
 
-        // Attach a listener to read the data at our posts reference
+        // Attach a listener to read the data at our farmers reference
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 

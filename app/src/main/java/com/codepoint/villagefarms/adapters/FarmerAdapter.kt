@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.codepoint.villagefarms.FarmerDetailActivity
 
 import com.codepoint.villagefarms.R
-import com.codepoint.villagefarms.SalesDetailActivity
+import com.codepoint.villagefarms.FarmerMenuActivity
 import com.codepoint.villagefarms.models.Farmer
 
 
@@ -34,7 +34,7 @@ class FarmerAdapter(private val farmerList:ArrayList<Farmer>):RecyclerView.Adapt
         holder.itemView.setOnClickListener(View.OnClickListener { v ->
 
 
-            val intent = Intent(v.context, FarmerDetailActivity::class.java)
+            val intent = Intent(v.context, FarmerMenuActivity::class.java)
             intent.putExtra("objectId", items.objectId)
             intent.putExtra("firstName",items.firstname)
             intent.putExtra("lastName",items.lastname)

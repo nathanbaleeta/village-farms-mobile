@@ -109,6 +109,10 @@
         <item>Pigs</item>
         <item>Vegetables</item>
     </string-array>
+    <string name="title_activity_farmer_menu">FarmerMenuActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 
 </resources>
