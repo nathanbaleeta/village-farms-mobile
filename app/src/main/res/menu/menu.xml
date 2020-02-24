@@ -9,8 +9,6 @@
             android:icon="@drawable/ic_receipt_white_24dp"
             app:showAsAction="always"
             android:title="Advances"/>
-
-
     -->
     <item
             android:id="@+id/action_advances"

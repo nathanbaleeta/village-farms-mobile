@@ -1,5 +1,6 @@
 package com.codepoint.villagefarms
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
@@ -8,6 +9,10 @@ import android.widget.Toast
 
 
 class FarmerMenuActivity : AppCompatActivity() {
+    // Declare as global variables
+    private var objectId:String? = null
+    private var firstName:String? = null
+    private var lastName:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,9 +20,9 @@ class FarmerMenuActivity : AppCompatActivity() {
 
         // Get data from intent
         val intent = intent
-        val objectId = intent.getStringExtra("objectId")
-        val firstName = intent.getStringExtra("firstName")
-        val lastName = intent.getStringExtra("lastName")
+        objectId = intent.getStringExtra("objectId")
+        firstName = intent.getStringExtra("firstName")
+        lastName = intent.getStringExtra("lastName")
 
 
         //to change title of activity programmatically to full name
@@ -25,24 +30,29 @@ class FarmerMenuActivity : AppCompatActivity() {
         actionBar!!.title = firstName.plus(" ").plus(lastName)
 
         //set back button
-        actionBar!!.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayHomeAsUpEnabled(true)
+
 
 
     }
 
+    // Inflate the menu; this adds items to the action bar if it is present.
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu, menu)
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here.
-        val id = item.getItemId()
+    override  // Handle action bar item clicks here.
+    fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
 
         if (id == R.id.action_advances) {
-            Toast.makeText(this, "Advances", Toast.LENGTH_LONG).show()
-            return true
+            val intent = Intent(this, FarmerAdvancesActivity::class.java)
+            intent.putExtra("objectId", objectId)
+            intent.putExtra("firstName", firstName)
+            intent.putExtra("lastName", lastName)
+            startActivity(intent)
+
         }
         if (id == R.id.action_procurements) {
             Toast.makeText(this, "Procurements Clicked", Toast.LENGTH_LONG).show()
@@ -52,6 +62,8 @@ class FarmerMenuActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
 
     }
+
+
 
     // Back arrow click event to go back to the parent Activity
     override fun onSupportNavigateUp(): Boolean {

@@ -1,9 +1,8 @@
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
+
 import com.codepoint.villagefarms.FarmerDetailActivity
 
 import com.codepoint.villagefarms.R
@@ -12,6 +11,8 @@ import com.codepoint.villagefarms.models.Farmer
 
 
 class FarmerAdapter(private val farmerList:ArrayList<Farmer>):RecyclerView.Adapter<FarmerAdapter.ViewHolder>() {
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.farmer_individual_row, parent, false)
@@ -41,7 +42,10 @@ class FarmerAdapter(private val farmerList:ArrayList<Farmer>):RecyclerView.Adapt
             v.context.startActivity(intent)
 
         })
+
     }
+
+
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -50,4 +54,8 @@ class FarmerAdapter(private val farmerList:ArrayList<Farmer>):RecyclerView.Adapt
         val txtPhone = itemView.findViewById<TextView>(R.id.tvPhone)
 
     }
+
 }
+
+
+
