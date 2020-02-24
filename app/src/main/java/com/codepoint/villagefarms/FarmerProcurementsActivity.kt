@@ -3,11 +3,11 @@ package com.codepoint.villagefarms
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
-class FarmerAdvancesActivity : AppCompatActivity() {
+class FarmerProcurementsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_farmer_advances)
+        setContentView(R.layout.activity_farmer_procurements)
 
         // Get data from intent
         val intent = intent
@@ -17,7 +17,7 @@ class FarmerAdvancesActivity : AppCompatActivity() {
 
         //to change title of activity programmatically to full name
         val actionBar = supportActionBar
-        actionBar!!.title = ("Advances")
+        actionBar!!.title = ("Procurements")
 
         //set back button
         actionBar.setDisplayHomeAsUpEnabled(true)

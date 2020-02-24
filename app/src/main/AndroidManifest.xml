@@ -9,7 +9,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".FarmerAdvancesActivity"></activity>
+        <activity android:name=".FarmerProcurementsActivity"></activity>
+        <activity android:name=".FarmerAdvancesActivity" />
         <activity
                 android:name=".FarmerMenuActivity"
                 android:label="@string/title_activity_farmer_menu" />

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 
 
 class FarmerMenuActivity : AppCompatActivity() {
@@ -32,8 +31,6 @@ class FarmerMenuActivity : AppCompatActivity() {
         //set back button
         actionBar.setDisplayHomeAsUpEnabled(true)
 
-
-
     }
 
     // Inflate the menu; this adds items to the action bar if it is present.
@@ -45,18 +42,15 @@ class FarmerMenuActivity : AppCompatActivity() {
     override  // Handle action bar item clicks here.
     fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-
         if (id == R.id.action_advances) {
             val intent = Intent(this, FarmerAdvancesActivity::class.java)
             intent.putExtra("objectId", objectId)
-            intent.putExtra("firstName", firstName)
-            intent.putExtra("lastName", lastName)
             startActivity(intent)
 
-        }
-        if (id == R.id.action_procurements) {
-            Toast.makeText(this, "Procurements Clicked", Toast.LENGTH_LONG).show()
-            return true
+        } else if (id == R.id.action_procurements) {
+            val intent = Intent(this, FarmerProcurementsActivity::class.java)
+            intent.putExtra("objectId", objectId)
+            startActivity(intent)
         }
 
         return super.onOptionsItemSelected(item)
