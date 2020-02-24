@@ -21,18 +21,7 @@ class MainActivity : AppCompatActivity() {
                 openFragment(farmerFragment)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_advances -> {
 
-                val advancesFragment = AdvancesFragment.newInstance()
-                openFragment(advancesFragment)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_procurements -> {
-
-                val procurementFragment = ProcurementFragment.newInstance()
-                openFragment(procurementFragment)
-                return@OnNavigationItemSelectedListener true
-            }
             R.id.navigation_sales -> {
 
                 val salesFragment = SalesFragment.newInstance()

@@ -7,15 +7,7 @@
             android:title="@string/title_farmers"
             android:enabled="true"/>
 
-    <item
-            android:id="@+id/navigation_advances"
-            android:icon="@drawable/ic_receipt_black_24dp"
-            android:title="@string/title_advances"/>
 
-    <item
-            android:id="@+id/navigation_procurements"
-            android:icon="@drawable/ic_monetization_on_black_24dp"
-            android:title="@string/title_procurements"/>
 
     <item
             android:id="@+id/navigation_sales"

@@ -14,7 +14,6 @@ class FarmerMenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_farmer_menu)
 
-
         val navView: BottomNavigationView = findViewById(R.id.nav_view2)
 
         val navController = findNavController(R.id.nav_host_fragment)
