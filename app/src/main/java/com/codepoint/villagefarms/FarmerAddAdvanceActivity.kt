@@ -13,6 +13,13 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_register.*
 import java.text.SimpleDateFormat
 import java.util.*
+import android.R.attr.checked
+import android.support.v4.app.SupportActivity
+import android.support.v4.app.SupportActivity.ExtraData
+import android.support.v4.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 class FarmerAddAdvanceActivity : AppCompatActivity() {
 
@@ -89,11 +96,41 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
         rgAdvanceType.setOnCheckedChangeListener { _, _ ->
             if (rgAdvanceType.checkedRadioButtonId != -1) {
                 if (rbCash.isChecked) {
+
+                    // if advanceType == Cash, disable commodityAdvanced(loop through radio group children) & commodityValue
+                    for (i in 0 until rgCommodityAdvanced.childCount) {
+                        (rgCommodityAdvanced.getChildAt(i) as RadioButton).isClickable = false
+                    }
+
+                    txtCommodityValue.isFocusable = false
+                    txtCommodityValue.isFocusableInTouchMode = false
+
+                    // Set advanceType to 'Cash' value
                     advanceType = "Cash"
+
+                    // Configure/ Display error message
                     rbCommodity.error = null
+
                 } else if (rbCommodity.isChecked) {
+
+                    // if advanceType == Commodity, enable commodityAdvanced(loop through radio group children) & commodityValue
+                    for (i in 0 until rgCommodityAdvanced.childCount) {
+                        (rgCommodityAdvanced.getChildAt(i) as RadioButton).isClickable = true
+                    }
+
+                    txtCommodityValue.isFocusable = true
+                    txtCommodityValue.isFocusableInTouchMode = true
+
+                    // Disable advanceAmount
+                    txtAdvanceAmount.isFocusable = false
+                    txtAdvanceAmount.isFocusableInTouchMode = false
+
+                    // Set advanceType to 'Commodity' value
                     advanceType = "Commodity"
+
+                    // Configure/ Display error message
                     rbCommodity.error = null
+
                 } else if (rgAdvanceType.checkedRadioButtonId == -1) {
                     rbCommodity.error = "Please select cash or commodity"
 
@@ -102,6 +139,33 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
         }
 
         /***************** Advance type radio group event listener**********************/
+
+
+        /***************** Commodity Advanced radio group event listener****************/
+
+        var commodityAdvanced = ""
+        rgCommodityAdvanced.setOnCheckedChangeListener { _, _ ->
+            if (rgCommodityAdvanced.checkedRadioButtonId != -1) {
+                if (rbChemicals.isChecked) {
+                    commodityAdvanced = "Chemicals"
+                    rbSeedlings.error = null
+                } else if (rbFertilizer.isChecked) {
+                    commodityAdvanced = "Fertilizer"
+                    rbSeedlings.error = null
+                } else if (rbPolytheneTubes.isChecked) {
+                    commodityAdvanced = "Polythene tubes"
+                    rbSeedlings.error = null
+                } else if (rbSeedlings.isChecked) {
+                    commodityAdvanced = "Seedlings"
+                    rbSeedlings.error = null
+                } else if (rgCommodityAdvanced.checkedRadioButtonId == -1) {
+                    rbSeedlings.error = "Please select a commodity"
+
+                }
+            }
+        }
+
+        /***************** Commodity Advanced radio group event listener****************/
 
         /**************** Payment mode radio group event listener**********************/
 
@@ -126,25 +190,6 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
 
         // Attach a click listener to save button
         btnSaveAdvance.setOnClickListener {
-
-
-
-            /***************** Commodity Advanced radio group ****************/
-            var commodityAdvanced = ""
-            if (rgCommodityAdvanced.checkedRadioButtonId != -1) {
-                if (rbChemicals.isChecked) {
-                    commodityAdvanced += "Chemicals"
-                } else if (rbFertilizer.isChecked) {
-                    commodityAdvanced += "Fertilizer"
-                } else if (rbPolytheneTubes.isChecked) {
-                    commodityAdvanced += "Polythene tubes"
-                } else if (rbSeedlings.isChecked) {
-                    commodityAdvanced += "Seedlings"
-                }
-            }
-
-            /***************** Commodity Advanced radio group ****************/
-
 
 
             saveAdvance(advanceType, commodityAdvanced, paymentMode)
@@ -192,19 +237,18 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
         else if (advanceAmount == null) {
             txtAdvanceAmount.error = "Please enter a digit"
             return
+        } else if (rgCommodityAdvanced.checkedRadioButtonId == -1) {
+            rbSeedlings.error = "Please select a commodity"
+            return
         } else if (commodityValue == null) {
             txtCommodityValue.error = "Please enter a digit"
-            return
-        } else if (pricePerKg == null){
-            txtPricePriceKg.error = "Please enter a digit"
-            return
-        } else if (rgAdvanceType.checkedRadioButtonId == -1) {
-            // no radio buttons are checked
-            rbCommodity.error = "Please select cash or commodity"
             return
         } else if (rgPaymentMode.checkedRadioButtonId == -1) {
             // no radio buttons are checked
             rbPayCoffee.error = "Please select cash or coffee"
+            return
+        } else if (pricePerKg == null){
+            txtPricePriceKg.error = "Please enter a digit"
             return
         } else {
             // Instantiate new Advance using Advance data class model

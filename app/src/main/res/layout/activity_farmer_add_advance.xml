@@ -263,6 +263,7 @@
                 android:inputType="numberDecimal"
                 android:gravity="left"
                 android:layout_weight="1"
+                android:focusable="false"
                 android:hint="Weight in kg"/>
 
 
