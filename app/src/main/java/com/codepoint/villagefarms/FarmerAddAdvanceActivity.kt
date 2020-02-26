@@ -83,16 +83,36 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
 
         btnSaveAdvance = findViewById(R.id.btnSaveAdvance)
 
-        /**************** Click Event listener for Payment mode radio group **********************/
+
+        /***************** Advance type radio group event listener**********************/
+        var advanceType = ""
+        rgAdvanceType.setOnCheckedChangeListener { _, _ ->
+            if (rgAdvanceType.checkedRadioButtonId != -1) {
+                if (rbCash.isChecked) {
+                    advanceType = "Cash"
+                    rbCommodity.error = null
+                } else if (rbCommodity.isChecked) {
+                    advanceType = "Commodity"
+                    rbCommodity.error = null
+                } else if (rgAdvanceType.checkedRadioButtonId == -1) {
+                    rbCommodity.error = "Please select cash or commodity"
+
+                }
+            }
+        }
+
+        /***************** Advance type radio group event listener**********************/
+
+        /**************** Payment mode radio group event listener**********************/
 
         var paymentMode = ""
         rgPaymentMode.setOnCheckedChangeListener { _, _ ->
             if (rgPaymentMode.checkedRadioButtonId != -1) {
                 if (rbPayCash.isChecked) {
-                    paymentMode += "Cash"
+                    paymentMode = "Cash"
                     rbPayCoffee.error = null
                 } else if (rbPayCoffee.isChecked) {
-                    paymentMode += "Coffee"
+                    paymentMode = "Coffee"
                     rbPayCoffee.error = null
                 } else if (rgPaymentMode.checkedRadioButtonId == -1) {
                     rbPayCoffee.error = "Please select cash or coffee"
@@ -102,23 +122,12 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
         }
 
 
-        /*************** Click Event listener for Payment mode radio group***********************/
+        /*************** Payment mode radio group event listener***********************/
 
         // Attach a click listener to save button
         btnSaveAdvance.setOnClickListener {
 
 
-            /***************** Advance type radio group **********************/
-            var advanceType = ""
-            if (rgAdvanceType.checkedRadioButtonId != -1) {
-                if (rbCash.isChecked) {
-                    advanceType += "Cash"
-                } else if (rbCommodity.isChecked) {
-                    advanceType += "Commodity"
-                }
-            }
-
-            /***************** Advance type radio group **********************/
 
             /***************** Commodity Advanced radio group ****************/
             var commodityAdvanced = ""
@@ -175,7 +184,12 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
         }
 
         // Validate advance form before saving to Firebase database
-        if (advanceAmount == null) {
+        if (rgAdvanceType.checkedRadioButtonId == -1) {
+            // no radio buttons are checked
+            rbCommodity.error = "Please select cash or commodity"
+            return
+        }
+        else if (advanceAmount == null) {
             txtAdvanceAmount.error = "Please enter a digit"
             return
         } else if (commodityValue == null) {
@@ -183,6 +197,10 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
             return
         } else if (pricePerKg == null){
             txtPricePriceKg.error = "Please enter a digit"
+            return
+        } else if (rgAdvanceType.checkedRadioButtonId == -1) {
+            // no radio buttons are checked
+            rbCommodity.error = "Please select cash or commodity"
             return
         } else if (rgPaymentMode.checkedRadioButtonId == -1) {
             // no radio buttons are checked
