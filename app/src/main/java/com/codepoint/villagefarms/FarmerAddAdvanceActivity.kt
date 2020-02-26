@@ -97,10 +97,20 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
             if (rgAdvanceType.checkedRadioButtonId != -1) {
                 if (rbCash.isChecked) {
 
+                    // Clear corresponding fields based on selection before proceeding
+                    txtAdvanceAmount.setText("")
+                    rgCommodityAdvanced.clearCheck()
+                    txtCommodityValue.setText("")
+
+
                     // if advanceType == Cash, disable commodityAdvanced(loop through radio group children) & commodityValue
                     for (i in 0 until rgCommodityAdvanced.childCount) {
                         (rgCommodityAdvanced.getChildAt(i) as RadioButton).isClickable = false
                     }
+
+                    // Disable advanceAmount
+                    txtAdvanceAmount.isFocusable = true
+                    txtAdvanceAmount.isFocusableInTouchMode = true
 
                     txtCommodityValue.isFocusable = false
                     txtCommodityValue.isFocusableInTouchMode = false
@@ -112,6 +122,11 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
                     rbCommodity.error = null
 
                 } else if (rbCommodity.isChecked) {
+
+                    // Clear corresponding fields based on selection before proceeding
+                    txtAdvanceAmount.setText("")
+                    rgCommodityAdvanced.clearCheck()
+                    txtCommodityValue.setText("")
 
                     // if advanceType == Commodity, enable commodityAdvanced(loop through radio group children) & commodityValue
                     for (i in 0 until rgCommodityAdvanced.childCount) {
