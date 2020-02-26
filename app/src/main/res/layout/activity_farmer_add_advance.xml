@@ -110,7 +110,7 @@
                 android:orientation="vertical"
                 >
             <RadioGroup
-                    android:id="@+id/rg_maritalStatus"
+                    android:id="@+id/rg_commodity_advanced"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -201,8 +201,6 @@
                     android:orientation="horizontal"
                     android:paddingLeft="20dp"
                     >
-
-
                 <RadioButton android:id="@+id/rb_pay_cash"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -215,8 +213,6 @@
                         android:text="Coffee"
                         android:padding="10dp"
                         />
-
-
             </RadioGroup>
 
 

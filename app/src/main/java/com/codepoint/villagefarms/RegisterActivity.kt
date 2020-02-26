@@ -110,7 +110,6 @@ class RegisterActivity : AppCompatActivity() {
         txtYear3 = findViewById(R.id.txtYear3)
 
 
-
         /***************** Verify phone number doesn't exceed 12 digits  ****************/
         txtPhone.setFilters(
             arrayOf<InputFilter>(
@@ -214,7 +213,6 @@ class RegisterActivity : AppCompatActivity() {
 
         //rollback 90 days
         //cal.add(Calendar.DAY_OF_YEAR, -90)
-
 
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
