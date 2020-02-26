@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scroll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+        <TextView
+                android:id="@+id/tvAdvance"
+                android:padding="10dp"
+                android:text="Advance Info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
+
+
+        <TextView
+                android:id="@+id/tvAdvanceType"
+                android:paddingTop="14dp"
+                android:paddingLeft="20dp"
+                android:text="Advance type"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+            <RadioGroup
+                    android:id="@+id/rg_advance_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    >
+
+
+                <RadioButton android:id="@+id/rb_cash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cash"
+                        android:padding="10dp"
+                        />
+                <RadioButton android:id="@+id/rb_commodity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Commodity"
+                        android:padding="10dp"
+                        />
+
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+
+        <TextView
+                android:id="@+id/tvAdvanceAmount"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Advance amount:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtAdvanceAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:inputType="numberDecimal"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:hint="Amount in cash"/>
+
+
+
+
+        <TextView
+                android:id="@+id/tvCommodityAdvanced"
+                android:paddingTop="4dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Commodity advanced"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+            <RadioGroup
+                    android:id="@+id/rg_maritalStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="20dp"
+                    >
+                <RadioButton android:id="@+id/rb_chemicals"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chemicals"
+                        android:padding="10dp"
+                        />
+                <RadioButton android:id="@+id/rb_fertilizer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fertilizer"
+                        android:padding="10dp"
+                        />
+                <RadioButton android:id="@+id/rb_polythene_tubes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Polythene tubes"
+                        android:padding="10dp"
+                        />
+                <RadioButton android:id="@+id/rb_seedlings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Seedlings"
+                        android:padding="10dp"
+                        />
+            </RadioGroup>
+        </LinearLayout>
+
+
+        <TextView
+                android:id="@+id/tvCommodityValue"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Commodity value:"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtCommodityValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:inputType="numberDecimal"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:hint="Value in cash"/>
+
+
+
+        <TextView
+                android:id="@+id/tvPaymentDetails"
+                android:padding="10sp"
+                android:text="Payment Details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" android:background="#D3D3D3"/>
+
+
+        <TextView
+                android:id="@+id/tvPaymentMode"
+                android:paddingTop="14dp"
+                android:paddingLeft="20dp"
+                android:text="Mode of payment"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+            <RadioGroup
+                    android:id="@+id/rg_payment_mode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    >
+
+
+                <RadioButton android:id="@+id/rb_pay_cash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cash"
+                        android:padding="10dp"
+                        />
+                <RadioButton android:id="@+id/rb_pay_coffee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Coffee"
+                        android:padding="10dp"
+                        />
+
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+        <TextView
+                android:id="@+id/tvPricePerKg"
+                android:paddingTop="12dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Price Per Kg"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtPricePriceKg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:inputType="numberDecimal"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:hint="Price per kg"/>
+
+
+        <TextView
+                android:id="@+id/tvTotalCoffeeWeight"
+                android:paddingTop="4dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Total Coffee Weight"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/txtTotalCoffeeWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:inputType="numberDecimal"
+                android:gravity="left"
+                android:layout_weight="1"
+                android:hint="Weight in kg"/>
+
+
+
+
+        <Button
+                android:id="@+id/btnSaveAdvance"
+                android:layout_margin="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Advance"
+                android:background="#FFC107" android:textColor="#000000"/>
+
+
+
+    </LinearLayout>
+
+
+</ScrollView>
