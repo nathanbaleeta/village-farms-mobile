@@ -3,6 +3,7 @@ package com.codepoint.villagefarms
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.text.Editable
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
@@ -13,11 +14,8 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_register.*
 import java.text.SimpleDateFormat
 import java.util.*
-import android.R.attr.checked
-import android.support.v4.app.SupportActivity
-import android.support.v4.app.SupportActivity.ExtraData
-import android.support.v4.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+import android.text.TextWatcher
 
 
 
@@ -202,6 +200,96 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
 
 
         /*************** Payment mode radio group event listener***********************/
+
+
+        /***************** Dynamically setting total coffee weight ****************/
+
+        txtPricePriceKg.addTextChangedListener(object :
+            TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                var num1 = 0
+                var num2 = 0
+
+                try {
+                    num1 = Integer.parseInt(txtPricePriceKg.text.toString())
+                } catch (e: NumberFormatException) {
+                    null
+                }
+
+
+                try {
+                    num2 = Integer.parseInt(txtAdvanceAmount.text.toString())
+                } catch (e: NumberFormatException) {
+                    null
+                }
+
+                if (num1 < 1){
+                    return
+
+                }
+
+
+                val result = num2 / num1
+
+                txtTotalCoffeeWeight.setText(java.lang.String.format("%d", result))
+
+            }
+
+        })
+
+        txtAdvanceAmount.addTextChangedListener(object :
+            TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                var num1 = 0
+                var num2 = 0
+
+                try {
+                    num1 = Integer.parseInt(txtPricePriceKg.text.toString())
+                } catch (e: NumberFormatException) {
+                    null
+                }
+
+
+                try {
+                    num2 = Integer.parseInt(txtAdvanceAmount.text.toString())
+                } catch (e: NumberFormatException) {
+                    null
+                }
+
+                if (num1 < 1){
+                    return
+
+                }
+
+
+                val result = num2 / num1
+
+                txtTotalCoffeeWeight.setText(java.lang.String.format("%d", result))
+
+            }
+
+        })
+
+
+
+        /***************** Dynamically setting total coffee weight ****************/
+
 
         // Attach a click listener to save button
         btnSaveAdvance.setOnClickListener {
