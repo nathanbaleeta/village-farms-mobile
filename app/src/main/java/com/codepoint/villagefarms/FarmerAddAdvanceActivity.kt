@@ -99,6 +99,8 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
                     txtAdvanceAmount.setText("")
                     rgCommodityAdvanced.clearCheck()
                     txtCommodityValue.setText("")
+                    txtPricePriceKg.setText("")
+                    txtTotalCoffeeWeight.setText("")
 
 
                     // if advanceType == Cash, disable commodityAdvanced(loop through radio group children) & commodityValue
@@ -125,6 +127,8 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
                     txtAdvanceAmount.setText("")
                     rgCommodityAdvanced.clearCheck()
                     txtCommodityValue.setText("")
+                    txtPricePriceKg.setText("")
+                    txtTotalCoffeeWeight.setText("")
 
                     // if advanceType == Commodity, enable commodityAdvanced(loop through radio group children) & commodityValue
                     for (i in 0 until rgCommodityAdvanced.childCount) {
@@ -204,6 +208,58 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
 
         /***************** Dynamically setting total coffee weight ****************/
 
+
+        txtCommodityValue.addTextChangedListener(object :
+            TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                var num1 = 0
+                var num3 = 0
+                var result = 0
+
+                try {
+                    num1 = Integer.parseInt(txtPricePriceKg.text.toString())
+                } catch (e: NumberFormatException) {
+                    null
+                }
+
+
+                try {
+                    num3 = Integer.parseInt(txtCommodityValue.text.toString())
+                } catch (e: NumberFormatException) {
+                    null
+                }
+
+
+                // Do nothing if pricePerKg, advanceAmount or commodity Value are less than 1
+                if (num3 < 1){
+                    return
+                }
+                if (num1 < 1) {
+                    return
+                }
+                if (num3 > 0 && num1 > 0){
+                    result = num3 / num1
+                }
+                if (result == 0){
+                    return
+                }
+
+
+                txtTotalCoffeeWeight.setText(java.lang.String.format("%d", result))
+
+            }
+
+        })
+
+
         txtPricePriceKg.addTextChangedListener(object :
             TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -217,6 +273,7 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
 
                 var num1 = 0
                 var num2 = 0
+                var result = 0
 
                 try {
                     num1 = Integer.parseInt(txtPricePriceKg.text.toString())
@@ -231,19 +288,81 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
                     null
                 }
 
-                if (num1 < 1){
+
+
+                // Do nothing if pricePerKg, advanceAmount or commodity Value are less than 1
+                if (num2 < 1){
                     return
+                }
+                if (num1 < 1) {
+                    return
+                }
+
+                if (num2 > 0 && num1 > 0){
+                    result = num2 / num1
 
                 }
 
+                if (result == 0){
+                    return
+                }
 
-                val result = num2 / num1
 
                 txtTotalCoffeeWeight.setText(java.lang.String.format("%d", result))
 
             }
 
         })
+
+
+        txtPricePriceKg.addTextChangedListener(object :
+            TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                var num1 = 0
+                var num3 = 0
+                var result = 0
+
+                try {
+                    num1 = Integer.parseInt(txtPricePriceKg.text.toString())
+                } catch (e: NumberFormatException) {
+                    null
+                }
+
+                try {
+                    num3 = Integer.parseInt(txtCommodityValue.text.toString())
+                } catch (e: NumberFormatException) {
+                    null
+                }
+
+
+                // Do nothing if pricePerKg, advanceAmount or commodity Value are less than 1
+                if (num1 < 1) {
+                    return
+                }
+                if (num3 > 0 && num1 > 0){
+                    result = num3 / num1
+
+                }
+
+                if (result == 0){
+                    return
+                }
+
+
+                txtTotalCoffeeWeight.setText(java.lang.String.format("%d", result))
+
+            }
+
+        })
+
 
         txtAdvanceAmount.addTextChangedListener(object :
             TextWatcher {
@@ -258,6 +377,7 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
 
                 var num1 = 0
                 var num2 = 0
+                var result = 0
 
                 try {
                     num1 = Integer.parseInt(txtPricePriceKg.text.toString())
@@ -272,13 +392,18 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
                     null
                 }
 
+
+                // Do nothing if pricePerKg, advanceAmount  are less than 1
                 if (num1 < 1){
                     return
-
+                } else if (num2 < 1) {
+                    return
+                } else if (num2 > 0){
+                    result = num2 / num1
+                } else if (result == 0){
+                    return
                 }
 
-
-                val result = num2 / num1
 
                 txtTotalCoffeeWeight.setText(java.lang.String.format("%d", result))
 
