@@ -3,6 +3,8 @@ package com.codepoint.villagefarms
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import com.codepoint.villagefarms.models.Farmer
 import com.google.firebase.database.DataSnapshot
@@ -15,21 +17,27 @@ import kotlinx.android.synthetic.main.activity_farmer_detail.*
 
 class FarmerDetailActivity : AppCompatActivity() {
 
+    // Declare as global variables
+    private var objectId:String? = null
+    private var firstName:String? = null
+    private var lastName:String? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_farmer_detail)
 
         // Get data from intent
         val intent = intent
-        val objectId = intent.getStringExtra("objectId")
-        val firstName = intent.getStringExtra("firstName")
-        val lastName = intent.getStringExtra("lastName")
+        objectId = intent.getStringExtra("objectId")
+        firstName = intent.getStringExtra("firstName")
+        lastName = intent.getStringExtra("lastName")
 
         //actionbar
         val actionbar = supportActionBar
 
         //to change title of activity programmatically to full name
-       this.title = firstName.plus(" ").plus(lastName)
+        this.title = firstName.plus(" ").plus(lastName)
 
         //set back button
         actionbar!!.setDisplayHomeAsUpEnabled(true)
@@ -38,7 +46,7 @@ class FarmerDetailActivity : AppCompatActivity() {
         /************************** Add Event Listener object *************************/
 
         // Get a reference to given sales object
-        val farmerReference = FirebaseDatabase.getInstance().getReference("farmers").child(objectId)
+        val farmerReference = FirebaseDatabase.getInstance().getReference("farmers/$objectId")
 
         // Attach a listener to read the data at our sales object reference
         val farmerListener = object : ValueEventListener {
@@ -69,6 +77,31 @@ class FarmerDetailActivity : AppCompatActivity() {
 
 
     }
+
+    // Inflate the menu; this adds items to the action bar if it is present.
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override  // Handle action bar item clicks here.
+    fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == R.id.action_advances) {
+            val intent = Intent(this, FarmerAdvancesActivity::class.java)
+            intent.putExtra("objectId", objectId)
+            startActivity(intent)
+
+        } else if (id == R.id.action_procurements) {
+            val intent = Intent(this, FarmerProcurementsActivity::class.java)
+            intent.putExtra("objectId", objectId)
+            startActivity(intent)
+        }
+
+        return super.onOptionsItemSelected(item)
+
+    }
+
 
     private fun populateUI(farmer: Farmer) {
 

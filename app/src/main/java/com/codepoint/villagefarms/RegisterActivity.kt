@@ -58,7 +58,6 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var txtYear2: EditText
     lateinit var txtYear3: EditText
 
-    lateinit var buttonSave: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -242,10 +241,9 @@ class RegisterActivity : AppCompatActivity() {
 
         /***************** Year established Date picker ****************/
 
-        buttonSave = findViewById(R.id.btnSaveFarmer)
 
         // Attach a click listener to save button
-        buttonSave.setOnClickListener {
+        btnSaveFarmer.setOnClickListener {
 
             /***************** Title radio group ****************/
             var title = ""

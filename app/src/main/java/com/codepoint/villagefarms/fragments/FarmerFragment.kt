@@ -75,7 +75,7 @@ class FarmerFragment : Fragment() {
                     farmer?.objectId = ds.key
 
                     farmerList.add(farmer!!)
-                    Log.d(ContentValues.TAG, farmer.toString())
+                    //Log.d(ContentValues.TAG, farmer.toString())
 
                 }
 
