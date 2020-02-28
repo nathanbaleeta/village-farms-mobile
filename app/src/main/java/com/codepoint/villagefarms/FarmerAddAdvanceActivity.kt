@@ -462,21 +462,21 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
             rbCommodity.error = "Please select cash or commodity"
             return
         }
-        else if (advanceAmount == null) {
-            txtAdvanceAmount.error = "Please enter a digit"
-            return
-        } else if (rgCommodityAdvanced.checkedRadioButtonId == -1) {
-            rbSeedlings.error = "Please select a commodity"
-            return
-        } else if (commodityValue == null) {
-            txtCommodityValue.error = "Please enter a digit"
-            return
-        } else if (rgPaymentMode.checkedRadioButtonId == -1) {
+         else if (rgPaymentMode.checkedRadioButtonId == -1) {
             // no radio buttons are checked
             rbPayCoffee.error = "Please select cash or coffee"
             return
         } else if (pricePerKg == null){
-            txtPricePriceKg.error = "Please enter a digit"
+            txtPricePriceKg.error = "Price per kg is required"
+            return
+        } else if (rbCash.isChecked && advanceAmount == null) {
+            txtAdvanceAmount.error = "Advance amount is required"
+            return
+        } else if (rbCommodity.isChecked && rgCommodityAdvanced.checkedRadioButtonId == -1) {
+            rbSeedlings.error = "Commodity advanced is required"
+            return
+        } else if (rbCommodity.isChecked && commodityValue == null) {
+            txtCommodityValue.error = "Commodity value is missing"
             return
         } else {
             // Instantiate new Advance using Advance data class model
