@@ -34,8 +34,6 @@ class AdvancesAdapter(private val advancesList:ArrayList<Advance>):RecyclerView.
         holder.txtAdvanceType?.text = "Advance type: " + advancesList[position].advanceType
         holder.txtPaymentMode?.text = "Payment mode: " + advancesList[position].paymentMode
         holder.txtTotalCoffeeWeight?.text = "Total Coffee weight: " + advancesList[position].totalCoffeeWeight
-        //holder.txtDateCreated?.text = ("Created: ").plus(created)
-
         holder.txtDateCreated?.text = created
 
 

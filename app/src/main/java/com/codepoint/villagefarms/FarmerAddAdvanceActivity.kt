@@ -4,19 +4,18 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.text.Editable
-import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import java.lang.Double.parseDouble
 import com.codepoint.villagefarms.models.Advance
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_register.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 import android.text.TextWatcher
-
+import kotlinx.android.synthetic.main.activity_farmer_add_advance.*
+import kotlinx.android.synthetic.main.activity_register.scroll_layout
 
 
 class FarmerAddAdvanceActivity : AppCompatActivity() {
@@ -45,8 +44,6 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
 
     lateinit var txtPricePriceKg: EditText
     lateinit var txtTotalCoffeeWeight: EditText
-
-    lateinit var btnSaveAdvance: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,7 +83,6 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
         txtPricePriceKg = findViewById(R.id.txtPricePriceKg)
         txtTotalCoffeeWeight = findViewById(R.id.txtTotalCoffeeWeight)
 
-        btnSaveAdvance = findViewById(R.id.btnSaveAdvance)
 
 
         /***************** Advance type radio group event listener**********************/
