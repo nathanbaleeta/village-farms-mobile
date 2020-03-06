@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import android.widget.Toast
 import com.codepoint.villagefarms.models.District
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -21,6 +22,12 @@ import kotlinx.android.synthetic.main.district_dialog.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import android.support.v4.app.SupportActivity
+import android.support.v4.app.SupportActivity.ExtraData
+import android.support.v4.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 
 class DistrictListActivity : AppCompatActivity() {
@@ -107,19 +114,17 @@ class DistrictListActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder.setView(mDialogView)
             builder.setTitle("Add District")
-
             builder.setPositiveButton(android.R.string.yes) { dialog, _ ->
 
                 //get text from EditTexts of custom layout
-                val district = mDialogView.txtDistrict.text.toString().toTitleCase().trim()
+                val district = mDialogView.txtDistrict.text.toString().toLowerCase().toTitleCase().trim()
 
                 // Capture datetime when expense was created and store in created
                 val sdf = SimpleDateFormat("yyyy-MM-dd, hh:mm:ss")
                 val created = sdf.format(Date())
 
-                if(district == null) {
-                    txtDistrict.error = "District is required"
-                } else {
+                if(district.isNotEmpty()) {
+
                     val districtObj = District(
                         district,
                         created,
@@ -134,8 +139,17 @@ class DistrictListActivity : AppCompatActivity() {
                     // Clear registration form after saving advance
                     txtDistrict?.setText("")
 
-                    // Display response message after saving farmer
+                    // Display response message after saving district
+                    Toast.makeText(applicationContext,
+                        "Successfully saved district", Toast.LENGTH_SHORT).show()
 
+                    // Close dialog after saving
+                    dialog.dismiss()
+
+
+
+                } else {
+                    dialog.dismiss()
 
                 }
 
