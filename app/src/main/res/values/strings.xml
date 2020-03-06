@@ -7,9 +7,8 @@
     <string name="title_settings">Settings</string>
 
     <string name="title_activity_register">Register Farmer</string>
-    <string name="title_activity_sales">Add Sale</string>
+    <string name="title_district_list">Districts</string>
 
-    <string name="title_activity_sales_detail">Sale Detail</string>
 
     <string name="title_activity_farmer_detail">Farmer Detail</string>
 

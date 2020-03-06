@@ -13,9 +13,6 @@
         <activity android:name=".FarmerProcurementsActivity" />
         <activity android:name=".FarmerAdvancesActivity" />
         <activity
-                android:name=".FarmerMenuActivity"
-                android:label="@string/title_activity_farmer_menu" />
-        <activity
                 android:name=".MainActivity"
                 android:configChanges="orientation|screenSize|keyboardHidden"
                 android:label="@string/app_name">
@@ -35,11 +32,9 @@
                 android:name=".FarmerEditActivity"
                 android:label="@string/title_activity_farmer_edit" />
         <activity
-                android:name=".SalesActivity"
-                android:label="@string/title_activity_sales" />
-        <activity
-                android:name=".SalesDetailActivity"
-                android:label="@string/title_activity_sales_detail" />
+                android:name=".DistrictListActivity"
+                android:label="@string/title_district_list" />
+
     </application>
 
 </manifest>

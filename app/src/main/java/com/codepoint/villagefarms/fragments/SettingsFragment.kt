@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.codepoint.villagefarms.RegisterActivity
+import com.codepoint.villagefarms.DistrictListActivity
 import kotlinx.android.synthetic.main.content_settings.*
 
 class SettingsFragment : Fragment() {
@@ -31,7 +32,7 @@ class SettingsFragment : Fragment() {
 
         // Triggered event listeners for items on settings activity
         districts.setOnClickListener {
-            val intent = Intent(activity, RegisterActivity::class.java)
+            val intent = Intent(activity, DistrictListActivity::class.java)
             activity?.startActivity(intent)
         }
 
@@ -40,9 +41,6 @@ class SettingsFragment : Fragment() {
             activity?.startActivity(intent)
         }
     }
-
-
-
 
 
 
