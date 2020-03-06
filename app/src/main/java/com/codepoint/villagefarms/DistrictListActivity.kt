@@ -1,22 +1,26 @@
 package com.codepoint.villagefarms
 
-import AdvancesAdapter
 import DistrictAdapter
 import android.content.ContentValues
-//import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.LayoutInflater
 import android.widget.LinearLayout
-import com.codepoint.villagefarms.models.Advance
 import com.codepoint.villagefarms.models.District
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.activity_farmer_advances.*
+import kotlinx.android.synthetic.main.activity_district_list.*
+import kotlinx.android.synthetic.main.district_dialog.*
+import kotlinx.android.synthetic.main.district_dialog.view.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class DistrictListActivity : AppCompatActivity() {
@@ -35,7 +39,7 @@ class DistrictListActivity : AppCompatActivity() {
         //set back button
         actionBar.setDisplayHomeAsUpEnabled(true)
 
-        val recyclerView = farmer_advances_list_recycler_view
+        val recyclerView = settings_district_list_recycler_view
 
          recyclerView.setHasFixedSize(true)
 
@@ -50,6 +54,8 @@ class DistrictListActivity : AppCompatActivity() {
                 LinearLayoutManager.VERTICAL
             )
         )
+
+
 
         /************************** RecyclerView Adapter *************************/
 
@@ -90,19 +96,79 @@ class DistrictListActivity : AppCompatActivity() {
 
         /************************** End of RecyclerView Adapter *************************/
 
-        // Start DistrictAddTA activity from DistrictList Activity
-        fabAddAdvance.setOnClickListener {
-            //val intent = Intent(this, FarmerAddAdvanceActivity::class.java)
-            //.putExtra("objectId", objectId)
-            //this?.startActivity(intent)
+        /************************** Start District dialog ****************************/
+
+
+        // Add district by inflating district dialog builder
+        fabAddDistrict.setOnClickListener {
+            //Inflate the dialog with custom view
+            val mDialogView = LayoutInflater.from(this).inflate(R.layout.district_dialog, null)
+
+            val builder = AlertDialog.Builder(this)
+            builder.setView(mDialogView)
+            builder.setTitle("Add District")
+
+            builder.setPositiveButton(android.R.string.yes) { dialog, _ ->
+
+                //get text from EditTexts of custom layout
+                val district = mDialogView.txtDistrict.text.toString().toTitleCase().trim()
+
+                // Capture datetime when expense was created and store in created
+                val sdf = SimpleDateFormat("yyyy-MM-dd, hh:mm:ss")
+                val created = sdf.format(Date())
+
+                if(district == null) {
+                    txtDistrict.error = "District is required"
+                } else {
+                    val districtObj = District(
+                        district,
+                        created,
+                        ""
+                    )
+
+                    val ref = FirebaseDatabase.getInstance().getReference("settings/districts")
+
+                    // Push the data to Fire base cloud data store
+                    ref.push().setValue(districtObj)
+
+                    // Clear registration form after saving advance
+                    txtDistrict?.setText("")
+
+                    // Display response message after saving farmer
+
+
+                }
+
+
+
+
+
+            }
+
+            builder.setNegativeButton(android.R.string.no) { dialog, _ ->
+                // close dialog
+                dialog.dismiss()
+            }
+
+            builder.show()
+
         }
+
+        /************************** End of  District dialog *************************/
 
 
 
     }
 
+    // Method to capitalize every first letter in word: extend String class
+    private fun String.toTitleCase(): String = split(" ").map { it.capitalize() }.joinToString(" ")
 
-    // Back arrow click event to go back to the parent Activity
+
+
+
+
+
+        // Back arrow click event to go back to the parent Activity
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
