@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 
 import com.codepoint.villagefarms.fragments.FarmerFragment
-import com.codepoint.villagefarms.fragments.SalesFragment
+import com.codepoint.villagefarms.fragments.SettingsFragment
 import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
@@ -20,10 +20,11 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
 
-            R.id.navigation_sales -> {
 
-                val salesFragment = SalesFragment.newInstance()
-                openFragment(salesFragment)
+            R.id.navigation_settings -> {
+
+                val settingsFragment = SettingsFragment.newInstance()
+                openFragment(settingsFragment)
                 return@OnNavigationItemSelectedListener true
             }
         }

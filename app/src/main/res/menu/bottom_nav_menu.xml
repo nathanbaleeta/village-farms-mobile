@@ -7,9 +7,11 @@
             android:title="@string/title_farmers"
             android:enabled="true"/>
 
+
+
     <item
-            android:id="@+id/navigation_sales"
-            android:icon="@drawable/ic_add_shopping_cart_black_24dp"
-            android:title="@string/title_sales"/>
+            android:id="@+id/navigation_settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/title_settings"/>
 
 </menu>
