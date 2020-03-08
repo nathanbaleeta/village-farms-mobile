@@ -1,6 +1,7 @@
 package com.codepoint.villagefarms
 
 import DistrictAdapter
+import PriceAdapter
 import android.content.ContentValues
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -12,11 +13,13 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.codepoint.villagefarms.models.District
+import com.codepoint.villagefarms.models.Price
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_district_list.*
+import kotlinx.android.synthetic.main.activity_price_list.*
 import kotlinx.android.synthetic.main.district_dialog.*
 import kotlinx.android.synthetic.main.district_dialog.view.*
 import java.text.SimpleDateFormat
@@ -26,23 +29,23 @@ import kotlin.collections.ArrayList
 
 
 
-class DistrictListActivity : AppCompatActivity() {
+class PricePerKgListActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_district_list)
+        setContentView(R.layout.activity_price_list)
 
 
         //to change title of activity programmatically to full name
         val actionBar = supportActionBar
-        actionBar!!.title = ("Districts")
+        actionBar!!.title = ("Price per kg")
 
         //set back button
         actionBar.setDisplayHomeAsUpEnabled(true)
 
-        val recyclerView = settings_district_list_recycler_view
+        val recyclerView = price_list_recycler_view
 
          recyclerView.setHasFixedSize(true)
 
@@ -64,31 +67,31 @@ class DistrictListActivity : AppCompatActivity() {
 
 
         // Get a reference to our farmer's advances
-        val ref = FirebaseDatabase.getInstance().getReference("settings/districts")
+        val ref = FirebaseDatabase.getInstance().getReference("settings/prices")
 
 
         // Attach a listener to read the data at our farmers reference
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                val districtList = ArrayList<District>()
+                val priceList = ArrayList<Price>()
 
                 // Eliminates duplicate list rows when child added or removed in Firebase
-                districtList.clear()
+                priceList.clear()
 
                 for (ds in dataSnapshot.children) {
-                    val district = ds.getValue(District::class.java)
+                    val price = ds.getValue(Price::class.java)
 
                     // Extract object ID key from Fire base and assign to arrayList
-                    district?.objectId = ds.key
+                    price?.objectId = ds.key
 
-                    districtList.add(district!!)
-                    Log.d(ContentValues.TAG, district.toString())
+                    priceList.add(price!!)
+                    Log.d(ContentValues.TAG, price.toString())
 
                 }
 
                 // specify an adapter
-                var adapter = DistrictAdapter(districtList)
+                var adapter = PriceAdapter(priceList)
                 recyclerView.adapter = adapter
             }
 
@@ -99,17 +102,17 @@ class DistrictListActivity : AppCompatActivity() {
 
         /************************** End of RecyclerView Adapter *************************/
 
-        /************************** Start District dialog ****************************/
+        /************************** Start PricePerKg dialog ****************************/
 
 
         // Add district by inflating district dialog builder
-        fabAddDistrict.setOnClickListener {
+        fabAddPricePerKg.setOnClickListener {
             //Inflate the dialog with custom view
             val mDialogView = LayoutInflater.from(this).inflate(R.layout.district_dialog, null)
 
             val builder = AlertDialog.Builder(this)
             builder.setView(mDialogView)
-            builder.setTitle("Add District")
+            builder.setTitle("Set Price per kg")
             builder.setPositiveButton(android.R.string.yes) { dialog, _ ->
 
                 //get text from EditTexts of custom layout
@@ -154,7 +157,7 @@ class DistrictListActivity : AppCompatActivity() {
             builder.show()
         }
 
-        /************************** End of  District dialog *************************/
+        /************************** End of Start PricePerKg dialog *************************/
 
 
 

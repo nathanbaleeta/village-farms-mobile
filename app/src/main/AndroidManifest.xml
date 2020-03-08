@@ -34,6 +34,9 @@
         <activity
                 android:name=".DistrictListActivity"
                 android:label="@string/title_district_list" />
+        <activity
+                android:name=".PricePerKgListActivity"
+                android:label="@string/title_price_list" />
 
     </application>
 
