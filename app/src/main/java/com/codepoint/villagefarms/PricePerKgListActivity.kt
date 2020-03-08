@@ -1,6 +1,5 @@
 package com.codepoint.villagefarms
 
-import DistrictAdapter
 import PriceAdapter
 import android.content.ContentValues
 import android.support.v7.app.AppCompatActivity
@@ -12,24 +11,26 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.Toast
-import com.codepoint.villagefarms.models.District
 import com.codepoint.villagefarms.models.Price
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.activity_district_list.*
 import kotlinx.android.synthetic.main.activity_price_list.*
 import kotlinx.android.synthetic.main.district_dialog.*
-import kotlinx.android.synthetic.main.district_dialog.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import kotlinx.android.synthetic.main.activity_farmer_add_advance.view.*
 
-
+import java.lang.Double.parseDouble
 
 
 class PricePerKgListActivity : AppCompatActivity() {
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +61,7 @@ class PricePerKgListActivity : AppCompatActivity() {
                 LinearLayoutManager.VERTICAL
             )
         )
+
 
 
 
@@ -108,7 +110,18 @@ class PricePerKgListActivity : AppCompatActivity() {
         // Add district by inflating district dialog builder
         fabAddPricePerKg.setOnClickListener {
             //Inflate the dialog with custom view
-            val mDialogView = LayoutInflater.from(this).inflate(R.layout.district_dialog, null)
+            val mDialogView = LayoutInflater.from(this).inflate(R.layout.price_dialog, null)
+
+            // Define district radio group and attach to price dialog
+            val districtRadioGroup = mDialogView.findViewById<RadioGroup>(R.id.rg_district)
+
+            // Populate radio button with array options of district
+            val districtOptionsArray = resources.getStringArray(R.array.districtList)
+            for (district in districtOptionsArray) {
+                val rb = RadioButton(this)
+                rb.text = district
+                districtRadioGroup.addView(rb)
+            }
 
             val builder = AlertDialog.Builder(this)
             builder.setView(mDialogView)
@@ -116,17 +129,20 @@ class PricePerKgListActivity : AppCompatActivity() {
             builder.setPositiveButton(android.R.string.yes) { dialog, _ ->
 
                 //get text from EditTexts of custom layout
-                val district = mDialogView.txtDistrict.text.toString().toLowerCase().toTitleCase().trim()
+                val district = "Kamuli"
+
+                val pricePerKg = parseDouble(mDialogView.txtPricePriceKg.text.toString())
 
                 // Capture datetime when expense was created and store in created
                 val sdf = SimpleDateFormat("yyyy-MM-dd, hh:mm:ss")
-                val created = sdf.format(Date())
+                val dateConfigured = sdf.format(Date())
 
                 if(district.isNotEmpty()) {
 
-                    val districtObj = District(
+                    val districtObj = Price(
                         district,
-                        created,
+                        dateConfigured,
+                        pricePerKg,
                         ""
                     )
 

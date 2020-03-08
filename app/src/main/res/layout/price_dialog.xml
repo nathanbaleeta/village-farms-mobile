@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+
+        <TextView
+                android:id="@+id/tvDistrict"
+                android:paddingLeft="7sp"
+                android:text="District"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+        <RadioGroup
+                android:id="@+id/rg_district"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                >
+
+<!--
+            <RadioButton android:id="@+id/rb_mr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mr"
+                    android:padding="10dp"
+                    />
+            <RadioButton android:id="@+id/rb_mrs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mrs"
+                    android:padding="10dp"
+                    />
+
+            <RadioButton android:id="@+id/rb_miss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ms"
+                    android:padding="10dp"
+                    />-->
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+
+    <android.support.design.widget.TextInputEditText
+            android:id="@+id/txtPricePriceKg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Price per kg" />
+
+
+
+</LinearLayout>
