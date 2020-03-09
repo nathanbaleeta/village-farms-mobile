@@ -38,6 +38,11 @@
                 android:name=".PricePerKgListActivity"
                 android:label="@string/title_price_list" />
 
+        <activity
+                android:name=".RadioListActivity"
+                android:label="@string/title_price_list" />
+
+
     </application>
 
 </manifest>

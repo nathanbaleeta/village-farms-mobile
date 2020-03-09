@@ -9,8 +9,7 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
-import android.widget.LinearLayout
-import android.widget.Toast
+import android.widget.*
 import com.codepoint.villagefarms.models.Price
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -21,16 +20,17 @@ import kotlinx.android.synthetic.main.district_dialog.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import kotlinx.android.synthetic.main.activity_farmer_add_advance.view.*
+import kotlinx.android.synthetic.main.price_dialog.*
 
 import java.lang.Double.parseDouble
+import android.widget.ArrayAdapter
+
+
+
 
 
 class PricePerKgListActivity : AppCompatActivity() {
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,7 +88,7 @@ class PricePerKgListActivity : AppCompatActivity() {
                     price?.objectId = ds.key
 
                     priceList.add(price!!)
-                    Log.d(ContentValues.TAG, price.toString())
+                    //Log.d(ContentValues.TAG, price.toString())
 
                 }
 
@@ -106,22 +106,82 @@ class PricePerKgListActivity : AppCompatActivity() {
 
         /************************** Start PricePerKg dialog ****************************/
 
-
         // Add district by inflating district dialog builder
         fabAddPricePerKg.setOnClickListener {
+
+            val districtList = ArrayList<String>()
+
+            // Get a reference to our farmer's advances
+            val refDistricts = FirebaseDatabase.getInstance()
+                .getReference("settings/districts")
+
+            // Attach a listener to read the data at our settings/districts reference
+            refDistricts.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+
+                    // Eliminates duplicate list rows when child added or removed in Firebase
+                    districtList.clear()
+
+                    for (ds in dataSnapshot.children) {
+                        //var district = ds.getValue(District::class.java)
+
+                        var districtName: String? = ds.child("district").getValue(String::class.java)
+                        districtList.add(districtName!!)
+
+                        //Log.d(ContentValues.TAG, districtList.toString())
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    println("The read failed: " + databaseError.code)
+                }
+            })
+
+
             //Inflate the dialog with custom view
             val mDialogView = LayoutInflater.from(this).inflate(R.layout.price_dialog, null)
 
-            // Define district radio group and attach to price dialog
-            val districtRadioGroup = mDialogView.findViewById<RadioGroup>(R.id.rg_district)
+            // Initializing a String Array
+            val districtList1 = resources.getStringArray(R.array.districtList)
+
+            val arrayAdapter = ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_spinner_item,
+                districtList1
+            )
+
+
+            var districtAdapter =
+                ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, districtList)
+
+            //spinner?.adapter = districtAdapter
+
+            spinner?.adapter = arrayAdapter
+
 
             // Populate radio button with array options of district
-            val districtOptionsArray = resources.getStringArray(R.array.districtList)
-            for (district in districtOptionsArray) {
+            //val districtOptionsArray = resources.getStringArray(R.array.districtList)
+
+
+
+            /*districtList.forEach {
                 val rb = RadioButton(this)
-                rb.text = district
+                rb.text = it
                 districtRadioGroup.addView(rb)
-            }
+
+                Log.d(ContentValues.TAG, it)
+            }*/
+
+            /*for (item in districtList) {
+                val rb = RadioButton(this)
+                rb.text = item
+                districtRadioGroup.addView(rb)
+                Log.d(ContentValues.TAG, item)
+            }*/
+
+
+
 
             val builder = AlertDialog.Builder(this)
             builder.setView(mDialogView)
@@ -134,7 +194,7 @@ class PricePerKgListActivity : AppCompatActivity() {
                 val pricePerKg = parseDouble(mDialogView.txtPricePriceKg.text.toString())
 
                 // Capture datetime when expense was created and store in created
-                val sdf = SimpleDateFormat("yyyy-MM-dd, hh:mm:ss")
+                val sdf = SimpleDateFormat("dd/MM/yyyy, hh:mm:ss")
                 val dateConfigured = sdf.format(Date())
 
                 if(district.isNotEmpty()) {
@@ -179,8 +239,8 @@ class PricePerKgListActivity : AppCompatActivity() {
 
     }
 
-    // Method to capitalize every first letter in word: extend String class
-    private fun String.toTitleCase(): String = split(" ").map { it.capitalize() }.joinToString(" ")
+
+
 
 
 

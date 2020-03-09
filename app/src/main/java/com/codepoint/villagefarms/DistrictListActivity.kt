@@ -80,7 +80,7 @@ class DistrictListActivity : AppCompatActivity() {
                     val district = ds.getValue(District::class.java)
 
                     // Extract object ID key from Fire base and assign to arrayList
-                    district?.objectId = ds.key
+                    //district?.objectId = ds.key
 
                     districtList.add(district!!)
                     Log.d(ContentValues.TAG, district.toString())
@@ -116,15 +116,15 @@ class DistrictListActivity : AppCompatActivity() {
                 val district = mDialogView.txtDistrict.text.toString().toLowerCase().toTitleCase().trim()
 
                 // Capture datetime when expense was created and store in created
-                val sdf = SimpleDateFormat("yyyy-MM-dd, hh:mm:ss")
+                val sdf = SimpleDateFormat("dd/MM/yyyy, hh:mm:ss")
                 val created = sdf.format(Date())
 
                 if(district.isNotEmpty()) {
 
                     val districtObj = District(
                         district,
-                        created,
-                        ""
+                        created
+
                     )
 
                     val ref = FirebaseDatabase.getInstance().getReference("settings/districts")

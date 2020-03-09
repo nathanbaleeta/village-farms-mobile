@@ -1,4 +1,5 @@
 import android.support.v7.widget.RecyclerView
+import android.text.format.DateUtils
 import android.view.*
 import android.widget.TextView
 
@@ -26,20 +27,18 @@ class DistrictAdapter(private val districtList:ArrayList<District>):RecyclerView
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        //Truncate time portion in date object; first convert to string then trim
-        val created = (districtList[position].created).toString().substring(0,10)
+        val created = districtList[position].created.toString().substring(0,10)
 
         holder.txtDistrict?.text = districtList[position].district
+
+        //Truncate time portion in date object; first convert to string then trim
         holder.txtDateCreated?.text = created
 
-
-
-            // retrieve position of list item
+        // retrieve position of list item
         val items = districtList[position]
 
         // Event listener used to pass data for specific item to Farmer Detail intent
         holder.itemView.setOnClickListener(View.OnClickListener { v ->
-
 
             /*val intent = Intent(v.context, FarmerMenuActivity::class.java)
             intent.putExtra("objectId", items.objectId)
@@ -51,8 +50,8 @@ class DistrictAdapter(private val districtList:ArrayList<District>):RecyclerView
     }
 
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtDistrict = itemView.findViewById<TextView>(R.id.tvDistrict)
         val txtDateCreated = itemView.findViewById<TextView>(R.id.tvDateCreated)
 
