@@ -7,7 +7,6 @@ import android.util.Log
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.TextView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -19,77 +18,71 @@ class RadioListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_radio_list)
 
+
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
-        val radioGroup = RadioGroup(this)
-        val radioGroup2 = RadioGroup(this)
-        val textView = TextView(this)
-        textView.text = "option 1 is selected"
+        val radioGroup = RadioGroup(this@RadioListActivity)
         radioGroup.orientation = RadioGroup.VERTICAL
 
-        //This option will be the default value
-        val radioButtonDefault = RadioButton(this)
-        radioButtonDefault.text = "Default"
-        radioGroup.addView(radioButtonDefault)
-        radioGroup.check(radioButtonDefault.id)
-
-        val districtList = ArrayList<String>()
 
         // Get a reference to our farmer's advances
         val refDistricts = FirebaseDatabase.getInstance()
             .getReference("settings/districts")
 
+        val districtList = ArrayList<String>()
+
         // Attach a listener to read the data at our settings/districts reference
         refDistricts.addValueEventListener(object : ValueEventListener {
+
+
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // Eliminates duplicate list rows when child added or removed in Firebase
+
+                // Eliminates duplicates inn arrayList when old list is updated from Fire base
                 districtList.clear()
+
                 for (ds in dataSnapshot.children) {
-                    val districtName: String? = ds.child("district").getValue(String::class.java)
+                    val districtName: String? = ds.child("district").getValue(String()::class.java)
                     districtList.add(districtName!!)
 
                 }
 
-                Log.d(ContentValues.TAG, districtList.toString())
-                for(option in districtList){
+                // remove all radio buttons from radio group on data change and load afresh
+                radioGroup.removeAllViews()
+                linearLayout.removeView(radioGroup)
+
+                // Eliminate duplicate districts
+                val districts = districtList.distinct()
+
+                //Log.d(ContentValues.TAG, districtList.toString())
+                for(option in districts){
                     val radioButton = RadioButton(this@RadioListActivity)
                     radioButton.text = option
                     radioGroup.addView(radioButton)
                 }
+
+
+                // Add radio group to linear layout declared earlier
+                linearLayout.addView(radioGroup)
+
+
+
             }
+
+
 
             override fun onCancelled(databaseError: DatabaseError) {
                 println("The read failed: " + databaseError.code)
             }
+
+
         })
 
-        /*val districtList = ArrayList<String>()
-        districtList.add("Kampala")
-        districtList.add("Jinja")
-        districtList.add("Mbale")
-        districtList.add("Mbarara")
-        districtList.add("Fort Portal")
-
-
-        Log.d(ContentValues.TAG, districtList.toString())
-*/
-        //These options will be the regular radio buttons
-        val options = arrayOf("Kampala", "Jinja", "Mbarara", "Mbale", "Arua")
 
 
 
 
 
-
-        //This option can't be unchecked
-        val radioButtonAlwaysChecked = RadioButton(this)
-        radioButtonAlwaysChecked.text ="Always Checked"
-        radioButtonAlwaysChecked.isChecked = true
-        radioGroup2.addView(radioButtonAlwaysChecked)
-        radioGroup.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { radioGroup, i ->
-            textView.text = "option "+i+" is selected"
-        })
-        linearLayout.addView(radioGroup)
-        linearLayout.addView(radioGroup2)
-        linearLayout.addView(textView)
     }
+
+
 }
+
