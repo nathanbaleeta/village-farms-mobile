@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.codepoint.villagefarms.DistrictListActivity
 import com.codepoint.villagefarms.PricePerKgListActivity
-import com.codepoint.villagefarms.RadioListActivity
 
 import kotlinx.android.synthetic.main.content_settings.*
 
@@ -39,7 +38,7 @@ class SettingsFragment : Fragment() {
         }
 
         pricePerKg.setOnClickListener {
-            val intent = Intent(activity, RadioListActivity::class.java)
+            val intent = Intent(activity, PricePerKgListActivity::class.java)
             activity?.startActivity(intent)
         }
     }

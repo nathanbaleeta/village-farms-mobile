@@ -13,16 +13,24 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 
-class RadioListActivity : AppCompatActivity() {
+class SetPricePerKgActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_radio_list)
+        setContentView(R.layout.activity_set_price)
 
 
+        //to change title of activity programmatically to full name
+        val actionBar = supportActionBar
+        actionBar!!.title = ("Set Price Per Kg")
+
+        //set back button
+        actionBar.setDisplayHomeAsUpEnabled(true)
+
+
+        // Initialize linear layout for radioGroup
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
-        val radioGroup = RadioGroup(this@RadioListActivity)
+        val radioGroup = RadioGroup(this)
         radioGroup.orientation = RadioGroup.VERTICAL
-
 
         // Get a reference to our farmer's advances
         val refDistricts = FirebaseDatabase.getInstance()
@@ -35,6 +43,8 @@ class RadioListActivity : AppCompatActivity() {
 
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+
 
                 // Eliminates duplicates inn arrayList when old list is updated from Fire base
                 districtList.clear()
@@ -54,20 +64,15 @@ class RadioListActivity : AppCompatActivity() {
 
                 //Log.d(ContentValues.TAG, districtList.toString())
                 for(option in districts){
-                    val radioButton = RadioButton(this@RadioListActivity)
+                    val radioButton = RadioButton(this@SetPricePerKgActivity)
                     radioButton.text = option
                     radioGroup.addView(radioButton)
                 }
 
-
                 // Add radio group to linear layout declared earlier
                 linearLayout.addView(radioGroup)
 
-
-
             }
-
-
 
             override fun onCancelled(databaseError: DatabaseError) {
                 println("The read failed: " + databaseError.code)
@@ -76,13 +81,32 @@ class RadioListActivity : AppCompatActivity() {
 
         })
 
+        // Event listener for district radio group & buttons
+        radioGroup.setOnCheckedChangeListener { _, _ ->
+
+            var id: Int = radioGroup.checkedRadioButtonId
+            if (id!=-1){ // If any radio button checked from radio group
+                // Get the instance of radio button using id
+                val radio:RadioButton = findViewById(id)
+                Log.d(ContentValues.TAG, "${radio.text}")
+
+            }else{
+                // If no radio button checked in this radio group
+
+                Log.d(ContentValues.TAG, "Nothing selected")
+            }
 
 
 
+        }
 
 
     }
 
-
+    // Back arrow click event to go back to the parent Activity
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
 }
 

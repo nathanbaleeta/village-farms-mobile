@@ -39,7 +39,7 @@
                 android:label="@string/title_price_list" />
 
         <activity
-                android:name=".RadioListActivity"
+                android:name=".SetPricePerKgActivity"
                 android:label="@string/title_price_list" />
 
 
