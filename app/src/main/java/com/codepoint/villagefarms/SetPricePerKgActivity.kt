@@ -7,10 +7,19 @@ import android.util.Log
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Toast
+import com.codepoint.villagefarms.models.District
+import com.codepoint.villagefarms.models.Price
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_set_price.*
+import kotlinx.android.synthetic.main.district_dialog.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class SetPricePerKgActivity : AppCompatActivity() {
@@ -44,8 +53,6 @@ class SetPricePerKgActivity : AppCompatActivity() {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-
-
                 // Eliminates duplicates inn arrayList when old list is updated from Fire base
                 districtList.clear()
 
@@ -62,7 +69,6 @@ class SetPricePerKgActivity : AppCompatActivity() {
                 // Eliminate duplicate districts
                 val districts = districtList.distinct()
 
-                //Log.d(ContentValues.TAG, districtList.toString())
                 for(option in districts){
                     val radioButton = RadioButton(this@SetPricePerKgActivity)
                     radioButton.text = option
@@ -82,12 +88,17 @@ class SetPricePerKgActivity : AppCompatActivity() {
         })
 
         // Event listener for district radio group & buttons
+
+        var district = ""
         radioGroup.setOnCheckedChangeListener { _, _ ->
 
             var id: Int = radioGroup.checkedRadioButtonId
-            if (id!=-1){ // If any radio button checked from radio group
+
+            // If any radio button checked from radio group
+            if (id!=-1){
                 // Get the instance of radio button using id
                 val radio:RadioButton = findViewById(id)
+                district = radio.text.toString()
                 Log.d(ContentValues.TAG, "${radio.text}")
 
             }else{
@@ -96,9 +107,59 @@ class SetPricePerKgActivity : AppCompatActivity() {
                 Log.d(ContentValues.TAG, "Nothing selected")
             }
 
+        }
+
+        // Attach a click listener to save button
+        fabSetPrice.setOnClickListener {
+            // Save price per kf info to fire base
+            // Capture datetime when expense was created and store in created
+            val sdf = SimpleDateFormat("dd/MM/yyyy, hh:mm:ss")
+            val created = sdf.format(Date())
+
+            // Implement Number format exception in try catch blocks to avoid app crashing
+            val pricePerKg: Double? = try {
+                java.lang.Double.parseDouble(txtPricePriceKg.text.toString())
+            } catch (e: NumberFormatException) {
+                null
+            }
+
+            if(district.isNotEmpty() && pricePerKg !== null) {
+
+                val priceObj = Price(
+                    district,
+                    created,
+                    pricePerKg,""
+
+                )
+
+                val ref = FirebaseDatabase.getInstance().getReference("settings/prices")
+
+                // Push the data to Fire base cloud data store
+                ref.push().setValue(priceObj)
+
+                // Clear PricePerKgform post save action
+                radioGroup.clearCheck()
+                txtPricePriceKg?.setText("")
+
+
+                // Display response message after saving district
+                Toast.makeText(applicationContext,
+                    "Successfully saved district", Toast.LENGTH_SHORT).show()
+
+
+            } else {
+                // Display response message after saving district
+                Toast.makeText(applicationContext,
+                    "Failed to saved district", Toast.LENGTH_SHORT).show()
+
+            }
 
 
         }
+
+
+
+
 
 
     }

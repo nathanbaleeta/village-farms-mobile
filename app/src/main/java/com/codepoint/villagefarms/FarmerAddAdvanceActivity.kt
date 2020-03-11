@@ -222,7 +222,7 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
 
                 try {
                     num1 = Integer.parseInt(txtPricePriceKg.text.toString())
-                } catch (e: NumberFormatException) {
+                } catch (e: Throwable) {
                     null
                 }
 
