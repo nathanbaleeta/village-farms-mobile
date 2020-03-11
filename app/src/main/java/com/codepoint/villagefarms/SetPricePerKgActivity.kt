@@ -98,6 +98,7 @@ class SetPricePerKgActivity : AppCompatActivity() {
             if (id!=-1){
                 // Get the instance of radio button using id
                 val radio:RadioButton = findViewById(id)
+
                 district = radio.text.toString()
                 Log.d(ContentValues.TAG, "${radio.text}")
 
@@ -137,7 +138,7 @@ class SetPricePerKgActivity : AppCompatActivity() {
                 // Push the data to Fire base cloud data store
                 ref.push().setValue(priceObj)
 
-                // Clear PricePerKgform post save action
+                // Clear PricePerKg form post save action
                 radioGroup.clearCheck()
                 txtPricePriceKg?.setText("")
 
@@ -147,20 +148,19 @@ class SetPricePerKgActivity : AppCompatActivity() {
                     "Successfully saved district", Toast.LENGTH_SHORT).show()
 
 
-            } else {
+            } else if (pricePerKg == null){
+                txtPricePriceKg.error = "Price per kg is required"
                 // Display response message after saving district
                 Toast.makeText(applicationContext,
-                    "Failed to saved district", Toast.LENGTH_SHORT).show()
-
-            }
-
+                    "Failed to save district", Toast.LENGTH_SHORT).show()
+            } else if (radioGroup.checkedRadioButtonId == -1) {
+                // no radio buttons are checked
+                Toast.makeText(applicationContext,
+                    "Missing district field", Toast.LENGTH_LONG).show()
 
         }
 
-
-
-
-
+        }
 
     }
 
