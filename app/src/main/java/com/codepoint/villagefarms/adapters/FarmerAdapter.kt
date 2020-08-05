@@ -33,7 +33,6 @@ class FarmerAdapter(private val farmerList:ArrayList<Farmer>):RecyclerView.Adapt
         // Event listener used to pass data for specific item to Farmer Detail intent
         holder.itemView.setOnClickListener(View.OnClickListener { v ->
 
-
             val intent = Intent(v.context, FarmerDetailActivity::class.java)
             intent.putExtra("objectId", items.objectId)
             intent.putExtra("firstName",items.firstname)

@@ -13,14 +13,13 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.activity_market_list.*
-import kotlinx.android.synthetic.main.activity_price_list.*
+import kotlinx.android.synthetic.main.activity_district_market_list.*
 
-class MarketListActivity : AppCompatActivity() {
+
+class DistrictMarketListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_market_list)
-
+        setContentView(R.layout.activity_district_market_list)
 
         //to change title of activity programmatically to full name
         val actionBar = supportActionBar
@@ -49,7 +48,6 @@ class MarketListActivity : AppCompatActivity() {
 
         // Get a reference to the district list
         val ref = FirebaseDatabase.getInstance().getReference("settings/districts")
-
 
         // Attach a listener to read the data at our farmers reference
         ref.addValueEventListener(object : ValueEventListener {
@@ -84,5 +82,11 @@ class MarketListActivity : AppCompatActivity() {
         /************************** End of RecyclerView Adapter *************************/
 
 
+    }
+
+    // Back arrow click event to go back to the parent Activity
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

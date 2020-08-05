@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.codepoint.villagefarms.DistrictListActivity
-import com.codepoint.villagefarms.MarketListActivity
+import com.codepoint.villagefarms.DistrictMarketListActivity
 import com.codepoint.villagefarms.PricePerKgListActivity
 
 import kotlinx.android.synthetic.main.content_settings.*
@@ -43,8 +43,8 @@ class SettingsFragment : Fragment() {
             activity?.startActivity(intent)
         }
 
-        market.setOnClickListener {
-            val intent = Intent(activity, MarketListActivity::class.java)
+        markets.setOnClickListener {
+            val intent = Intent(activity, DistrictMarketListActivity::class.java)
             activity?.startActivity(intent)
         }
     }

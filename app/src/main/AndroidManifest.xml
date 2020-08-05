@@ -9,7 +9,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".MarketListActivity"></activity>
+        <activity android:name=".MarketListByDistrictActivity"></activity>
+        <activity android:name=".DistrictMarketListActivity" />
         <activity android:name=".FarmerAddAdvanceActivity" />
         <activity android:name=".FarmerProcurementsActivity" />
         <activity android:name=".FarmerAdvancesActivity" />

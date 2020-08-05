@@ -62,10 +62,8 @@ class DistrictListActivity : AppCompatActivity() {
 
         /************************** RecyclerView Adapter *************************/
 
-
         // Get a reference to our farmer's advances
-        val ref = FirebaseDatabase.getInstance().getReference("settings/districts")
-
+        val ref = FirebaseDatabase.getInstance().getReference("settings").child("districts")
 
         // Attach a listener to read the data at our farmers reference
         ref.addValueEventListener(object : ValueEventListener {
@@ -80,7 +78,7 @@ class DistrictListActivity : AppCompatActivity() {
                     val district = ds.getValue(District::class.java)
 
                     // Extract object ID key from Fire base and assign to arrayList
-                    //district?.objectId = ds.key
+                    district?.objectId = ds.key
 
                     districtList.add(district!!)
                     Log.d(ContentValues.TAG, district.toString())
@@ -101,7 +99,7 @@ class DistrictListActivity : AppCompatActivity() {
 
         /************************** Start District dialog ****************************/
 
-
+        /*
         // Add district by inflating district dialog builder
         fabAddDistrict.setOnClickListener {
             //Inflate the dialog with custom view
@@ -153,7 +151,7 @@ class DistrictListActivity : AppCompatActivity() {
             }
             builder.show()
         }
-
+           */
         /************************** End of  District dialog *************************/
 
 
@@ -162,9 +160,6 @@ class DistrictListActivity : AppCompatActivity() {
 
     // Method to capitalize every first letter in word: extend String class
     private fun String.toTitleCase(): String = split(" ").map { it.capitalize() }.joinToString(" ")
-
-
-
 
 
 
