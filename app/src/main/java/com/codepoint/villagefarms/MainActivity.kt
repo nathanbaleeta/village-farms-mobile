@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        /* Enable disk persistence  */
+        // Enable disk persistence
         FirebaseDatabase.getInstance().setPersistenceEnabled(true)
 
         // Set default BottomNavigationView tab

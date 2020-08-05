@@ -44,7 +44,7 @@ class DistrictListActivity : AppCompatActivity() {
 
         val recyclerView = settings_district_list_recycler_view
 
-         recyclerView.setHasFixedSize(true)
+        recyclerView.setHasFixedSize(true)
 
         // Use a linear layout manager
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
