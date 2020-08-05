@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.codepoint.villagefarms.DistrictListActivity
+import com.codepoint.villagefarms.MarketListActivity
 import com.codepoint.villagefarms.PricePerKgListActivity
 
 import kotlinx.android.synthetic.main.content_settings.*
@@ -39,6 +40,11 @@ class SettingsFragment : Fragment() {
 
         pricePerKg.setOnClickListener {
             val intent = Intent(activity, PricePerKgListActivity::class.java)
+            activity?.startActivity(intent)
+        }
+
+        market.setOnClickListener {
+            val intent = Intent(activity, MarketListActivity::class.java)
             activity?.startActivity(intent)
         }
     }
