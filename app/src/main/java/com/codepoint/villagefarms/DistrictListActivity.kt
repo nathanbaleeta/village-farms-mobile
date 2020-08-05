@@ -99,7 +99,7 @@ class DistrictListActivity : AppCompatActivity() {
 
         /************************** Start District dialog ****************************/
 
-        /*
+
         // Add district by inflating district dialog builder
         fabAddDistrict.setOnClickListener {
             //Inflate the dialog with custom view
@@ -121,8 +121,8 @@ class DistrictListActivity : AppCompatActivity() {
 
                     val districtObj = District(
                         district,
-                        created
-
+                        created,
+                        ""
                     )
 
                     val ref = FirebaseDatabase.getInstance().getReference("settings/districts")
@@ -151,7 +151,7 @@ class DistrictListActivity : AppCompatActivity() {
             }
             builder.show()
         }
-           */
+
         /************************** End of  District dialog *************************/
 
 
