@@ -493,7 +493,6 @@ class FarmerAddAdvanceActivity : AppCompatActivity() {
             // Push the data to Fire base cloud data store
             ref.push().setValue(advance)
 
-
             // Clear registration form after saving advance
             txtAdvanceAmount.setText("")
             txtCommodityValue.setText("")
