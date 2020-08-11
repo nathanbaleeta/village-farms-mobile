@@ -62,7 +62,7 @@ class DistrictMarketListActivity : AppCompatActivity() {
                     val district = ds.getValue(District::class.java)
 
                     // Extract object ID key from Fire base and assign to arrayList
-                    //district?.objectId = ds.key
+                    district?.objectId = ds.key
 
                     districtList.add(district!!)
                     Log.d(ContentValues.TAG, district.toString())

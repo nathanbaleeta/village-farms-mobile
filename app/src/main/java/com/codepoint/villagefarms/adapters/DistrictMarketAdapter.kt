@@ -28,10 +28,10 @@ class DistrictMarketAdapter(private val districtList:ArrayList<District>):Recycl
 
         val created = districtList[position].created.toString().substring(0,10)
 
-        holder.txtDistrict?.text = districtList[position].district
+        holder.tvDistrict?.text = districtList[position].district
 
         //Truncate time portion in date object; first convert to string then trim
-        holder.txtDateCreated?.text = created
+        holder.tvDateCreated?.text = created
 
         // retrieve position of list item
         val items = districtList[position]
@@ -51,8 +51,8 @@ class DistrictMarketAdapter(private val districtList:ArrayList<District>):Recycl
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val txtDistrict = itemView.findViewById<TextView>(R.id.tvDistrict)
-        val txtDateCreated = itemView.findViewById<TextView>(R.id.tvDateCreated)
+        val tvDistrict = itemView.findViewById<TextView>(R.id.tvDistrict)
+        val tvDateCreated = itemView.findViewById<TextView>(R.id.tvDateCreated)
 
     }
 

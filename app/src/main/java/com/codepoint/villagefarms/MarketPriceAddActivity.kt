@@ -79,10 +79,11 @@ class MarketPriceAddActivity : AppCompatActivity() {
                 created
             )
 
-            val ref = FirebaseDatabase.getInstance().getReference("settings/markets/$objectId")
+            val ref = FirebaseDatabase.getInstance().getReference("markets/$objectId")
 
             // Push the data to Firebase
             ref.push().setValue(market)
+
 
             // Clear registration form after saving advance
             txtMarketName.setText("")

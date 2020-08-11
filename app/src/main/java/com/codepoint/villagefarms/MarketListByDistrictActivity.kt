@@ -60,7 +60,7 @@ class MarketListByDistrictActivity : AppCompatActivity() {
         /************************** RecyclerView Adapter *************************/
 
         // Get a reference to our farmer's advances
-        val ref = FirebaseDatabase.getInstance().getReference("settings/markets")
+        val ref = FirebaseDatabase.getInstance().getReference("markets/$objectId")
 
         // Attach a listener to read the data at our farmers reference
         ref.addValueEventListener(object : ValueEventListener {
@@ -74,11 +74,7 @@ class MarketListByDistrictActivity : AppCompatActivity() {
                 for (ds in dataSnapshot.children) {
                     val market = ds.getValue(Market::class.java)
 
-                    // Extract object ID key from Fire base and assign to arrayList
-                    //market?.objectId = ds.key
-
                     marketPriceList.add(market!!)
-                    //Log.d(ContentValues.TAG, price.toString())
                 }
 
                 // specify an adapter
