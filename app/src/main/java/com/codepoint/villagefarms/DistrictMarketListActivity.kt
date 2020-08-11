@@ -66,7 +66,6 @@ class DistrictMarketListActivity : AppCompatActivity() {
 
                     districtList.add(district!!)
                     Log.d(ContentValues.TAG, district.toString())
-
                 }
 
                 // specify an adapter

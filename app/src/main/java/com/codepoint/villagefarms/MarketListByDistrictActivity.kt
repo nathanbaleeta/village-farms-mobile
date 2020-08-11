@@ -1,6 +1,7 @@
 package com.codepoint.villagefarms
 
 import PriceAdapter
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
@@ -56,10 +57,8 @@ class MarketListByDistrictActivity : AppCompatActivity() {
 
         /************************** RecyclerView Adapter *************************/
 
-
         // Get a reference to our farmer's advances
         val ref = FirebaseDatabase.getInstance().getReference("settings/prices")
-
 
         // Attach a listener to read the data at our farmers reference
         ref.addValueEventListener(object : ValueEventListener {
@@ -78,7 +77,6 @@ class MarketListByDistrictActivity : AppCompatActivity() {
 
                     priceList.add(price!!)
                     //Log.d(ContentValues.TAG, price.toString())
-
                 }
 
                 // specify an adapter
@@ -93,7 +91,22 @@ class MarketListByDistrictActivity : AppCompatActivity() {
 
         /************************** End of RecyclerView Adapter *************************/
 
+        /************************** Start Market Price Add activity ****************************/
 
+
+        // Add market price event handler to floating button
+        fabAddMarketPrice.setOnClickListener {
+            val intent = Intent(this, MarketPriceAddActivity::class.java)
+            intent.putExtra("objectId", objectId)
+            intent.putExtra("district",district)
+            this?.startActivity(intent)
+
+        }
+
+        /************************** End of Market Price Add activity *************************/
+
+
+        // fabAddMarketPrice
 
     }
     // Back arrow click event to go back to the parent Activity

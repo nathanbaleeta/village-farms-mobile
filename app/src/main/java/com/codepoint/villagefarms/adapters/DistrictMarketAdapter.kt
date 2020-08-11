@@ -42,7 +42,6 @@ class DistrictMarketAdapter(private val districtList:ArrayList<District>):Recycl
             val intent = Intent(v.context, MarketListByDistrictActivity::class.java)
             intent.putExtra("objectId", items.objectId)
             intent.putExtra("district",items.district)
-
             v.context.startActivity(intent)
 
         })

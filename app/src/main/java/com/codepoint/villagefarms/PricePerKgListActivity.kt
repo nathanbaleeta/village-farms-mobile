@@ -94,8 +94,6 @@ class PricePerKgListActivity : AppCompatActivity() {
             val intent = Intent(this, SetPricePerKgActivity::class.java)
             this?.startActivity(intent)
 
-
-
         }
 
         /************************** End of Start PricePerKg setting activity *************************/
