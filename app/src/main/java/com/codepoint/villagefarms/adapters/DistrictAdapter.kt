@@ -42,11 +42,6 @@ class DistrictAdapter(private val districtList:ArrayList<District>):RecyclerView
         // Event listener used to pass data for specific item to Farmer Detail intent
         holder.itemView.setOnClickListener(View.OnClickListener { v ->
 
-            //val intent = Intent(v.context, MarketListByDistrictActivity::class.java)
-            //intent.putExtra("objectId", items.objectId)
-            //intent.putExtra("district",items.district)
-
-            //v.context.startActivity(intent)
 
         })
 
