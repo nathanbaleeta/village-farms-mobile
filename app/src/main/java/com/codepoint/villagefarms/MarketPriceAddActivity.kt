@@ -69,7 +69,7 @@ class MarketPriceAddActivity : AppCompatActivity() {
         if (marketName.isEmpty()){
             txtMarketName.error = "Market name is required"
             return
-        } else if (txtMarketPrice == null){
+        } else if (marketPrice == null){
             txtMarketPrice.error = "Market price is required"
             return
         } else {
