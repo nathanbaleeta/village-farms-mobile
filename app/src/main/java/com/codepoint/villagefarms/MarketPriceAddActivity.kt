@@ -76,8 +76,7 @@ class MarketPriceAddActivity : AppCompatActivity() {
             val market = Market(
                 marketName,
                 marketPrice,
-                created,
-                ""
+                created
             )
 
             val ref = FirebaseDatabase.getInstance().getReference("settings/markets/$objectId")
