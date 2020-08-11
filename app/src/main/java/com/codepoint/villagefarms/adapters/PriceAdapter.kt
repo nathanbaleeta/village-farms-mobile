@@ -33,8 +33,6 @@ class PriceAdapter(private val priceList:ArrayList<Price>):RecyclerView.Adapter<
         holder.txtPricePerKg?.text = (priceList[position].pricePerKg).toString()
         holder.txtDateCreated?.text = created
 
-
-
             // retrieve position of list item
         val items = priceList[position]
 

@@ -1,5 +1,6 @@
 package com.codepoint.villagefarms
 
+import MarketPriceAdapter
 import PriceAdapter
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -7,6 +8,7 @@ import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.LinearLayout
+import com.codepoint.villagefarms.models.Market
 import com.codepoint.villagefarms.models.Price
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -58,29 +60,29 @@ class MarketListByDistrictActivity : AppCompatActivity() {
         /************************** RecyclerView Adapter *************************/
 
         // Get a reference to our farmer's advances
-        val ref = FirebaseDatabase.getInstance().getReference("settings/prices")
+        val ref = FirebaseDatabase.getInstance().getReference("settings/markets")
 
         // Attach a listener to read the data at our farmers reference
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                val priceList = ArrayList<Price>()
+                val marketPriceList = ArrayList<Market>()
 
                 // Eliminates duplicate list rows when child added or removed in Firebase
-                priceList.clear()
+                marketPriceList.clear()
 
                 for (ds in dataSnapshot.children) {
-                    val price = ds.getValue(Price::class.java)
+                    val market = ds.getValue(Market::class.java)
 
                     // Extract object ID key from Fire base and assign to arrayList
-                    price?.objectId = ds.key
+                    //market?.objectId = ds.key
 
-                    priceList.add(price!!)
+                    marketPriceList.add(market!!)
                     //Log.d(ContentValues.TAG, price.toString())
                 }
 
                 // specify an adapter
-                var adapter = PriceAdapter(priceList)
+                var adapter = MarketPriceAdapter(marketPriceList)
                 recyclerView.adapter = adapter
             }
 
