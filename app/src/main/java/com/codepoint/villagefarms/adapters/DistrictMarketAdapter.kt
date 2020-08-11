@@ -11,10 +11,7 @@ import com.codepoint.villagefarms.models.District
 import kotlin.collections.ArrayList
 
 
-
-
-
-class DistrictAdapter(private val districtList:ArrayList<District>):RecyclerView.Adapter<DistrictAdapter.ViewHolder>() {
+class DistrictMarketAdapter(private val districtList:ArrayList<District>):RecyclerView.Adapter<DistrictMarketAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -42,11 +39,11 @@ class DistrictAdapter(private val districtList:ArrayList<District>):RecyclerView
         // Event listener used to pass data for specific item to Farmer Detail intent
         holder.itemView.setOnClickListener(View.OnClickListener { v ->
 
-            //val intent = Intent(v.context, MarketListByDistrictActivity::class.java)
-            //intent.putExtra("objectId", items.objectId)
-            //intent.putExtra("district",items.district)
+            val intent = Intent(v.context, MarketListByDistrictActivity::class.java)
+            intent.putExtra("objectId", items.objectId)
+            intent.putExtra("district",items.district)
 
-            //v.context.startActivity(intent)
+            v.context.startActivity(intent)
 
         })
 

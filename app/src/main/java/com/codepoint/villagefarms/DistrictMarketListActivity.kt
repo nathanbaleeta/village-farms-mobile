@@ -1,6 +1,6 @@
 package com.codepoint.villagefarms
 
-import DistrictAdapter
+import DistrictMarketAdapter
 import android.content.ContentValues
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -70,7 +70,7 @@ class DistrictMarketListActivity : AppCompatActivity() {
                 }
 
                 // specify an adapter
-                var adapter = DistrictAdapter(districtList)
+                var adapter = DistrictMarketAdapter(districtList)
                 recyclerView.adapter = adapter
             }
 
