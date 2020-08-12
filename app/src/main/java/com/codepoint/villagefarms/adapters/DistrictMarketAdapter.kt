@@ -4,15 +4,12 @@ import android.text.format.DateUtils
 import android.view.*
 import android.widget.TextView
 import com.codepoint.villagefarms.MarketListByDistrictActivity
-
 import com.codepoint.villagefarms.R
 import com.codepoint.villagefarms.models.District
-
 import kotlin.collections.ArrayList
 
 
 class DistrictMarketAdapter(private val districtList:ArrayList<District>):RecyclerView.Adapter<DistrictMarketAdapter.ViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -47,7 +44,6 @@ class DistrictMarketAdapter(private val districtList:ArrayList<District>):Recycl
         })
 
     }
-
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

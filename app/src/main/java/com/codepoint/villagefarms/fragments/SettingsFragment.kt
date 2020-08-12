@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.codepoint.villagefarms.DistrictListActivity
 import com.codepoint.villagefarms.DistrictMarketListActivity
-import com.codepoint.villagefarms.PricePerKgListActivity
 
 import kotlinx.android.synthetic.main.content_settings.*
 
@@ -35,11 +34,6 @@ class SettingsFragment : Fragment() {
         // Triggered event listeners for items on settings activity
         districts.setOnClickListener {
             val intent = Intent(activity, DistrictListActivity::class.java)
-            activity?.startActivity(intent)
-        }
-
-        pricePerKg.setOnClickListener {
-            val intent = Intent(activity, PricePerKgListActivity::class.java)
             activity?.startActivity(intent)
         }
 

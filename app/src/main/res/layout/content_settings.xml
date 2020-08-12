@@ -47,47 +47,6 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
-
-                android:id="@+id/pricePerKg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:padding="@dimen/settings_horizontal_margin"
-                >
-
-            <ImageView
-                android:id="@+id/ivPrices"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/settings_horizontal_margin"
-                android:src="@drawable/ic_trending_up_black_24dp" />
-
-            <TextView
-                android:id="@+id/tvPrices"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/settings_horizontal_margin"
-                android:layout_toEndOf="@id/ivPrices"
-                android:text="Prices"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#212121" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvPrices"
-                android:layout_marginStart="@dimen/settings_horizontal_margin"
-                android:layout_marginTop="4dp"
-                android:layout_toEndOf="@id/ivPrices"
-                android:text="Price per kg per district"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="#727272" />
-
-
-        </RelativeLayout>
 
     <RelativeLayout
             android:id="@+id/markets"

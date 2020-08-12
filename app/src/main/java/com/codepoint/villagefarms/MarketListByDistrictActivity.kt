@@ -1,7 +1,6 @@
 package com.codepoint.villagefarms
 
 import MarketPriceAdapter
-import PriceAdapter
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -9,13 +8,11 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.LinearLayout
 import com.codepoint.villagefarms.models.Market
-import com.codepoint.villagefarms.models.Price
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_market_list_by_district.*
-import kotlinx.android.synthetic.main.activity_price_list.*
 
 class MarketListByDistrictActivity : AppCompatActivity() {
 
